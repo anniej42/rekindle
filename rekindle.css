@@ -1,1 +1,88 @@
 /* CSS declarations go here */
+
+/********************************************************************/
+/* BASIC                                                            */
+/********************************************************************/
+
+	body
+	{
+		background: #fff;
+		color: #2B2B2B;
+	}
+
+	body,input,textarea,select
+	{
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 18pt;
+		font-weight: 200;
+		line-height: 1.75em;
+		color: #2B2B2B;			/* dark gray */
+		-webkit-text-stroke: 0.15px;
+	}
+
+	h1
+	{
+		font-size: 2em;
+		font-weight: 200;
+		padding-left: 30px;
+	}
+
+
+	h2
+	{
+		font-size: 1em;
+		font-weight: 200;
+
+		text-decoration:underline;
+	}
+
+	h3
+	{
+		font-size: 0.8em;
+		font-weight: 200;
+	}
+
+
+
+
+/********************************************************************/
+/* SECTIONS                                                         */
+/********************************************************************/
+
+	#main
+	{
+		width: 800px;
+		margin-left: auto ;
+  		margin-right: auto ;
+  		padding: 2em 0 2em 0;
+  		background-color: #FFC285;
+	}
+	
+	#main > section
+	{
+		top:0;
+		height: 100%;
+		margin-bottom: 1.5em;
+		padding-left: 20px;
+		line-height: 2em;
+		width: 50%;
+		margin-left: 30px;
+	}
+
+	#main > section.top
+	{
+		width: 100%;
+		padding-left: 0;
+		margin-left: 0;
+	}
+
+	#main > section.name
+	{
+		margin-left: 30px;
+
+	}
+
+	#main > section.work
+	{
+
+	}
