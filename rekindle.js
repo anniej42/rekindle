@@ -1,14 +1,20 @@
 if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to rekindle.";
-  };
+  // Template.hello.greeting = function () {
+  //   return "Welcome to rekindle.";
+  // };
 
-  Template.Hello.events({
-    'click button': function () {
+  Template.welcome.events({
+    'click .button': function (e) {
       // template data, if any, is available in 'this'
       // var h = $('#' + event.currentTarget.id);
 
-      $.scrollTo( '#' + event.currentTarget.id, 500);
+      // $.scrollTo( '#' + e.target.id, 500);
+      // formerize
+      var tar = e.target;
+      $('html, body').animate({
+        scrollTop: $(tar.getAttribute('href')).offset().top
+      }, 800);
+
 
     }
 
@@ -18,8 +24,6 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-
     // code ran on server startup
-    
   });
 }

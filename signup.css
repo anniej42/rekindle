@@ -4,39 +4,14 @@
 /* BASIC                                                            */
 /********************************************************************/
 
-	body
-	{
-		background: #fff;
-		color: #2B2B2B;
-	}
 
-	body,input,textarea,select
-	{
-
-		font-family: Avenir;
-		src: url(avenir.ttc);
-		font-size: 18pt;
-		font-weight: 200;
-		line-height: 1.75em;
-		color: #2B2B2B;			/* dark gray */
-		-webkit-text-stroke: 0.15px;
-	}
-
-	h1
-	{
-		font-family: Englebert;
-		font-size: 4em;
-		font-weight: 200;
-		padding-left: 30px;
-
-	}
 
 
 	h2
 	{
 		font-size: 1em;
 		font-weight: 200;
-
+		line-height: 1em;
 		text-decoration:underline;
 	}
 
@@ -203,11 +178,11 @@
 		padding: 0.1em 0.25em 0.1em 0.25em;
 		box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
 		border: solid 1px rgba(0,0,0,0.15);
-		-moz-transition: all 0.35s ease-in-out;
-		-webkit-transition: all 0.35s ease-in-out;
-		-o-transition: all 0.35s ease-in-out;
-		-ms-transition: all 0.35s ease-in-out;
-		transition: all 0.35s ease-in-out;
+		-moz-transition: all 0.5s ease-in-out;
+		-webkit-transition: all 0.5s ease-in-out;
+		-o-transition: all 0.5s ease-in-out;
+		-ms-transition: all 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
 	}
 
 	form input.text:focus,
