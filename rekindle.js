@@ -19,4 +19,3 @@ if (Meteor.isServer) {
     
   });
 }
-
