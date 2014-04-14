@@ -13,6 +13,9 @@
 	body,input,textarea,select
 	{
 		font-family: 'Source Sans Pro', sans-serif;
+
+		font-family: Avenir;
+		src: url(avenir.ttc);
 		font-size: 18pt;
 		font-weight: 200;
 		line-height: 1.75em;
