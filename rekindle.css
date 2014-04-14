@@ -49,7 +49,7 @@
 /* SECTIONS                                                         */
 /********************************************************************/
 
-	#main
+	#signup
 	{
 		width: 800px;
 		margin-left: auto ;
@@ -58,7 +58,7 @@
   		background-color: #FFC285;
 	}
 	
-	#main > section
+	#signup > section
 	{
 		top:0;
 		height: 100%;
@@ -69,20 +69,20 @@
 		margin-left: 30px;
 	}
 
-	#main > section.top
+	#signup > section.top
 	{
 		width: 100%;
 		padding-left: 0;
 		margin-left: 0;
 	}
 
-	#main > section.name
+	#signup > section.name
 	{
 		margin-left: 30px;
 
 	}
 
-	#main > section.memBox
+	#signup > section.memBox
 	{
 
 	}

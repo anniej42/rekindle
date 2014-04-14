@@ -3,7 +3,7 @@ if (Meteor.isClient) {
     return "Welcome to rekindle.";
   };
 
-  Template.hello.events({
+  Template.Hello.events({
     'click input': function () {
       // template data, if any, is available in 'this'
       if (typeof console !== 'undefined')
@@ -16,6 +16,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
 
     // code ran on server startup
-      
+    
   });
 }
+
