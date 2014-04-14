@@ -13,6 +13,7 @@
 		font-weight: 200;
 		line-height: 1em;
 		text-decoration:underline;
+		text-align: left;
 	}
 
 	h3
@@ -70,10 +71,6 @@
 
 	}
 
-	#signupForm > section.memBox
-	{
-
-	}
 
 	/* container for work and school sections */
 
@@ -82,6 +79,7 @@
 		
 		top:0;
 		line-height: 2em;
+		padding-bottom: 50px;
 	}
 
 	#container > section.work
@@ -102,6 +100,16 @@
 		float: left;
 	}
 
+	#container > section.memBox
+	{
+		float: top;
+		margin-top: 50px;
+		width: 100%;
+		padding-left: 0;
+		margin-left: 0;
+	}
+
+
 	/* This uploads to the memory box, support dnd later 
 
 	source http://html5demos.com/dnd-upload#view-source  */
@@ -110,7 +118,7 @@
 	{
 		/*position: relative;*/
 		border: 10px dashed #2B2B2B;
-		width: 600px; 
+		width: 100%; 
 		min-height: 300px; 
 		margin-left : auto;
 		margin-right : auto;
