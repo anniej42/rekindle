@@ -1,5 +1,16 @@
 /* CSS for all bonfire group messaging pages */
 
 body {
-	
+	background: #ffffff;
+}
+
+table {
+	border: 1px solid black;
+	width: 75%;
+	min-width: 800px;
+}
+
+td:first-child {
+	width: 60%;
+	background: #436583;
 }
