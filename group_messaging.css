@@ -75,10 +75,16 @@ td:first-child {
 #memberslist {
 	overflow: auto;
 	height: 500px;
-	font-size: 12pt;
 }
 
-#memberslist img {
-	height: 100%;
+#groupmember {
+	font-size: 12pt;
+	line-height: 1.2em;
+	padding: 10px;
+}
+
+#groupmember img {
+	height: 100px;
+	width: 100px;
 	float: left;
 }
