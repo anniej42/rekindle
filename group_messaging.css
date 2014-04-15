@@ -5,7 +5,6 @@ body {
 }
 
 table {
-	border: 1px solid black;
 	width: 75%;
 	min-width: 800px;
 	margin-right: auto;
@@ -14,7 +13,11 @@ table {
 
 td:first-child {
 	width: 60%;
-	background: #436583;
+	vertical-align: top;
+}
+
+#join {
+	text-align: center;
 }
 
 /********************************************************************/
@@ -22,7 +25,7 @@ td:first-child {
 /********************************************************************/
 
 #newpost-textfield {
-	width: 80%;
+	width: 70%;
 	font-size: 12pt;
 }
 
@@ -34,3 +37,77 @@ td:first-child {
 /********************************************************************/
 /* PREVIOUS POSTS                                                   */
 /********************************************************************/
+
+.icon {
+	overflow: auto;
+	height: 50px;
+	width: 50px;
+	background-color: black;
+	float: left;
+}
+
+.post {
+	margin: 5px;
+	font-size: 12pt;
+	line-height: 18px;
+}
+
+.post-text {
+	margin-left: 60px;
+	min-height: 50px;
+}
+
+.reply {
+	margin-left: 65px;
+}
+
+#reply-textfield {
+	width: 67%;
+	font-size: 12pt;
+}
+
+#reply-button {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/********************************************************************/
+/* MEMBERS LIST                                                     */
+/********************************************************************/
+
+
+
+#memberslist {
+	overflow: auto;
+	height: 500px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: Avenir;
+	src: url(avenir.ttc);
+}
+
+
+/* maybe don't use h2 since defined differently elsewhere */
+#memberslist h2 {
+	text-decoration: none;
+	font-family: Avenir;
+	src: url(avenir.ttc);
+	font-size: 1.4em;
+	line-height: 2.0em;
+}
+
+.groupmember {
+	font-size: 16pt;
+	line-height: 1.2em;
+}
+
+.groupmember img {
+	height: 100px;
+	width: 100px;
+	float: left;
+	padding-right: 30px;
+}
+
+.groupmember span {
+	line-height: 50px;
+}

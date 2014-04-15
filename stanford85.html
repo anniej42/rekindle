@@ -2,21 +2,95 @@
     <div id="stanford85" class="title">
     <h1>Stanford 1985</h1>
     </div>
-
+    <hr>
     <form>
 	    <table>
 	    	<tr>
 	    		<td id="newpost">
-	    			<textarea rows="2" type="text" id="newpost-textfield" name="newpost-text"></textarea>
+	    			<input type="text" id="newpost-textfield" name="newpost-text">
 	    			<button type="button" class="button" id="newpost-button">Post</button>
 	    		</td>
 	    		<td id="join">
 	    			<button type="button" class="button" id="joinleave">Join</button>
 	    		</td>
 	    	</tr>
-	    	<tr><td id="posts"></td><td id="members"></td></tr>
+	    	<tr>
+	    		<td id="posts">
+	    			<!-- sample post -->
+	    			<div class="post">
+	    				<div class="icon"></div>
+	    				<div class="post-text">
+		    				<b>Annie J. - Monday, April 14, 2044</b>
+		    				<br>
+		    				Hey! Next Saturday, Habitat for Humanity has a build day near Alewife. The MIT Habitat for Humanity club will be there, it would be great to have some alums help out!
+		    			</div>
+	    			</div>
+	    			<div class="post reply">
+	    				<div class="icon"></div>
+	    				<div class="post-text">
+		    				<b>Kate R. - Tuesday, April 15, 2044</b>
+		    				<br>
+		    				I'll be there!
+		    			</div>
+	    			</div>
+	    			<div class="post reply">
+	    				<input type="text" id="reply-textfield" name="reply-text">
+	    				<button type="button" class="button" id="reply-button">Reply</button>
+	    			</div>
+
+	    			<!-- sample post -->
+	    			<div class="post">
+	    				<div class="icon"></div>
+	    				<div class="post-text">
+		    				<b>Daniel J. - Sunday, April 13, 2044</b>
+		    				<br>
+		    				Hey everyone, check out my photography blog: shoutkey.com/seduction
+		    			</div>
+	    			</div>
+	    			<div class="post reply">
+	    				<input type="text" id="reply-textfield" name="reply-text">
+	    				<button type="button" class="button" id="reply-button">Reply</button>
+	    			</div>
+
+	    		</td>
+	    		<td id="members">
+	    			<div id="memberslist">
+	    				Members
+	    				<div class="groupmember">
+	    					<img src="http://web.mit.edu/chosetec/www/origami/mensetmanus2/mitseal.jpg">
+	    					<span>Sarah L. <br> Pixar | MIT 2016</span>
+	    				</div>
+	    				<br>
+	    				<div class="groupmember">
+	    					<img src="http://web.mit.edu/chosetec/www/origami/mensetmanus2/mitseal.jpg">
+	    					<span>Kate R. <br> Dropbox | MIT 2014</span>
+	    				</div>
+	    				<br>
+	    				<div class="groupmember">
+	    					<img src="http://web.mit.edu/chosetec/www/origami/mensetmanus2/mitseal.jpg">
+	    					<span>Annie J. <br> Adobe | MIT 2016</span>
+	    				</div>
+	    				<br>
+	    				<div class="groupmember">
+	    					<img src="http://web.mit.edu/chosetec/www/origami/mensetmanus2/mitseal.jpg">
+	    					<span>Cathleen G. <br> Valve | MIT 2016</span>
+	    				</div>
+	    				<br>
+	    				<div class="groupmember">
+	    					<img src="http://web.mit.edu/chosetec/www/origami/mensetmanus2/mitseal.jpg">
+	    					<span>Daniel J. <br> eBay | MIT 2015</span>
+	    				</div>
+	    				<br>
+	    				<div class="groupmember">
+	    					<img src="http://web.mit.edu/chosetec/www/origami/mensetmanus2/mitseal.jpg">
+	    					<span>Rob M. <br> Microsoft | MIT 2015</span>
+	    				</div>
+	    				<br>
+	    			</div>
+	    		</td>
+	    	</tr>
 	    </table>
 	</form>
 
-    <hr>
+    
 </template>
