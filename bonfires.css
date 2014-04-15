@@ -1,0 +1,45 @@
+#bonfires{
+	font-family: Avenir;
+}
+.subtitle{
+	text-align:center;
+	position:relative;
+}
+.rule_middle{
+	display:inline-block;
+}
+.rule_middle:before,
+.rule_middle:after {
+	border-style: none none solid none;
+    border-bottom: 4px solid black;
+     	-moz-box-shadow: 0px 2px 0px #ff7800; /* Firefox 3.6 and earlier */
+		-webkit-box-shadow: 0px 2px 0px #ff7800; /* Safari and Chrome */
+		box-shadow: 0px 2px 0px #ff7800;
+    display: block;
+    height: 1px;
+    content: " ";
+    width: 40%;
+    position: absolute;
+    left: 0;
+    top: 1.2em;
+}
+.rule_middle:after {
+   right: 0;  
+   left: auto; 
+}
+
+.rule{
+	display:inline-block;
+	border-style: none none solid none;
+	/*border-color: #ff7800;*/
+	/*border-width: 10px;*/
+	/*padding-top: 50px;*/
+	margin-bottom: 50px;
+	width: 35%;
+
+	border-bottom: 10px solid black;
+		-moz-box-shadow: 0px 5px 0px #ff7800; /* Firefox 3.6 and earlier */
+		-webkit-box-shadow: 0px 5px 0px #ff7800; /* Safari and Chrome */
+		box-shadow: 0px 5px 0px #ff7800;
+}
+
