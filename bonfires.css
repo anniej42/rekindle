@@ -50,14 +50,27 @@
 #bonfire_list li{
     display:inline;
     float:left;
+    
 }
 #bonfire_list_bottom{
     display:block;
     clear:both;
 }
 #bonfire_list{
+    display:block;
+    width:90%;
+    text-align:center;
     margin-left:auto;
     margin-right:auto;
+}
+.bonfire_name{
+    text-align:center;
+    vertical-align:middle;
+    line-height:290px;
+    font-family:Arial;
+    color:#fff;
+    opacity:0.9;
+    font-size:34pt;
 }
 
 
