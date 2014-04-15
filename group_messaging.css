@@ -77,12 +77,25 @@ td:first-child {
 #memberslist {
 	overflow: auto;
 	height: 500px;
+	padding: 20px;
+	font-family: Avenir;
+	src: url(avenir.ttc);
+}
+
+
+/* maybe don't use h2 since defined differently elsewhere */
+#memberslist h2 {
+	text-decoration: none;
+	font-family: Avenir;
+	src: url(avenir.ttc);
+	font-size: 2.0em;
 }
 
 .groupmember {
 	font-size: 16pt;
 	line-height: 1.2em;
-	padding: 20px;
+	padding-top: 40px;
+	vertical-align: middle;
 }
 
 .groupmember img {
