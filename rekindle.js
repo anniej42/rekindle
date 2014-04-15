@@ -25,6 +25,7 @@ if (Meteor.isClient) {
   // misbehaving :()
   $("#joinleave").click(function(){
     if ($(this).text() == "Join") {
+      console.log("clicked Join");
       $(this).text("Leave");
     } else {
       $(this).text("Join");
