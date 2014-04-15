@@ -27,7 +27,8 @@ if (Meteor.isClient) {
     $(this).text(function(i, v){
       return v === 'Join' ? 'Leave' : 'Join'
     }
-  });  
+  );  
+})
 }
 
 if (Meteor.isServer) {
