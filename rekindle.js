@@ -27,3 +27,13 @@ if (Meteor.isServer) {
     // code ran on server startup
   });
 }
+
+// toggle join/leave button
+// misbehaving :()
+// $("#joinleave").click(function(){
+//   if ($(this).text() == "Join") {
+//     $(this).text("Leave");
+//   } else {
+//     $(this).text("Join");
+//   }
+// })

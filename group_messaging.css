@@ -1,0 +1,36 @@
+/* CSS for all bonfire group messaging pages */
+
+body {
+	background: #ffffff;
+}
+
+table {
+	border: 1px solid black;
+	width: 75%;
+	min-width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+td:first-child {
+	width: 60%;
+	background: #436583;
+}
+
+/********************************************************************/
+/* NEW POST                                                         */
+/********************************************************************/
+
+#newpost-textfield {
+	width: 80%;
+	font-size: 12pt;
+}
+
+#newpost-button {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/********************************************************************/
+/* PREVIOUS POSTS                                                   */
+/********************************************************************/
