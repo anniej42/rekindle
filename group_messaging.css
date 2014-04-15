@@ -14,6 +14,7 @@ table {
 
 td:first-child {
 	width: 60%;
+	vertical-align: top;
 }
 
 /********************************************************************/
@@ -21,7 +22,7 @@ td:first-child {
 /********************************************************************/
 
 #newpost-textfield {
-	width: 80%;
+	width: 70%;
 	font-size: 12pt;
 }
 
@@ -43,7 +44,6 @@ td:first-child {
 }
 
 .post {
-	width: 100%;
 	margin: 5px;
 	font-size: 12pt;
 	line-height: 18px;
@@ -55,11 +55,11 @@ td:first-child {
 }
 
 .reply {
-	margin-left: 55px;
+	margin-left: 65px;
 }
 
 #reply-textfield {
-	width: 60%;
+	width: 67%;
 	font-size: 12pt;
 }
 
