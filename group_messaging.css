@@ -74,10 +74,10 @@ td:first-child {
 #memberslist {
 	overflow: auto;
 	height: 500px;
-	font-size: 30px;
+	font-size: 12px;
 }
 
-#memberslist > img {
+#memberslist img {
 	width: 70px;
 	height: 70px;
 	float: left;
