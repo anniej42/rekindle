@@ -24,11 +24,8 @@ if (Meteor.isClient) {
   // toggle join/leave button
   // misbehaving :()
   $("#joinleave").click(function(){
-    if ($(this).text() == "Join") {
-      console.log("clicked Join");
-      $(this).text("Leave");
-    } else {
-      $(this).text("Join");
+    $(this).text(function(i, v){
+      return v === 'Join' ? 'Leave' : 'Join'
     }
   });  
 }
