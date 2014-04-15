@@ -1,14 +1,14 @@
 /* CSS for all bonfire group messaging pages */
 
-body {
-	background: #ffffff;
-}
-
 table {
-	width: 75%;
+     	width: 75%;
 	min-width: 800px;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+td {
+        padding-bottom: 30px;
 }
 
 td:first-child {
@@ -19,6 +19,11 @@ td:first-child {
 #join {
 	text-align: center;
 }
+
+#allposts {
+	font-family: Avenir;
+	src: url(avenir.ttc);
+}	
 
 /********************************************************************/
 /* NEW POST                                                         */
@@ -53,6 +58,7 @@ td:first-child {
 }
 
 .post-text {
+        padding-right: 15%;
 	margin-left: 60px;
 	min-height: 50px;
 }
@@ -75,8 +81,6 @@ td:first-child {
 /* MEMBERS LIST                                                     */
 /********************************************************************/
 
-
-
 #memberslist {
 	overflow: auto;
 	height: 500px;
@@ -84,16 +88,6 @@ td:first-child {
 	padding-right: 20px;
 	font-family: Avenir;
 	src: url(avenir.ttc);
-}
-
-
-/* maybe don't use h2 since defined differently elsewhere */
-#memberslist h2 {
-	text-decoration: none;
-	font-family: Avenir;
-	src: url(avenir.ttc);
-	font-size: 1.4em;
-	line-height: 2.0em;
 }
 
 .groupmember {
