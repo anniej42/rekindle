@@ -67,3 +67,18 @@ td:first-child {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/********************************************************************/
+/* MEMBERS LIST                                                     */
+/********************************************************************/
+
+#memberslist {
+	overflow: auto;
+	height: 500px;
+	font-size: 12pt;
+}
+
+#memberslist img {
+	height: 100%;
+	float: left;
+}
