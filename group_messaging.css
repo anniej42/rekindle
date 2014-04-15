@@ -90,12 +90,13 @@ td:first-child {
 	font-family: Avenir;
 	src: url(avenir.ttc);
 	font-size: 2.0em;
+	line-height: 2.0em;
 }
 
 .groupmember {
 	font-size: 16pt;
 	line-height: 1.2em;
-	padding-top: 40px;
+	padding-top: 20px;
 }
 
 .groupmember img {
