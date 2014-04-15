@@ -52,7 +52,7 @@
 		top:0;
 		height: 100%;
 		margin-bottom: 1.5em;
-		padding-left: 20px;
+		/*padding-left: 20px;*/
 		line-height: 2em;
 		width: 50%;
 		margin-left: 30px;
@@ -65,24 +65,60 @@
 		margin-left: 0;
 	}
 
-	#signupForm > section.name
+	#container1
 	{
-		margin-left: 30px;
+		width:100%;
+		position: relative;
+		
+	}
+
+	#container1 > section
+	{
 
 	}
 
+	/*#container1 > section.name
+	{
+		margin-left: 30px;
+		float:left;
+		width: 50%;
+
+	}*/
+
+	/*#container1 > section.picUpload
+	{
+		margin-left: 30px;
+		float:left;
+		width: 50%;
+
+	}*/
+
+	#name .name
+	{
+		
+		float:left;
+		width: 50%;
+	}
+
+	#picUpload .picUpload
+	{
+		margin-left: 30px;
+		float:left;
+		width: 50%;
+	}
 
 	/* container for work and school sections */
 
-	#container > section
+	#container2 > section
 	{
 		
 		top:0;
 		line-height: 2em;
 		padding-bottom: 50px;
+		float:top;
 	}
 
-	#container > section.work
+	#container2 > section.work
 	{
 		float: left;
 		
@@ -92,17 +128,18 @@
 		width: 50%;
 		
 		
+		/*margin-left: 30px;*/
+	}
+
+	#container2 > section.school
+	{
+		float: left;
 		margin-left: 30px;
 	}
 
-	#container > section.school
+	#signupForm > section.memBox
 	{
-		float: left;
-	}
-
-	#container > section.memBox
-	{
-		float: top;
+		
 		margin-top: 50px;
 		width: 100%;
 		padding-left: 0;
@@ -120,6 +157,16 @@
 		border: 10px dashed #2B2B2B;
 		width: 100%; 
 		min-height: 300px; 
+		margin-left : auto;
+		margin-right : auto;
+	}
+
+	#holder .small
+	{
+		position: relative;
+		border: 10px dashed #2B2B2B;
+		width: 100%; 
+		min-height: 150px; 
 		margin-left : auto;
 		margin-right : auto;
 	}
