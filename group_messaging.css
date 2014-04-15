@@ -72,13 +72,22 @@ td:first-child {
 /* MEMBERS LIST                                                     */
 /********************************************************************/
 
+
+
 #memberslist {
 	overflow: auto;
 	height: 500px;
-	font-size: 12pt;
 }
 
-#memberslist img {
-	height: 100%;
+.groupmember {
+	font-size: 16pt;
+	line-height: 1.2em;
+	padding: 20px;
+}
+
+.groupmember img {
+	height: 100px;
+	width: 100px;
 	float: left;
+	padding-right: 30px;
 }
