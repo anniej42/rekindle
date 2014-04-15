@@ -83,7 +83,7 @@ td:first-child {
 	padding: 10px;
 }
 
-#groupmember img {
+.groupmember img {
 	height: 100px;
 	width: 100px;
 	float: left;
