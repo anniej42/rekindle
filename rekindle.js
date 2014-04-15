@@ -24,12 +24,12 @@ if (Meteor.isClient) {
   // toggle join/leave button
   // misbehaving :()
   $("#joinleave").click(function(){
-    if ($(this).text() == "Join") {
-      $(this).text("Leave");
-    } else {
-      $(this).text("Join");
-    }
-  });  
+      if ($(this).text() == "Join") {
+        $(this).text("Leave");
+      } else {
+        $(this).text("Join");
+      }
+  });
 }
 
 if (Meteor.isServer) {
