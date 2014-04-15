@@ -4,6 +4,7 @@
 .subtitle{
 	text-align:center;
 	position:relative;
+	font-size:30;
 }
 .rule_middle{
 	display:inline-block;
@@ -21,25 +22,12 @@
     width: 40%;
     position: absolute;
     left: 0;
-    top: 1.2em;
+    top: 0.7em;
 }
 .rule_middle:after {
    right: 0;  
    left: auto; 
 }
 
-.rule{
-	display:inline-block;
-	border-style: none none solid none;
-	/*border-color: #ff7800;*/
-	/*border-width: 10px;*/
-	/*padding-top: 50px;*/
-	margin-bottom: 50px;
-	width: 35%;
 
-	border-bottom: 10px solid black;
-		-moz-box-shadow: 0px 5px 0px #ff7800; /* Firefox 3.6 and earlier */
-		-webkit-box-shadow: 0px 5px 0px #ff7800; /* Safari and Chrome */
-		box-shadow: 0px 5px 0px #ff7800;
-}
 
