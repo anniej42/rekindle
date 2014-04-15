@@ -14,7 +14,6 @@ table {
 
 td:first-child {
 	width: 60%;
-	background: #436583;
 }
 
 /********************************************************************/
@@ -34,3 +33,36 @@ td:first-child {
 /********************************************************************/
 /* PREVIOUS POSTS                                                   */
 /********************************************************************/
+
+.icon {
+	display: block;
+	float: left;
+	overflow: auto;
+	height: 50px;
+	width: 50px;
+	background-color: black;
+}
+
+.post {
+	width: 100%;
+	margin: 5px;
+	font-size: 12pt;
+}
+
+.post-text {
+	float: right;
+}
+
+.reply {
+	margin-left: 55px;
+}
+
+#reply-textfield {
+	width: 60%;
+	font-size: 12pt;
+}
+
+#reply-button {
+	margin-left: auto;
+	margin-right: auto;
+}

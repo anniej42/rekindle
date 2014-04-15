@@ -7,14 +7,33 @@
 	    <table>
 	    	<tr>
 	    		<td id="newpost">
-	    			<textarea rows="2" type="text" id="newpost-textfield" name="newpost-text"></textarea>
+	    			<input type="text" id="newpost-textfield" name="newpost-text">
 	    			<button type="button" class="button" id="newpost-button">Post</button>
 	    		</td>
 	    		<td id="join">
 	    			<button type="button" class="button" id="joinleave">Join</button>
 	    		</td>
 	    	</tr>
-	    	<tr><td id="posts"></td><td id="members"></td></tr>
+	    	<tr>
+	    		<td id="posts">
+	    			<div class="post">
+	    				<div class="icon"></div>
+	    				<div class="post-text">
+		    				<b>Annie Jiao - April 14th, 2044</b>
+		    				<br>
+		    				Hey! Next Saturday, Habitat for Humanity has a build day near Alewife. The MIT Habitat for Humanity club will be there, it would be great to have some alums help out!
+		    			</div>
+	    			</div>
+	    			<div class="post reply">
+	    				<div class="icon"></div>
+	    			</div>
+	    			<div class="post reply">
+	    				<input type="text" id="reply-textfield" name="reply-text">
+	    				<button type="button" class="button" id="reply-button">Reply</button>
+	    			</div>
+	    		</td>
+	    		<td id="members"></td>
+	    	</tr>
 	    </table>
 	</form>
 
