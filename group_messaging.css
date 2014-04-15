@@ -8,9 +8,19 @@ table {
 	border: 1px solid black;
 	width: 75%;
 	min-width: 800px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 td:first-child {
 	width: 60%;
 	background: #436583;
+}
+
+#newpost-textfield {
+	width: 80%;
+}
+
+#newpost-button {
+	margin: 0px;
 }
