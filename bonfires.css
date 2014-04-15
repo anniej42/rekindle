@@ -30,4 +30,34 @@
 }
 
 
+.bonfire_button{
+    display: block;
+    padding: 10px;
+    /*border: 1px solid red;*/
+    margin-right: 50px;
+    margin-bottom: 50px;
+    height: 290px;
+    width: 290px;
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    box-shadow: 5px 5px 2px #cccccc;
+        -moz-box-shadow: 5px 5px 2px #cccccc; /* Firefox 3.6 and earlier */
+        -webkit-box-shadow: 5px 5px 2px #cccccc; /* Safari and Chrome */
+    background-image: url("https://math.stanford.edu/inc/img/PalmDrive.png");
+}
+
+#bonfire_list li{
+    display:inline;
+    float:left;
+}
+#bonfire_list_bottom{
+    display:block;
+    clear:both;
+}
+#bonfire_list{
+    margin-left:auto;
+    margin-right:auto;
+}
+
 
