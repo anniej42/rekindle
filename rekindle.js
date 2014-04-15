@@ -18,6 +18,8 @@ if (Meteor.isClient) {
 
     }
 
+    console.log(Template.findAll("#joinleave"));
+
 
   });
 
