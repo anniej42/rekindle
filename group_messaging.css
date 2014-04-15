@@ -35,22 +35,23 @@ td:first-child {
 /********************************************************************/
 
 .icon {
-	display: block;
-	float: left;
 	overflow: auto;
 	height: 50px;
 	width: 50px;
 	background-color: black;
+	float: left;
 }
 
 .post {
 	width: 100%;
 	margin: 5px;
 	font-size: 12pt;
+	line-height: 18px;
 }
 
 .post-text {
-	float: right;
+	margin-left: 60px;
+	min-height: 50px;
 }
 
 .reply {
