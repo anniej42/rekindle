@@ -1,10 +1,15 @@
 #bonfires{
-	font-family: Avenir;
+	   font-family: Avenir;
+        src: url(avenir.ttc);
 }
 .subtitle{
 	text-align:center;
 	position:relative;
-	font-size:30;
+	font-size:30pt;
+}
+
+.subtitle span{
+    font-size:30pt;
 }
 .rule_middle{
 	display:inline-block;
@@ -22,7 +27,7 @@
     width: 40%;
     position: absolute;
     left: 0;
-    top: 0.7em;
+    top: 0.5em;
 }
 .rule_middle:after {
    right: 0;  
@@ -44,7 +49,11 @@
     box-shadow: 5px 5px 2px #cccccc;
         -moz-box-shadow: 5px 5px 2px #cccccc; /* Firefox 3.6 and earlier */
         -webkit-box-shadow: 5px 5px 2px #cccccc; /* Safari and Chrome */
-    background-image: url("https://math.stanford.edu/inc/img/PalmDrive.png");
+
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-origin:border-box;
+    background-position:center;
 }
 
 #bonfire_list li{
@@ -72,5 +81,22 @@
     opacity:0.9;
     font-size:34pt;
 }
+.bonfire_add_new{
+    text-align:center;
+    vertical-align:middle;
+    line-height:290px;
+    font-family:Arial;
+    color:#000;
+    font-size:54pt;
+}
 
+#bonfires_yours{
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+#bonfire_stanford85{
+    background-image: url('stanford85.png');
+
+}
 
