@@ -1,7 +1,7 @@
 /* CSS for all bonfire group messaging pages */
 
 table {
-     	width: 75%;
+    width: 75%;
 	min-width: 800px;
 	margin-right: auto;
 	margin-left: auto;
@@ -93,6 +93,14 @@ td:first-child {
 /* MEMBERS LIST                                                     */
 /********************************************************************/
 
+#members
+{
+	width: 40%;
+	padding-left: 30px;
+	
+
+}
+
 #memberslist {
 	overflow: auto;
 	height: 500px;
@@ -160,7 +168,7 @@ td:first-child {
 	}
 
 
-	/*#joinleave
+	#joinleave
 	{
 		
 		padding-left: 50px;
@@ -203,5 +211,5 @@ td:first-child {
 				background-color:  #ff7800;
 			}
 
-*/
+
 

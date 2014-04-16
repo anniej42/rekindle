@@ -16,13 +16,28 @@
 	}
 
 
+	td:first-child
+	{
+		width:50%;
+		max-width: 450px;
+
+	}
+
+	#memBox
+	{
+		min-width: 500px;
+	}
 
 
 /********************************************************************/
 /* SECTIONS                                                         */
 /********************************************************************/
 
-	
+	#GoButton
+	{
+		float:right;
+	}
+
 	.signup
 	{
 		width: 800px;
@@ -130,11 +145,11 @@
 		margin-left: 30px;
 	}
 
-	#signupForm > section.memBox
+	.memBox
 	{
 		
 		margin-top: 50px;
-		width: 100%;
+		/*width: 100%;*/
 		padding-left: 0;
 		margin-left: 0;
 	}
@@ -144,7 +159,7 @@
 
 	source http://html5demos.com/dnd-upload#view-source  */
 
-	#holder
+	.holder
 	{
 		/*position: relative;*/
 		border: 10px dashed #2B2B2B;
@@ -154,14 +169,17 @@
 		margin-right : auto;
 	}
 
-	#holder .small
+	.small
 	{
 		position: relative;
 		border: 10px dashed #2B2B2B;
 		width: 100%; 
-		min-height: 150px; 
+		/*min-height: 300px; */
 		margin-left : auto;
 		margin-right : auto;
+		text-align: center;
+		/*vertical-align: center;*/
+		
 	}
 
 	#holder img 

@@ -19,18 +19,32 @@ if (Meteor.isClient) {
     }
   });
 
+  // Template.bonfires.events({
+  //   'click .goToBonfire': function (e) {
+  //     console.log("trying to scrolllll");
+  //     var tar = e.target;
+  //     $('html, body').animate({
+  //       scrollTop: $(tar.getAttribute('href')).offset().top
+  //     }, 800);
+
+
+  //   }
+  // })
+
   Template.stanford85.events({
     'click #joinleave': function(e) {
       console.log("shit happened");
       var textfields = $('.toggle');
       if ($(e.target).text() == "Join") {
         $(e.target).text("Leave");
-        console.log("leaving");
+        // console.log("leaving");
         textfields.prop('disabled', false);
+        // textarea.prop('background-color',"#fff");
       } else {
         $(e.target).text("Join");
         console.log("joining");
         textfields.prop('disabled', true);
+        // textarea.prop('background-color','gray');
       }
       textfields.prop('disabled', bool);
     }
