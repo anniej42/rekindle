@@ -78,7 +78,7 @@ td:first-child {
 	margin-right: auto;
 	margin-bottom: 20px;
 	float: right;
-	clear: both;
+	clear: left;
 }
 
 #newpost-textfield {
