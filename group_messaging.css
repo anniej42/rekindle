@@ -14,6 +14,7 @@ td {
 td:first-child {
 	width: 60%;
 	vertical-align: top;
+	padding-right: 10px;
 }
 
 #join {
@@ -68,22 +69,19 @@ td:first-child {
 
 .reply-textfield {
 	width: 100%;
-	font-size: 10pt;
-	line-height: 12pt;
+	font-size: 12pt;
+	line-height: 16pt;
 }
 
 .reply-button {
-	margin-left: auto;
-	margin-right: auto;
+	margin-right: 0px;
 	margin-bottom: 20px;
 	float: right;
 	clear: left;
 }
 
 #newpost-textfield {
-	width: 90%;
-	font-size: 10pt;
-	line-height: 12pt;
+	width: 100%;
 }
 
 #newpost-button {
@@ -109,7 +107,7 @@ td:first-child {
 	margin-left: 120px;
 }
 
-.groupmember img {
+#memberslist img {
 	height: 100px;
 	width: 100px;
 	float: left;
@@ -159,7 +157,6 @@ td:first-child {
 	{
 		float: right;
 		text-align: center;
-		margin-right: 50px;
 	}
 
 
