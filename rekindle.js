@@ -21,11 +21,16 @@ if (Meteor.isClient) {
 
   Template.stanford85.events({
     'click #joinleave': function(e) {
+      var textfields = $('input.toggle');
+      console.log(textfields);
       if ($(e.target).text() == "Join") {
         $(e.target).text("Leave");
+        var bool = false;
       } else {
         $(e.target).text("Join");
+        var bool = true;
       }
+      textfields.prop('disabled', bool);
     }
   });
 
