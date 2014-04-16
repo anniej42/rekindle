@@ -58,14 +58,59 @@ if (Meteor.isClient) {
         textfields.prop('disabled', true);
         // textarea.prop('background-color','gray');
       }
-      textfields.prop('disabled', bool);
+      syntaxerror;
     }
   });
 
-}
+  Template.stanford85.events({
+    'click #newpost-button': function(e) {
+      var text = $("#newpost-textfield").val();
+      var newPost = '<div class="post"><div class="icon"></div><div class="post-text"><b>Your name - Today</b><br>' + text + '</div></div>';
+      var newReply = '<div class="post reply"><textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..."></textarea><div class="spacing"><button type="button" class="button reply-button">Reply</button></div></div>';
+      var newBlock = newPost + newReply;
+
+      if (text == "") {
+        // Do nothing
+      } 
+
+      else {
+        $("#posts").prepend(newBlock);
+      }
+
+      $("#newpost-textfield").val("");
+      e.stopPropagation();
+      e.preventDefault();
+      syntaxerror;
+
+    }
+  });
+
+  // Template.stanford85.events({
+  //   'click .reply-button': function(e) {
+  //     var text = $(".reply-textfield").val();
+  //     var newPost = '<div class="post"><div class="icon"></div><div class="post-text"><b>Your name - Today</b><br>' + text + '</div></div>';
+
+  //     if (text == "") {
+  //       // Do nothing
+  //     } 
+
+  //     else {
+  //       $("#posts").prepend(newPost);
+  //     }
+
+  //     $("#newpost-textfield").val("");
+  //     e.stopPropagation();
+  //     e.preventDefault();
+  //     syntaxerror;
+
+  //   }
+  // });
+
+} // end isClient
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code ran on server startup
   });
-}
+
+} // end isServer
