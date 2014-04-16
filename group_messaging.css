@@ -58,7 +58,6 @@ td:first-child {
 }
 
 .post-text {
-    padding-right: 15%;
 	margin-left: 60px;
 	min-height: 50px;
 }
@@ -68,7 +67,7 @@ td:first-child {
 }
 
 .reply-textfield {
-	width: 80%;
+	width: 100%;
 	font-size: 10pt;
 	line-height: 12pt;
 }
