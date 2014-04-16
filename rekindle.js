@@ -27,8 +27,6 @@ if (Meteor.isClient) {
         $(e.target).text("Join");
       }
     }
-
-  }
   });
 
   // toggle join/leave button
