@@ -15,6 +15,20 @@ if (Meteor.isClient) {
         scrollTop: $(tar.getAttribute('href')).offset().top
       }, 800);
 
+    }
+  });
+
+  Template.signup.events({
+    'click .button': function (e) {
+      // template data, if any, is available in 'this'
+      // var h = $('#' + event.currentTarget.id);
+
+      // $.scrollTo( '#' + e.target.id, 500);
+      // formerize
+      var tar = e.target;
+      $('html, body').animate({
+        scrollTop: $(tar.getAttribute('href')).offset().top
+      }, 800);
 
     }
   });
@@ -26,8 +40,6 @@ if (Meteor.isClient) {
   //     $('html, body').animate({
   //       scrollTop: $(tar.getAttribute('href')).offset().top
   //     }, 800);
-
-
   //   }
   // })
 
