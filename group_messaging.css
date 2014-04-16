@@ -78,13 +78,18 @@ td:first-child {
 	margin-right: auto;
 	margin-bottom: 20px;
 	float: right;
-	clear: both;
+	clear: left;
 }
 
 #newpost-textfield {
 	width: 90%;
 	font-size: 10pt;
 	line-height: 12pt;
+}
+
+#newpost-button {
+	margin-right: 0px;
+	float: right;
 }
 
 /********************************************************************/
