@@ -96,8 +96,8 @@ td:first-child {
 	height: 500px;
 	padding-left: 20px;
 	padding-right: 20px;
-	font-family: Avenir;
-	src: url(avenir.ttc);
+	line-height: 50px;
+	padding-left: 120px;
 }
 
 .groupmember {
@@ -109,7 +109,6 @@ td:first-child {
 	height: 100px;
 	width: 100px;
 	float: left;
-	padding-right: 30px;
 }
 
 .groupmember span {
