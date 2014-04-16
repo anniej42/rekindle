@@ -32,6 +32,7 @@ if (Meteor.isClient) {
         console.log("joining");
         textfields.prop('disabled', true);
       }
+      textfields.prop('disabled', bool);
     }
   });
 
