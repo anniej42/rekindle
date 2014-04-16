@@ -39,7 +39,8 @@
     display: block;
     padding: 10px;
     /*border: 1px solid red;*/
-    margin-right: 50px;
+    margin-right: 25px;
+    margin-left:25px;
     margin-bottom: 50px;
     height: 290px;
     width: 290px;
@@ -72,11 +73,37 @@ transition-timing-function: ease-in-out;
 }
 #bonfire_list{
     display:block;
-    width:90%;
     text-align:center;
     margin-left:auto;
     margin-right:auto;
 }
+
+
+@media (min-width: 580px) {
+    #bonfire_list{
+        width: 460px;
+    }
+}
+
+@media (min-width: 920px) {
+    #bonfire_list{
+        width: 820px;
+    }
+}
+
+@media (min-width: 1280px) {
+    #bonfire_list{
+        width: 1180px;
+    }
+}
+
+@media (min-width: 1640px) {
+    #bonfire_list{
+        width: 1540px;
+    }
+}
+
+
 #bonfire_list a{
     text-decoration:none;
 }
