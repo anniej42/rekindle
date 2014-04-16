@@ -58,7 +58,7 @@ td:first-child {
 }
 
 .post-text {
-        padding-right: 15%;
+    padding-right: 15%;
 	margin-left: 60px;
 	min-height: 50px;
 }
@@ -67,14 +67,24 @@ td:first-child {
 	margin-left: 65px;
 }
 
-#reply-textfield {
-	width: 67%;
-	font-size: 12pt;
+.reply-textfield {
+	width: 80%;
+	font-size: 10pt;
+	line-height: 12pt;
 }
 
-#reply-button {
+.reply-button {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 20px;
+	float: right;
+	clear: both;
+}
+
+#newpost-textfield {
+	width: 90%;
+	font-size: 10pt;
+	line-height: 12pt;
 }
 
 /********************************************************************/
