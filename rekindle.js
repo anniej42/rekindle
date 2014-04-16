@@ -19,6 +19,18 @@ if (Meteor.isClient) {
     }
   });
 
+  // Template.bonfires.events({
+  //   'click .goToBonfire': function (e) {
+  //     console.log("trying to scrolllll");
+  //     var tar = e.target;
+  //     $('html, body').animate({
+  //       scrollTop: $(tar.getAttribute('href')).offset().top
+  //     }, 800);
+
+
+  //   }
+  // })
+
   Template.stanford85.events({
     'click #joinleave': function(e) {
       console.log("shit happened");
