@@ -18,9 +18,11 @@
 		-webkit-text-stroke: 0.15px;
 	}
 
+	
+
 	h1
 	{
-		font-family: Englebert;
+		font-family: 'Englebert', sans-serif;
 		font-size: 4em;
 		font-weight: 200;
 		line-height: 2em;
@@ -104,6 +106,6 @@
 		margin-bottom: 300px;
 	}
 
-	
+
 
 
