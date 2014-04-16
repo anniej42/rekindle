@@ -58,7 +58,6 @@ td:first-child {
 }
 
 .post-text {
-        padding-right: 15%;
 	margin-left: 60px;
 	min-height: 50px;
 }
@@ -67,14 +66,29 @@ td:first-child {
 	margin-left: 65px;
 }
 
-#reply-textfield {
-	width: 67%;
-	font-size: 12pt;
+.reply-textfield {
+	width: 100%;
+	font-size: 10pt;
+	line-height: 12pt;
 }
 
-#reply-button {
+.reply-button {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 20px;
+	float: right;
+	clear: left;
+}
+
+#newpost-textfield {
+	width: 90%;
+	font-size: 10pt;
+	line-height: 12pt;
+}
+
+#newpost-button {
+	margin-right: 0px;
+	float: right;
 }
 
 /********************************************************************/
@@ -86,22 +100,111 @@ td:first-child {
 	height: 500px;
 	padding-left: 20px;
 	padding-right: 20px;
-	font-family: Avenir;
-	src: url(avenir.ttc);
+	line-height: 50px;
 }
 
 .groupmember {
 	font-size: 16pt;
-	line-height: 1.2em;
+	line-height: 50px;
+	margin-left: 120px;
 }
 
 .groupmember img {
 	height: 100px;
 	width: 100px;
 	float: left;
-	padding-right: 30px;
 }
 
-.groupmember span {
-	line-height: 50px;
-}
+	form input.text,
+		form select,
+		form textarea
+
+		{
+			position: relative;
+			-webkit-appearance: none;
+			border: 0;
+			background: #fff;
+			background: rgba(255,255,255,0.75);
+			border-radius: 0.35em;
+			padding: 0.1em 0.25em 0.1em 0.25em;
+			box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
+			border: solid 1px rgba(0,0,0,0.15);
+			-moz-transition: all 0.5s ease-in-out;
+			-webkit-transition: all 0.5s ease-in-out;
+			-o-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
+		}
+
+		form textarea
+		{
+			min-height: 100px;
+		}
+
+		form input.text:focus,
+		form select:focus,
+		form textarea:focus
+		{
+			box-shadow: 0 0 2px 1px #8ededc;
+			background: #fff;
+		}
+
+	.post-text
+	{
+		line-height: 1.5em;
+		margin-bottom: 20px;
+	}
+
+	#newpost-button, #reply-button
+	{
+		float: right;
+		text-align: center;
+		margin-right: 50px;
+	}
+
+
+	/*#joinleave
+	{
+		
+		padding-left: 50px;
+		padding-right: 80px;
+		padding-right: 30px;
+		padding-left: 30px;
+		background: #fff;
+		font-size: 1em;
+
+		position: relative;
+		display: inline-block;
+		border-radius: 0.35em;
+		color: black !important;
+		text-decoration: none;
+		padding: 0.75em 2.5em 0.75em 2.5em;
+		margin-right: 30px;
+		margin-left: 30px;
+
+		border: 8;
+		border-style: solid;
+		border-color: black;
+		cursor: pointer;
+
+		-moz-transition: background-color 0.35s ease-in-out;
+		-webkit-transition: background-color 0.35s ease-in-out;
+		-o-transition: background-color 0.35s ease-in-out;
+		-ms-transition: background-color 0.35s ease-in-out;
+		transition: background-color 0.35s ease-in-out;
+
+
+	}
+
+			#joinleave:hover
+			{
+				background-color:  #ff7800;
+			}
+			
+			#joinleave:active
+			{
+				background-color:  #ff7800;
+			}
+
+*/
+
