@@ -1,17 +1,17 @@
 
 <template name="signup" id="signup">
     <div id="signup" class="title">
-        <section id="top" class="top">
+        <!-- <section id="top" class="top"> -->
             <h1>Sign Up.</h1>
             <hr>
-        </section>
+        <!-- </section> -->
     
-
-    <div id="signupForm" class="signup">
-        <form>
-        <div id ="container1" class="container1">
-            <div id="name" class="name">
-
+    <form>
+    <table id="signupForm" class="signup">
+        
+        <!-- <div id ="container1" class="container1"> -->
+        <tr id="name" class="name">
+            <td>
                 <h2> Basic Info: </h2>
                 
                 <input type="text" class="text" name="name" placeholder="Name" /><br>
@@ -20,63 +20,57 @@
                 
                 <input type="text" class="text" name="zip" placeholder="Zip" />
                 
-            </div>
+            <!-- </div> -->
+            </td>
 
-            <div id="picUpload" class="picUpload">
-                <div id="holder small" class="small">
+            <td id="picUpload" class="picUpload">
+                <div id="holder" class="holder small">
+                    
+                    <h3 class="center">Upload picture</h3>
+                    
                 </div>
-            </div>
-        </div>
-        </form>
+            </td>
+        </tr>
 
-
-        <form>
-            <div id ="container2" class="container2">
-            
-                <section id="work" class="work">
-                <!-- <div id="work" class="work"> -->
-
-                    <h2> Work Info: </h2>
+        <tr id="workschool" class="workschool">
+            <td id="work" class="work">
+                <h2> Work Info: </h2>
                     <input type="text" class="text" name="company" placeholder="Company" /><br>
                     <input type="text" class="text" name="title" placeholder="Job Title" />
-
-                    <!-- <h3> From: <input type="text" class="text" name="year" placeholder="1983"> To: <input type="text" class="text" name="year" placeholder="2012">
-
-                    </h3> -->
-
-                    
                     <h3><label for="fromYear">From:</label> <input type="text" class="text" name="fromYear" placeholder="1983" style="width: 100px"><label for="toYear"> To:</label> <input type="text" class="text" name="toYear" placeholder="2012" style="width: 100px"></h3>
                 
                     <button type="button" class="button" id = "addJob">Add Another Job</button>
-                
-                <!-- </div> -->
-                </section>
+            </td>
 
-
-                <!-- <div id="school" class="school"> -->
-                <section id="work" class = "school">
-                    <h2> School Info: </h2>
+            <td id="school" class = "school">
+                <h2> School Info: </h2>
                     <input type="text" class="text" name="school" placeholder="University" /><br>
                     <input type="text" class="text" name="major" placeholder="Major" /><br>
 
                     <h3><label for="">From:</label> <input type="text" class="text" name="fromYear" placeholder="1983" style="width: 100px"><label for="toYear"> To:</label> <input type="text" class="text" name="toYear" placeholder="2012" style="width: 100px"></h3>
 
                     <button type="button" class="button" id="addSchool">Add Another School</button>
-                
-                <!-- </div> -->
-                </section>
-            
-           </div>
-            
-            <section id = "memBox" class = "memBox">
-                <h2>Memory Box:</h2> 
-                <h3>Share photos from back in the day.</h3>
-                <div id="holder">
-                </div>
-            </section>
+            </td>
+        </tr>
         
-        </form>
+        <tr>
+        <td class="memBox">
+        <div id = "memBox" class = "memBox">
+            <h2>Memory Box:</h2> 
+                <h3>Share photos from back in the day.</h3>
+                <div id="holder" class="holder">
+                </div>
+        </div>
+        </td>
 
+        <td>
+            <div id="GoButton">
+            <a class="button scroll">Go!</a>
+            </div>
+        </td>
+        </tr>
+        </table>
+    </form>
     </div>
-    </div>
+        
 </template>
