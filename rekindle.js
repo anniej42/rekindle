@@ -72,11 +72,9 @@ if (Meteor.isClient) {
       if (text == "") {
         // Do nothing
       } 
-
       else {
         $("#posts").prepend(newBlock);
       }
-
       $("#newpost-textfield").val("");
       e.stopPropagation();
       e.preventDefault();
