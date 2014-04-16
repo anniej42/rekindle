@@ -106,7 +106,7 @@ td:first-child {
 .groupmember {
 	font-size: 16pt;
 	line-height: 50px;
-	padding-left: 120px;
+	margin-left: 120px;
 }
 
 .groupmember img {
