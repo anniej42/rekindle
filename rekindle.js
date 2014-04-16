@@ -17,19 +17,24 @@ if (Meteor.isClient) {
 
 
     }
+  });
 
-
+  Template.stanford85.events({
+    'click #joinleave': function(e) {
+      var t = e.target;
+      console.log(t);
+    }
   });
 
   // toggle join/leave button
   // misbehaving :()
-  $("#joinleave").click(function(){
-      if ($(this).text() == "Join") {
-        $(this).text("Leave");
-      } else {
-        $(this).text("Join");
-      }
-  });
+  // $("#joinleave").click(function(){
+  //     if ($(this).text() == "Join") {
+  //       $(this).text("Leave");
+  //     } else {
+  //       $(this).text("Join");
+  //     }
+  // });
 }
 
 if (Meteor.isServer) {
