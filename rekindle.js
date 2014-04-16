@@ -21,9 +21,14 @@ if (Meteor.isClient) {
 
   Template.stanford85.events({
     'click #joinleave': function(e) {
-      var t = e.target;
-      console.log(t);
+      if ($(e.target).text() == "Join") {
+        $(e.target).text("Leave");
+      } else {
+        $(e.target).text("Join");
+      }
     }
+
+  }
   });
 
   // toggle join/leave button
