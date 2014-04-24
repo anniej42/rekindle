@@ -1,3 +1,11 @@
+Router.map(function() {
+  this.route('about');
+  this.route('bonfires');
+  this.route('signup');
+  this.route('stanford85');
+  this.route('welcome',{path:'/'});
+});
+
 if (Meteor.isClient) {
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";

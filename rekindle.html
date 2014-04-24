@@ -20,12 +20,7 @@
 
 <body>
     
-    
-    {{> welcome}}
-    {{> signup}}
-    {{> bonfires}}
-    {{> stanford85}}
-    {{> about}}
+
 </body>
 
 <template name="welcome" id="welcome">
@@ -36,10 +31,10 @@
     </div>
 
     <div class="navButtons">
-    <a href="#signup" class="button scroll"> Sign Up</a>
-    <a href="#bonfires" class="button scroll"> Bonfires</a>
-    <a href="#stanford85" class="button scroll"> Stanford '85</a>
-    <a href="#about" class="button scroll"> Contact Us</a>
+    <a href="{{pathFor 'signup'}}" class="button scroll"> Sign Up</a>
+    <a href="{{pathFor 'bonfires'}}" class="button scroll"> Bonfires</a>
+    <a href="{{pathFor 'stanford85'}}" class="button scroll"> Stanford '85</a>
+    <a href="{{pathFor 'about'}}" class="button scroll"> Contact Us</a>
 
     </div>
     
