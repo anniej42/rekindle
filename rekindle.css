@@ -26,7 +26,7 @@
 		font-size: 4em;
 		font-weight: 200;
 		line-height: 2em;
-		margin-bottom: 20px;
+		margin-bottom: 0px;
 		padding: 0;
 
 	}
@@ -106,6 +106,46 @@
 		margin-bottom: 300px;
 	}
 
+	.navMenu{
+		float:right;
+	}
+.navHeading{
+	display:block;
+	margin: 0 0 0 0;
+	padding: 10px 50px;
+	background:#ff7800;
+	color:black;
+	text-align:center;
+	text-decoration:none;
+	font-family:Englebert,sans-serif;
+}
+
+.navHeading:hover{
+	background:#E66C00;
+}
+
+.navDropDown{
+	position:absolute;
+	visibility:hidden;
+	margin:0;
+	padding:0;
+	background:	#FF9333;
+
+}
+.navDropDown a{
+	position:relative;
+	display:block;
+	margin:0;
+	padding: 0px 10px;
+	width:186px;
+	text-align:left;
+	text-decoration:none;
+	color:black;
+}
+
+.navDropDown a:hover{
+	background: #FF8619;
+}
 
 
 

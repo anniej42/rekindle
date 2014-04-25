@@ -19,9 +19,20 @@
 </head>
 
 <body>
-    
 
+{{>menu}}
 </body>
+
+<template name="menu">
+<div class="navMenu">
+    <div class="navHeading">Rekindle &#9660;</div>
+    <div class="navDropDown">
+        <a href="{{pathFor 'bonfires'}}">Bonfires</a>
+        <a href="{{pathFor 'signup'}}">Your Profile</a>
+        <a href="{{pathFor 'about'}}">Contact Us</a>
+    </div>
+</div>    
+</template>
 
 <template name="welcome" id="welcome">
     <div class="welcome">

@@ -10,6 +10,22 @@ if (Meteor.isClient) {
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";
   // };
+  var menuactivated=false
+  Template.menu.events({
+    'click .navHeading': function(e){
+      if(menuactivated){
+        $('.navDropDown').css("visibility","hidden");
+        menuactivated=false
+      }else{
+        $('.navDropDown').css("visibility","visible");
+        menuactivated=true
+      }
+    },
+    'click .navDropDown': function(e){
+      menuactivated=false
+      $('.navDropDown').css("visibility","hidden");
+    }
+  })
 
   Template.welcome.events({
     'click .button': function (e) {
@@ -50,6 +66,12 @@ if (Meteor.isClient) {
   //     }, 800);
   //   }
   // })
+
+  Template.bonfires.events({
+    'click #gotit':function(){
+      $('#bonfires_helptext').css('display','none')
+    }
+  });
 
   Template.stanford85.events({
     'click #joinleave': function(e) {

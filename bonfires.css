@@ -102,7 +102,9 @@ transition-timing-function: ease-in-out;
         width: 1540px;
     }
 }
-
+#bonfire_head{
+    line-height:1.5em;
+}
 
 #bonfire_list a{
     text-decoration:none;
@@ -126,8 +128,14 @@ transition-timing-function: ease-in-out;
 }
 
 #bonfires_yours{
-    margin-top:50px;
-    margin-bottom:50px;
+    margin-top:25px;
+    margin-bottom:25px;
+    font-size:14pt;
+}
+#bonfires_helptext{
+    margin-top:0px;
+    margin-bottom:15px;
+    font-size:14pt;
 }
 
 #bonfire_stanford85{
