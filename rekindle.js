@@ -99,6 +99,10 @@ if (Meteor.isClient) {
       console.log(name,desc,image)
       Meteor.call("addBonfire",name,desc,image)
 
+    },
+    'click #exitNewBonfire':function(){
+      $('#newBonfire').css('visibility','hidden')
+      $('#newBonfire').css('z-index',-1)
     }
   });
 
@@ -175,7 +179,6 @@ if (Meteor.isServer) {
 
   Meteor.methods({
     addBonfire: function(bonfireName,bonfireDescription,bonfireImage){
-      console.log("Adding Bonfire")
       bonfireId=Bonfires.insert({
         'bonfireName': bonfireName,
         'bonfireDescription':bonfireDescription,

@@ -163,3 +163,15 @@ transition-timing-function: ease-in-out;
 }
 
 
+#exitNewBonfire {
+float: right;
+margin-top: -57px;
+margin-right: 0px;
+cursor: pointer;
+color: #eee;
+font-size: 31px;
+display: inline-block;
+line-height: 0px;
+}
+
+
