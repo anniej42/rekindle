@@ -15,7 +15,13 @@
 
     <div id="bonfire_list">
         <ul>
-        <li><a href="{{pathFor 'stanford85'}}" class="goToBonfire"><div class="bonfire_button" id="bonfire_stanford85">
+        {{#each items}}
+        <li><a href="{{pathFor 'stanford85'}}" class="goToBonfire">
+            <div class="bonfire_button" style=
+            "background-image: url('{{bonfireImage}}');">
+            <div class="bonfire_name">{{bonfireName}} </div></div></a></li>
+        {{/each}}
+<!--         <li><a href="{{pathFor 'stanford85'}}" class="goToBonfire"><div class="bonfire_button" id="bonfire_stanford85">
             <div class="bonfire_name">Stanford 1985</div></div></a></li>
         <li><div class="bonfire_button" style=
             "background-image: url('ebay.jpg');">
@@ -25,11 +31,21 @@
             <div class="bonfire_name">Stanford CS</div></div></li>
         <li><div class="bonfire_button" style=
             "background-image: url('stanfordlogo.gif');">
-            <div class="bonfire_name">Stanford</div></div></li>
-        <li><div class="bonfire_button" style=
+            <div class="bonfire_name">Stanford</div></div></li> -->
+        <li><a href="" class="addNewBonfire"><div class="bonfire_button" style=
             "border: 2px solid black;">
-            <div class="bonfire_add_new">+</div></div></li>
+            <div class="bonfire_add_new">+</div></div></a></li>
         </ul>
+    </div>
+    <div id="newBonfire">
+        <h2> Add a new Bonfire! </h2>
+        <input type="text" class="text" id="newBonfireName" name="name" placeholder="Bonfire Name" /><br>
+
+        <input type="text" class="text" id="newBonfireDescription" name="description" placeholder="Description" /><br>
+        
+        <input type="text" class="text" id="newBonfireImage" name="image" placeholder="Image URL" />
+
+        <button type="button" class="button" id="create-bonfire-button">Create!</button>
     </div>
     <div id="bonfire_list_bottom"></div></div>
 

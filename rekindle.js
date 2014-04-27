@@ -6,7 +6,17 @@ Router.map(function() {
   this.route('welcome',{path:'/'});
 });
 
+    Bonfires = new Meteor.Collection('bonfires');
+    Messages = new Meteor.Collection('messages');
+    Replies = new Meteor.Collection('replies');
+
 if (Meteor.isClient) {
+
+
+
+  Template.bonfires.items = function(){
+    return Bonfires.find({},{sort:{'submittedOn':-1}})
+  }
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";
   // };
@@ -70,6 +80,25 @@ if (Meteor.isClient) {
   Template.bonfires.events({
     'click #gotit':function(){
       $('#bonfires_helptext').css('display','none')
+    },
+    'click .addNewBonfire':function(){
+      $('#newBonfire').css('visibility','visible')
+      $('#newBonfire').css('z-index',1)
+      // display popover window
+    },
+    'click #create-bonfire-button':function(){
+      $('#newBonfire').css('visibility','hidden')
+      $('#newBonfire').css('z-index',-1)
+      // get the fields
+      name=$("#newBonfireName").val()
+      desc = $("#newBonfireDescription").val()
+      image = $("#newBonfireImage").val()
+      $("#newBonfireName").val("")
+      $("#newBonfireDescription").val("")
+      $("#newBonfireImage").val("")
+      console.log(name,desc,image)
+      Meteor.call("addBonfire",name,desc,image)
+
     }
   });
 
@@ -137,8 +166,23 @@ if (Meteor.isClient) {
 } // end isClient
 
 if (Meteor.isServer) {
+
+
   Meteor.startup(function () {
+
     // code ran on server startup
+  });
+
+  Meteor.methods({
+    addBonfire: function(bonfireName,bonfireDescription,bonfireImage){
+      console.log("Adding Bonfire")
+      bonfireId=Bonfires.insert({
+        'bonfireName': bonfireName,
+        'bonfireDescription':bonfireDescription,
+        'bonfireImage': bonfireImage
+      })
+      return bonfireId
+    }
   });
 
 } // end isServer
