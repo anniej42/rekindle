@@ -52,9 +52,13 @@ if (Meteor.isClient) {
 
   Template.bonfireShow.status = function(){
     mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:this._id})
+          var textfields = $('.toggle');
     if(mem){// user is in this bonfire!
+      textfields.prop('disabled', false);
       return "Leave"
+
     }else{
+      textfields.prop('disabled', true);
       return "Join"
     }
   }
@@ -199,12 +203,12 @@ if (Meteor.isClient) {
       Meteor.call('toggleMember',user_id,bonfire_id,function(f,data){
         console.log(f,data)
         if (data) {
-          $(e.target).text("Leave");
+          //$(e.target).text("Leave");
           console.log("should say leave")
-          textfields.prop('disabled', false);
+          //textfields.prop('disabled', false);
         } else {
-          $(e.target).text("Join");
-          textfields.prop('disabled', true);
+          //$(e.target).text("Join");
+          //textfields.prop('disabled', true);
         }
 
       })
