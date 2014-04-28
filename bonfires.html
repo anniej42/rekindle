@@ -7,7 +7,16 @@
     	<span class="rule_middle">Your Bonfires</span> 
     </div>
 
-    <div id="bonfires_yours"> You don't appear to be in any Bonfires! </div>
+    <div id="bonfires_yours"> 
+        <ul>
+        {{#each yours}}
+        <li><a href="{{pathFor 'bonfireShow'}}" class="goToBonfire">
+            <div class="bonfire_button" style=
+            "background-image: url('{{bonfireImage}}');">
+            <div class="bonfire_name">{{bonfireName}} </div></div></a></li>
+        {{/each}}
+        </ul>
+    </div>
 
     <div class="subtitle"> 
     	<span class="rule_middle">Join a Bonfire</span> 

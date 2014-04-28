@@ -22,6 +22,17 @@ if (Meteor.isClient) {
   Template.bonfires.items = function(){
     return Bonfires.find({},{sort:{'submittedOn':-1}})
   }
+
+  Template.bonfires.yours = function(){
+    allYourBonfireIds = Memberships.find(
+      {user_id:Meteor.userId()},
+      {fields:{user_id: 0}}).fetch()
+    console.log(allYourBonfireIds)
+    output=Bonfires.find({_id:{$in: allYourBonfireIds}})
+    console.log(output)
+
+    return allYourBonfireIds
+  }
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";
   // };
