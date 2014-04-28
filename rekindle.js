@@ -49,6 +49,15 @@ if (Meteor.isClient) {
     }
     return Meteor.users.find({_id:{$in: allMemberIds}})
   }
+
+  Template.bonfireShow.status = function(){
+    mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:this._id})
+    if(mem){// user is in this bonfire!
+      return "Leave"
+    }else{
+      return "Join"
+    }
+  }
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";
   // };
