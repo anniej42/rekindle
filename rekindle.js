@@ -9,7 +9,7 @@ Router.map(function() {
     data: function(){return Bonfires.findOne(this.params._id); }
   })
 });
-
+  
     Bonfires = new Meteor.Collection('bonfires');
     Messages = new Meteor.Collection('messages');
     Replies = new Meteor.Collection('replies');
@@ -37,6 +37,17 @@ if (Meteor.isClient) {
     console.log(output)
 
     return output
+  }
+
+  Template.bonfireShow.members = function(){
+    allMemberships=Memberships.find(
+      {bonfire_id:this._id},
+      {fields:{bonfire_id: 0}}).fetch()
+    allMemberIds=[]
+    for(var i=0;i<allMemberships.length;i++){
+      allMemberIds.push(allMemberships[i].user_id)
+    }
+    return Meteor.users.find({_id:{$in: allMemberIds}})
   }
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";
