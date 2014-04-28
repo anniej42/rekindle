@@ -12,8 +12,7 @@ Router.map(function() {
   
     Bonfires = new Meteor.Collection('bonfires');
     Messages = new Meteor.Collection('messages');
-    Replies = new Meteor.Collection('replies');
-    Memberships = new Meteor.Collection('memberships')
+    Memberships = new Meteor.Collection('memberships');
 
 if (Meteor.isClient) {
 
@@ -61,6 +60,19 @@ if (Meteor.isClient) {
       textfields.prop('disabled', true);
       return "Join"
     }
+  }
+
+  Template.bonfireShow.messages = function(){
+    var parents = Messages.find({parent_id:{$exists: false}}).fetch()
+
+    for(var i=0;i<parents.length;i+=1){
+      var pId=parents[i]['_id']
+      var replies = Messages.find({parent_id:pId})
+      parents[i]['replies']=replies
+    }
+    console.log(parents)
+    return parents
+
   }
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";
@@ -217,20 +229,25 @@ if (Meteor.isClient) {
     },
     'click #newpost-button': function(e) {
       var text = $("#newpost-textfield").val();
-      var newPost = '<div class="post"><div class="icon"></div><div class="post-text"><b>Your name - Today</b><br>' + text + '</div></div>';
-      var newReply = '<div class="post reply"><textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..."></textarea><div class="spacing"><button type="button" class="button reply-button">Reply</button></div></div>';
-      var newBlock = newPost + newReply;
+      console.log("client:",text)
+      
+      // var text = $("#newpost-textfield").val();
+      // var newPost = '<div class="post"><div class="icon"></div><div class="post-text"><b>Your name - Today</b><br>' + text + '</div></div>';
+      // var newReply = '<div class="post reply"><textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..."></textarea><div class="spacing"><button type="button" class="button reply-button">Reply</button></div></div>';
+      // var newBlock = newPost + newReply;
 
       if (text == "") {
         // Do nothing
       } 
       else {
-        $("#posts").prepend(newBlock);
+        var bonfireId = this._id
+        var userId = Meteor.userId()
+        Meteor.call('postMessage',text,bonfireId,userId)
       }
       $("#newpost-textfield").val("");
-      e.stopPropagation();
-      e.preventDefault();
-      syntaxerror;
+      // e.stopPropagation();
+      // e.preventDefault();
+      // syntaxerror;
 
     }
   });
@@ -276,7 +293,6 @@ if (Meteor.isServer) {
       return bonfireId
     },
     toggleMember: function(userId,bonfireId){
-      console.log("got here!")
       // returns True if the user is now in the bonfire
       // False if the user is now not in the bonfire
       membership = Memberships.findOne({user_id:userId,bonfire_id:bonfireId})
@@ -293,6 +309,26 @@ if (Meteor.isServer) {
         console.log('added a membership');
         return true;
       }
+    },
+    postMessage: function(text,bonfireId,userId,parentId){
+      var messageId
+      if(parentId){
+        messageId=Messages.insert({
+          'bonfire_id':bonfireId,
+          'parent_id':parentId,
+          'user_id': userId,
+          'text':text
+        })
+      }else{
+        messageId=Messages.insert({
+          'bonfire_id':bonfireId,
+          'user_id': userId,
+          'text':text
+        })
+      }
+            return messageId
+
+      //parentId can be null if this is a top-level message
     }
   });
 

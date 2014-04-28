@@ -47,6 +47,30 @@
 	    			</div>
 	    		</td>
 	    		<td id="posts">
+	    				{{#each messages}}
+							<div class="post">
+								<div class="icon"></div>
+								<div class="post-text">
+									<b>{{user_id}} - {{timestamp}}</b>
+									<br>
+									{{text}}
+								</div>
+							</div>
+							{{#each replies}}
+							<div class="post reply">
+								<div class="icon"></div>
+								<div class="post-text">
+									<b>{{user_id}} - {{timestamp}}</b>
+									<br>
+									{{text}}
+								</div>
+							</div>
+							{{/each}}
+							<div class="post reply">
+								<textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..." disabled></textarea>
+								<div class="spacing"><button type="button" class="button reply-button">Reply</button></div>
+							</div>
+						{{/each}}
 	    			<!-- sample post -->
 	    			<div class="post">
 	    				<div class="icon"></div>
@@ -86,6 +110,4 @@
 	    	</tr>
 	    </table>
 	</form>
-
-    
 </template>
