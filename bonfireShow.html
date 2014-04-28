@@ -1,0 +1,86 @@
+
+<template name="bonfireShow">
+    <div id="stanford85" class="title">
+    <h1>{{bonfireName}}</h1>
+    </div>
+    <hr>
+    <form>
+	    <table>
+	    	<tr>
+	    		<td id="join">
+	    			<button type="button" class="button" id="joinleave">Join</button>
+	    		</td>
+	    		<td id="newpost">
+	    			Submit a new post:
+	    			<textarea rows="2" class="text toggle" id="newpost-textfield" name="newpost-text" placeholder="Click join to post a message!" disabled></textarea>
+	    			<button type="button" class="button" id="newpost-button">Post</button>
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td id="members">
+	    			Members
+	    			<div id="memberslist">
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Sarah L.</b> <br> Pixar | Stanford 2016</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Kate R.</b> <br> Dropbox | Stanford 2014</div>
+	    				<br>
+
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Annie J.</b> <br> Adobe | Stanford 2016</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Cathleen G.</b> <br> Valve | Stanford 2016</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/kF95TPv.png">
+	    					<div class="groupmember"><b>Daniel J.</b> <br> eBay | MIT 2015</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/eqG3JJV.png">
+	    					<div class="groupmember"><b>Rob M.</b> <br> Microsoft | MIT 2015</div>
+	    				<br>
+	    			</div>
+	    		</td>
+	    		<td id="posts">
+	    			<!-- sample post -->
+	    			<div class="post">
+	    				<div class="icon"></div>
+	    				<div class="post-text">
+		    				<b>Annie J. - Monday, April 14, 2044</b>
+		    				<br>
+		    				Hey! Next Saturday, Habitat for Humanity has a build day near Alewife. The MIT Habitat for Humanity club will be there, it would be great to have some alums help out!
+		    			</div>
+	    			</div>
+	    			<div class="post reply">
+	    				<div class="icon"></div>
+	    				<div class="post-text">
+		    				<b>Kate R. - Tuesday, April 15, 2044</b>
+		    				<br>
+		    				I'll be there!
+		    			</div>
+	    			</div>
+	    			<div class="post reply">
+	    				<textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..." disabled></textarea>
+	    				<div class="spacing"><button type="button" class="button reply-button">Reply</button></div>
+	    			</div>
+
+	    			<!-- sample post -->
+	    			<div class="post">
+	    				<div class="icon"></div>
+	    				<div class="post-text">
+		    				<b>Daniel J. - Sunday, April 13, 2044</b>
+		    				<br>
+		    				Hey everyone, check out my photography blog: shoutkey.com/seduction
+		    			</div>
+	    			</div>
+	    			<div class="post reply">
+	    				<textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..." disabled></textarea>
+	    				<div class="spacing"><button type="button" class="button reply-button">Reply</button></div>
+	    			</div>
+	    		</td>
+	    	</tr>
+	    </table>
+	</form>
+
+    
+</template>

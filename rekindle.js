@@ -4,11 +4,16 @@ Router.map(function() {
   this.route('signup');
   this.route('stanford85');
   this.route('welcome',{path:'/'});
+  this.route('bonfireShow',{
+    path:'/bonfires/:_id',
+    data: function(){return Bonfires.findOne(this.params._id); }
+  })
 });
 
     Bonfires = new Meteor.Collection('bonfires');
     Messages = new Meteor.Collection('messages');
     Replies = new Meteor.Collection('replies');
+    Memberships = new Meteor.Collection('memberships')
 
 if (Meteor.isClient) {
 
@@ -106,26 +111,70 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.stanford85.events({
-    'click #joinleave': function(e) {
-      console.log("shit happened");
-      var textfields = $('.toggle');
-      if ($(e.target).text() == "Join") {
-        $(e.target).text("Leave");
-        // console.log("leaving");
-        textfields.prop('disabled', false);
-        // textarea.prop('background-color',"#fff");
-      } else {
-        $(e.target).text("Join");
-        console.log("joining");
-        textfields.prop('disabled', true);
-        // textarea.prop('background-color','gray');
-      }
-      syntaxerror;
-    }
-  });
+  // Template.stanford85.events({
+  //   'click #joinleave': function(e) {
+  //     console.log("shit happened");
+  //     var textfields = $('.toggle');
+  //     if ($(e.target).text() == "Join") {
+  //       $(e.target).text("Leave");
+  //       // console.log("leaving");
+  //       textfields.prop('disabled', false);
+  //       // textarea.prop('background-color',"#fff");
+  //     } else {
+  //       $(e.target).text("Join");
+  //       console.log("joining");
+  //       textfields.prop('disabled', true);
+  //       // textarea.prop('background-color','gray');
+  //     }
+  //     syntaxerror;
+  //   }
+  // });
 
-  Template.stanford85.events({
+
+
+  // Template.stanford85.events({
+  //   'click #newpost-button': function(e) {
+  //     var text = $("#newpost-textfield").val();
+  //     var newPost = '<div class="post"><div class="icon"></div><div class="post-text"><b>Your name - Today</b><br>' + text + '</div></div>';
+  //     var newReply = '<div class="post reply"><textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..."></textarea><div class="spacing"><button type="button" class="button reply-button">Reply</button></div></div>';
+  //     var newBlock = newPost + newReply;
+
+  //     if (text == "") {
+  //       // Do nothing
+  //     } 
+  //     else {
+  //       $("#posts").prepend(newBlock);
+  //     }
+  //     $("#newpost-textfield").val("");
+  //     e.stopPropagation();
+  //     e.preventDefault();
+  //     syntaxerror;
+
+  //   }
+  // });
+
+  Template.bonfireShow.events({
+    'click #joinleave': function(e) {
+      console.log("shit happened",e);
+      var textfields = $('.toggle');
+      var user_id = Meteor.userId()
+      bonfire_id=this._id
+      console.log(user_id, this._id)
+      Meteor.call('toggleMember',user_id,bonfire_id,function(f,data){
+        console.log(f,data)
+        if (data) {
+          $(e.target).text("Leave");
+          console.log("should say leave")
+          textfields.prop('disabled', false);
+        } else {
+          $(e.target).text("Join");
+          textfields.prop('disabled', true);
+        }
+
+      })
+        
+
+    },
     'click #newpost-button': function(e) {
       var text = $("#newpost-textfield").val();
       var newPost = '<div class="post"><div class="icon"></div><div class="post-text"><b>Your name - Today</b><br>' + text + '</div></div>';
@@ -185,7 +234,28 @@ if (Meteor.isServer) {
         'bonfireImage': bonfireImage
       })
       return bonfireId
+    },
+    toggleMember: function(userId,bonfireId){
+      console.log("got here!")
+      // returns True if the user is now in the bonfire
+      // False if the user is now not in the bonfire
+      membership = Memberships.findOne({user_id:userId,bonfire_id:bonfireId})
+      console.log(membership)
+      if(membership){ // user is already a member
+        Memberships.remove(membership)
+        console.log('removed a membership');
+        return false;
+      }else{
+        Memberships.insert({
+          user_id: userId,
+          bonfire_id: bonfireId
+        })
+        console.log('added a membership');
+        return true;
+      }
     }
   });
+
+
 
 } // end isServer
