@@ -24,14 +24,19 @@ if (Meteor.isClient) {
   }
 
   Template.bonfires.yours = function(){
-    allYourBonfireIds = Memberships.find(
+    allYourBonfires = Memberships.find(
       {user_id:Meteor.userId()},
       {fields:{user_id: 0}}).fetch()
-    console.log(allYourBonfireIds)
+    //console.log(allYourBonfires)
+    allYourBonfireIds=[]
+    for(var i=0;i<allYourBonfires.length;i++){
+      allYourBonfireIds.push(allYourBonfires[i].bonfire_id)
+    }
+    //console.log(allYourBonfireIds)
     output=Bonfires.find({_id:{$in: allYourBonfireIds}})
     console.log(output)
 
-    return allYourBonfireIds
+    return output
   }
   // Template.hello.greeting = function () {
   //   return "Welcome to rekindle.";
