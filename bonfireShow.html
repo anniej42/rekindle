@@ -48,66 +48,37 @@
 	    		</td>
 	    		<td id="posts">
 	    				{{#each messages}}
-							<div class="post">
-								<div class="icon"></div>
-								<div class="post-text">
-									<b>{{user_id}} - {{timestamp}}</b>
-									<br>
-									{{text}}
-								</div>
-							</div>
-							{{#each replies}}
-							<div class="post reply">
-								<div class="icon"></div>
-								<div class="post-text">
-									<b>{{user_id}} - {{timestamp}}</b>
-									<br>
-									{{text}}
-								</div>
-							</div>
-							{{/each}}
-							<div class="post reply">
-								<textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..." disabled></textarea>
-								<div class="spacing"><button type="button" class="button reply-button">Reply</button></div>
-							</div>
+	    					{{> message}}
 						{{/each}}
-	    			<!-- sample post -->
-	    			<div class="post">
-	    				<div class="icon"></div>
-	    				<div class="post-text">
-		    				<b>Annie J. - Monday, April 14, 2044</b>
-		    				<br>
-		    				Hey! Next Saturday, Habitat for Humanity has a build day near Alewife. The MIT Habitat for Humanity club will be there, it would be great to have some alums help out!
-		    			</div>
-	    			</div>
-	    			<div class="post reply">
-	    				<div class="icon"></div>
-	    				<div class="post-text">
-		    				<b>Kate R. - Tuesday, April 15, 2044</b>
-		    				<br>
-		    				I'll be there!
-		    			</div>
-	    			</div>
-	    			<div class="post reply">
-	    				<textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..." disabled></textarea>
-	    				<div class="spacing"><button type="button" class="button reply-button">Reply</button></div>
-	    			</div>
-
-	    			<!-- sample post -->
-	    			<div class="post">
-	    				<div class="icon"></div>
-	    				<div class="post-text">
-		    				<b>Daniel J. - Sunday, April 13, 2044</b>
-		    				<br>
-		    				Hey everyone, check out my photography blog: shoutkey.com/seduction
-		    			</div>
-	    			</div>
-	    			<div class="post reply">
-	    				<textarea rows="2" class="toggle reply-textfield" name="reply-text" placeholder="Reply..." disabled></textarea>
-	    				<div class="spacing"><button type="button" class="button reply-button">Reply</button></div>
-	    			</div>
 	    		</td>
 	    	</tr>
 	    </table>
 	</form>
 </template>
+
+<template name="message">
+	<div class="post">
+	<div class="icon"></div>
+	<div class="post-text">
+		<b>{{user_id}} - {{timestamp}}</b>
+		<br>
+		{{text}}
+	</div>
+	</div>
+	{{#each replies}}
+	<div class="post reply">
+		<div class="icon"></div>
+		<div class="post-text">
+			<b>{{user_id}} - {{timestamp}}</b>
+			<br>
+			{{text}}
+		</div>
+	</div>
+	{{/each}}
+	<div class="post reply">
+		<form>
+		<textarea rows="2" class="toggle reply-textfield" id = "reply-textfield-{{_id}}" name="reply-text" placeholder="Reply..." disabled></textarea>
+		<input type="hidden" name="parent_id" value="{{_id}}">
+		<div class="spacing"><button type="button" class="button reply-button">Reply</button></div></form>
+	</div>
+	</template>

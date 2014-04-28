@@ -70,7 +70,6 @@ if (Meteor.isClient) {
       var replies = Messages.find({parent_id:pId})
       parents[i]['replies']=replies
     }
-    console.log(parents)
     return parents
 
   }
@@ -205,6 +204,21 @@ if (Meteor.isClient) {
   //   }
   // });
 
+  Template.message.events({
+    'click .reply-button':function(e){
+      var text = $("#reply-textfield-"+this._id).val();
+      if (text == "") {
+        // Do nothing
+      } 
+      else {
+        var userId = Meteor.userId()
+        var parentId = this._id
+        Meteor.call('postMessage',text,null,userId,parentId)
+      }
+      $("#reply-textfield-"+this._id).val("");
+    }
+  })
+
   Template.bonfireShow.events({
     'click #joinleave': function(e) {
       console.log("shit happened",e);
@@ -250,6 +264,7 @@ if (Meteor.isClient) {
       // syntaxerror;
 
     }
+
   });
 
   // Template.stanford85.events({
