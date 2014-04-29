@@ -82,11 +82,11 @@ if (Meteor.isClient) {
   }
 
   Template.bonfireShow.messages = function(){
-    var parents = Messages.find({parent_id:{$exists: false}}).fetch()
+    var parents = Messages.find({parent_id:{$exists: false},bonfire_id:this._id},{sort: {date: -1}}).fetch()
 
     for(var i=0;i<parents.length;i+=1){
       var pId=parents[i]['_id']
-      var replies = Messages.find({parent_id:pId})
+      var replies = Messages.find({parent_id:pId},{sort: {date: -1}})
       parents[i]['replies']=replies
     }
     return parents
