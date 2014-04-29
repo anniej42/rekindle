@@ -33,7 +33,6 @@ if (Meteor.isClient) {
     }
     //console.log(allYourBonfireIds)
     output=Bonfires.find({_id:{$in: allYourBonfireIds}})
-    console.log(output)
 
     return output
   }
@@ -48,6 +47,15 @@ if (Meteor.isClient) {
     }
     return Meteor.users.find({_id:{$in: allMemberIds}})
   }
+
+  Template.bonfireShow.helpers({
+    name: function(id){
+      console.log(id)
+      return Meteor.users.findOne({_id:id}).profile.name},
+    company: function(id){return Meteor.users.findOne({_id:id}).profile.company},
+    school: function(id){return Meteor.users.findOne({_id:id}).profile.school},
+    school_toyear:function(id){return Meteor.users.findOne({_id:id}).profile.school_toyear},
+  });
 
   Template.bonfireShow.status = function(){
     mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:this._id})
@@ -115,11 +123,29 @@ if (Meteor.isClient) {
 
       // $.scrollTo( '#' + e.target.id, 500);
       // formerize
-      var tar = e.target;
-      $('html, body').animate({
-        scrollTop: $(tar.getAttribute('href')).offset().top
-      }, 800);
+      // var tar = e.target;
+      // $('html, body').animate({
+      //   scrollTop: $(tar.getAttribute('href')).offset().top
+      // }, 800);
 
+    },
+    'click #GoButton': function(e){
+      var profile={
+        name : $('[name="name"]').val(),
+        email : $('[name="email"]').val(),
+        company : $('[name="company"]').val(),
+        title : $('[name="title"]').val(),
+        school : $('[name="school"]').val(),
+        major : $('[name="major"]').val(),
+        zip : $('[name="zip"]').val(),
+        company_fromyear : $('[name="fromYearWork"]').val(),
+        company_toyear : $('[name="toYearWork"]').val(),
+        school_fromyear : $('[name="fromYearSchool"]').val(),
+        school_toyear : $('[name="toYearSchool"]').val(),
+
+
+      }
+      Meteor.call("setProfile",Meteor.userId(),profile)
     }
   });
 
@@ -344,6 +370,9 @@ if (Meteor.isServer) {
             return messageId
 
       //parentId can be null if this is a top-level message
+    },
+    setProfile: function(userId,profileIn){
+      Meteor.users.update({_id:userId},{$set:{profile:profileIn}})
     }
   });
 
