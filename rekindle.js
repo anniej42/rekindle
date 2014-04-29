@@ -50,11 +50,22 @@ if (Meteor.isClient) {
 
   Template.bonfireShow.helpers({
     name: function(id){
-      console.log(id)
       return Meteor.users.findOne({_id:id}).profile.name},
-    company: function(id){return Meteor.users.findOne({_id:id}).profile.company},
-    school: function(id){return Meteor.users.findOne({_id:id}).profile.school},
-    school_toyear:function(id){return Meteor.users.findOne({_id:id}).profile.school_toyear},
+    company: function(id){
+      return Meteor.users.findOne({_id:id}).profile.company},
+    school: function(id){
+      return Meteor.users.findOne({_id:id}).profile.school},
+    school_toyear:function(id){
+      return Meteor.users.findOne({_id:id}).profile.school_toyear},
+  });
+
+  Template.message.helpers({
+    name: function(id){
+      //console.log(Meteor.users.findOne({_id:id}))
+      return Meteor.users.findOne({_id:id}).profile.name},
+    timestamp: function(){
+      return this.date
+    }
   });
 
   Template.bonfireShow.status = function(){
@@ -358,10 +369,12 @@ if (Meteor.isServer) {
           'bonfire_id':bonfireId,
           'parent_id':parentId,
           'user_id': userId,
-          'text':text
+          'text':text,
+          'date': new Date()
         })
       }else{
         messageId=Messages.insert({
+          'date': new Date(),
           'bonfire_id':bonfireId,
           'user_id': userId,
           'text':text
