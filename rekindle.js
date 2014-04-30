@@ -274,14 +274,13 @@ if (Meteor.isClient) {
     }, 
     'click .deleteMessage':function(e){
       // delete this message and all replies to it
-      Meteor.call("deleteMessage",this._id)
-      console.log("deleted")
+      Meteor.call("deleteMessage",this._id,Meteor.userId())
     }
   })
 
   Template.reply.events({
     'click .deleteMessage':function(e){
-      Meteor.call("deleteMessage",this._id)
+      Meteor.call("deleteMessage",this._id,Meteor.userId())
     }
   })
 
@@ -413,15 +412,18 @@ if (Meteor.isServer) {
 
       //parentId can be null if this is a top-level message
     },
-    deleteMessage: function(deleteId){
+    deleteMessage: function(deleteId,userId){
       message=Messages.findOne({_id:deleteId})
-      if(message.parent_id){// just delete this guy
-        Messages.remove(deleteId)
+      if(message.user_id == userId){
+        if(message.parent_id){// just delete this guy
+          Messages.remove(deleteId)
 
-      }else{// this is a top-level message, must delete all its children
-        Messages.remove(deleteId)
-        Messages.remove({parent_id: deleteId})
+        }else{// this is a top-level message, must delete all its children
+          Messages.remove(deleteId)
+          Messages.remove({parent_id: deleteId})
+        }
       }
+
     },
     setProfile: function(userId,profileIn){
       Meteor.users.update({_id:userId},{$set:{profile:profileIn}})
