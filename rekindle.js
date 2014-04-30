@@ -158,11 +158,12 @@ if (Meteor.isClient) {
     name: function(id){
       return Meteor.users.findOne({_id:id}).profile.name},
     company: function(id){
-      return Meteor.users.findOne({_id:id}).profile.company},
+      console.log(Meteor.users.findOne({_id:id}).profile.companies)
+      return Meteor.users.findOne({_id:id}).profile.companies[0].name},
     school: function(id){
-      return Meteor.users.findOne({_id:id}).profile.school},
+      return Meteor.users.findOne({_id:id}).profile.schools[0].name},
     school_toyear:function(id){
-      return Meteor.users.findOne({_id:id}).profile.school_toyear},
+      return Meteor.users.findOne({_id:id}).profile.schools[0].toyear},
   });
 
   // gets the list of all messages to display on the bonfire page
@@ -279,21 +280,32 @@ if (Meteor.isClient) {
         Signup
   ************************/ 
 
+  Template.signup.helpers({
+  })
+
   Template.signup.events({
     // add the user's profile info when they click go
     'click #GoButton': function(e){
       var profile={
         name : $('[name="name"]').val(),
         email : $('[name="email"]').val(),
-        company : $('[name="company"]').val(),
-        title : $('[name="title"]').val(),
-        school : $('[name="school"]').val(),
-        major : $('[name="major"]').val(),
         zip : $('[name="zip"]').val(),
-        company_fromyear : $('[name="fromYearWork"]').val(),
-        company_toyear : $('[name="toYearWork"]').val(),
-        school_fromyear : $('[name="fromYearSchool"]').val(),
-        school_toyear : $('[name="toYearSchool"]').val(),
+        companies: [// a list of all the companies
+          {
+            name:$('[name="company"]').val(),
+            title:$('[name="title"]').val(),
+            fromyear : $('[name="fromYearWork"]').val(),
+            toyear : $('[name="toYearWork"]').val(),
+          },
+        ],
+        schools: [
+          {
+            name: $('[name="school"]').val(),
+            major : $('[name="major"]').val(),
+            fromyear : $('[name="fromYearSchool"]').val(),
+            toyear : $('[name="toYearSchool"]').val(),
+          },
+        ],
       }
       Meteor.call("setProfile",Meteor.userId(),profile)
     }

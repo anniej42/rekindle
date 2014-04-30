@@ -13,11 +13,12 @@
             <td>
                 <h2><b>Basic Info:</b></h2>
                 
-                <input type="text" class="text" name="name" placeholder="Name" /><br>
+                <input type="text" class="text" name="name" placeholder="Name" value="{{#if currentUser.profile.name}}{{currentUser.profile.name}}{{/if}}"/><br>
 
-                <input type="text" class="text" name="email" placeholder="Email" /><br>
+<!--                 <input type="text" class="text" name="email" placeholder="Email" value=
+    "{{#if currentUser.emails[0]}}{{if currentUser.emails[0].address}}{{currentUser.emails[0].address}}{{/if}}{{/if}}"/><br> email is handled elsewhere-->
                 
-                <input type="text" class="text" name="zip" placeholder="Zip" />
+                <input type="text" class="text" name="zip" placeholder="Zip" value="{{#if currentUser.profile.zip}}{{currentUser.profile.zip}}{{/if}}"/>
                 
             <!-- </div> -->
             </td>
@@ -34,19 +35,18 @@
         <tr id="workschool" class="workschool">
             <td id="work" class="work">
                 <h2><b> Work Info: </b></h2>
-                    <input type="text" class="text" name="company" placeholder="Company" /><br>
-                    <input type="text" class="text" name="title" placeholder="Job Title" />
-                    <h3><label for="fromYear">From:</label> <input type="text" class="text" name="fromYearWork" placeholder="1983" style="width: 100px"><label for="toYear"> To:</label> <input type="text" class="text" name="toYearWork" placeholder="2012" style="width: 100px"></h3>
+                {{#each currentUser.profile.companies}}
+                    {{> company}}
+                {{/each}}
                 
                     <button type="button" class="button" id = "addJob">Add Another Job</button>
             </td>
 
             <td id="school" class = "school">
                 <h2><b> School Info: </b></h2>
-                    <input type="text" class="text" name="school" placeholder="University" /><br>
-                    <input type="text" class="text" name="major" placeholder="Major" /><br>
-
-                    <h3><label for="">From:</label> <input type="text" class="text" name="fromYearSchool" placeholder="1983" style="width: 100px"><label for="toYear"> To:</label> <input type="text" class="text" name="toYearSchool" placeholder="2012" style="width: 100px"></h3>
+                {{#each currentUser.profile.schools}}
+                    {{> school}}
+                {{/each}}
 
                     <button type="button" class="button" id="addSchool">Add Another School</button>
             </td>
@@ -72,4 +72,18 @@
     </form>
     </div>
         
+</template>
+
+<template name="company">
+    <input type="text" class="text" name="company" placeholder="Company" value="{{#if this.name}}{{this.name}}{{/if}}"/><br>
+    <input type="text" class="text" name="title" placeholder="Job Title" value="{{#if this.title}}{{this.title}}{{/if}}"/>
+    <h3><label for="fromYear">From:</label> <input type="text" class="text" name="fromYearWork" placeholder="1983" style="width: 100px" value="{{#if this.fromyear}}{{this.fromyear}}{{/if}}"><label for="toYear"> To:</label> <input type="text" class="text" name="toYearWork" placeholder="2012" style="width: 100px" value="{{#if this.toyear}}{{this.toyear}}{{/if}}"></h3>
+</template>
+
+<template name="school">
+
+    <input type="text" class="text" name="school" placeholder="University" value="{{#if this.name}}{{this.name}}{{/if}}"/><br>
+    <input type="text" class="text" name="major" placeholder="Major" value="{{#if this.major}}{{this.major}}{{/if}}"/><br>
+
+    <h3><label for="">From:</label> <input type="text" class="text" name="fromYearSchool" placeholder="1983" style="width: 100px" value="{{#if this.fromyear}}{{this.fromyear}}{{/if}}"><label for="toYear"> To:</label> <input type="text" class="text" name="toYearSchool" placeholder="2012" style="width: 100px" value="{{#if this.toyear}}{{this.toyear}}{{/if}}"></h3>
 </template>
