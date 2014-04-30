@@ -286,27 +286,78 @@ if (Meteor.isClient) {
   Template.signup.events({
     // add the user's profile info when they click go
     'click #GoButton': function(e){
+      comps=[]
+      // loop through all visible company input boxes
+      company_names=$('[name="company"]')
+      company_titles=$('[name="title"]')
+      company_fromyears=$('[name="fromYearWork"]')
+      company_toyears=$('[name="toYearWork"]')
+      for(var i=0;i<company_names.length;i++){
+        this_name=company_names[i].value
+        this_title=company_titles[i].value
+        this_fromyear=company_fromyears[i].value
+        this_toyear=company_toyears[i].value
+        if(this_name!="" || this_title!="" || this_fromyear!="" || this_toyear!=""){
+          // if any of the fields are populated, keep it
+          comps.push({
+            name: this_name,
+            title: this_title,
+            fromyear : this_fromyear,
+            toyear : this_toyear
+          })
+        }
+
+      }
+      schools=[]
+
+      // loop through all visible school input boxes
+      school_names=$('[name="school"]')
+      school_majors=$('[name="major"]')
+      school_fromyears=$('[name="fromYearSchool"]')
+      school_toyears=$('[name="toYearSchool"]')
+      for(var i=0;i<school_names.length;i++){
+        school=school_names[i].value
+        major=school_majors[i].value
+        fromyear=school_fromyears[i].value
+        toyear=school_toyears[i].value
+        if(school!="" || major!="" || fromyear!="" || toyear!=""){
+          schools.push({
+            name: school,
+            major: major,
+            fromyear : fromyear,
+            toyear : toyear,
+          })
+        }
+
+      }
+
       var profile={
         name : $('[name="name"]').val(),
         email : $('[name="email"]').val(),
         zip : $('[name="zip"]').val(),
-        companies: [// a list of all the companies
-          {
-            name:$('[name="company"]').val(),
-            title:$('[name="title"]').val(),
-            fromyear : $('[name="fromYearWork"]').val(),
-            toyear : $('[name="toYearWork"]').val(),
-          },
-        ],
-        schools: [
-          {
-            name: $('[name="school"]').val(),
-            major : $('[name="major"]').val(),
-            fromyear : $('[name="fromYearSchool"]').val(),
-            toyear : $('[name="toYearSchool"]').val(),
-          },
-        ],
+        companies: comps,
+        schools: schools,
       }
+      Meteor.call("setProfile",Meteor.userId(),profile)
+    },
+    'click #addJob': function(e){
+      var profile=Meteor.user().profile
+      profile.companies.push({
+        name:null,
+        title:null,
+        fromyear : null,
+        toyear : null,
+      })
+      Meteor.call("setProfile",Meteor.userId(),profile)
+    },
+    'click #addSchool': function(e){
+      var profile=Meteor.user().profile
+      profile.schools.push({
+        name:null,
+        major:null,
+        fromyear : null,
+        toyear : null,
+      })
       Meteor.call("setProfile",Meteor.userId(),profile)
     }
   });
@@ -343,7 +394,6 @@ if (Meteor.isServer) {
     // if the user is not in the bonfire, adds them and returns true
     toggleMember: function(userId,bonfireId){
       membership = Memberships.findOne({user_id:userId,bonfire_id:bonfireId})
-      console.log(membership)
       if(membership){ // user is already a member
         Memberships.remove(membership)
         console.log('removed a membership');
