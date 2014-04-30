@@ -60,25 +60,31 @@
 	<div class="post">
 	<div class="icon"></div>
 	<div class="post-text">
+		{{#if is_mine _id}}<div class="deleteMessage">x</div>{{/if}}
 		<b>{{name user_id}} - {{timestamp _id}}</b>
 		<br>
 		{{text}}
 	</div>
 	</div>
 	{{#each replies}}
-	<div class="post reply">
-		<div class="icon"></div>
-		<div class="post-text">
-			<b>{{name user_id}} - {{timestamp _id}}</b>
-			<br>
-			{{text}}
-		</div>
-	</div>
+		{{> reply}}
 	{{/each}}
 	<div class="post reply">
 		<form>
 		<textarea rows="2" class="toggle reply-textfield" id = "reply-textfield-{{_id}}" name="reply-text" placeholder="Reply..." disabled></textarea>
 		<input type="hidden" name="parent_id" value="{{_id}}">
 		<div class="spacing"><button type="button" class="button reply-button">Reply</button></div></form>
+	</div>
+	</template>
+
+	<template name="reply">
+		<div class="post reply">
+		<div class="icon"></div>
+		<div class="post-text">
+			{{#if is_mine _id}}<div class="deleteMessage">x</div>{{/if}}
+			<b>{{name user_id}} - {{timestamp _id}}</b>
+			<br>
+			{{text}}
+		</div>
 	</div>
 	</template>

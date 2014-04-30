@@ -213,4 +213,14 @@ td:first-child {
 			}
 
 
+.deleteMessage {
+float: right;
+margin-top: 0px;
+margin-right: 0px;
+cursor: pointer;
+color: #000;
+font-size: 31px;
+display: inline-block;
+line-height: 0px;
+}
 

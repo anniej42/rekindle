@@ -65,8 +65,26 @@ if (Meteor.isClient) {
       return Meteor.users.findOne({_id:id}).profile.name},
     timestamp: function(){
       return this.date
+    },
+    is_mine: function(message_id){
+      output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
+      return output
     }
   });
+
+  Template.reply.helpers({
+    name: function(id){
+      //console.log(Meteor.users.findOne({_id:id}))
+      return Meteor.users.findOne({_id:id}).profile.name},
+    timestamp: function(){
+      return this.date
+    },
+    is_mine: function(message_id){
+      output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
+      return output
+    }
+  });
+
 
   Template.bonfireShow.status = function(){
     mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:this._id})
@@ -253,6 +271,17 @@ if (Meteor.isClient) {
         Meteor.call('postMessage',text,null,userId,parentId)
       }
       $("#reply-textfield-"+this._id).val("");
+    }, 
+    'click .deleteMessage':function(e){
+      // delete this message and all replies to it
+      Meteor.call("deleteMessage",this._id)
+      console.log("deleted")
+    }
+  })
+
+  Template.reply.events({
+    'click .deleteMessage':function(e){
+      Meteor.call("deleteMessage",this._id)
     }
   })
 
@@ -383,6 +412,16 @@ if (Meteor.isServer) {
             return messageId
 
       //parentId can be null if this is a top-level message
+    },
+    deleteMessage: function(deleteId){
+      message=Messages.findOne({_id:deleteId})
+      if(message.parent_id){// just delete this guy
+        Messages.remove(deleteId)
+
+      }else{// this is a top-level message, must delete all its children
+        Messages.remove(deleteId)
+        Messages.remove({parent_id: deleteId})
+      }
     },
     setProfile: function(userId,profileIn){
       Meteor.users.update({_id:userId},{$set:{profile:profileIn}})
