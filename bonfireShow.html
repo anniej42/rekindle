@@ -7,6 +7,7 @@
     <form>
 	    <table>
 	    	<tr>
+	    		{{#if currentUser}}
 	    		<td id="join">
 	    			<button type="button" class="button" id="joinleave">{{status}}</button>
 	    		</td>
@@ -15,6 +16,10 @@
 	    			<textarea rows="2" class="text toggle" id="newpost-textfield" name="newpost-text" placeholder="Click join to post a message!" disabled></textarea>
 	    			<button type="button" class="button" id="newpost-button">Post</button>
 	    		</td>
+	    		{{else}}
+	    		<td></td>
+	    		<td>Log in to Rekindle to join this bonfire and start posting</td>
+	    		{{/if}}
 	    	</tr>
 	    	<tr>
 	    		<td id="members">
@@ -25,7 +30,7 @@
 	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{company _id}} | {{school _id}} {{school_toyear _id}}</div>
 	    				<br>
 	    				{{/each}}
-	    					<img src="http://i.imgur.com/tvlf9jv.png">
+<!-- 	    					<img src="http://i.imgur.com/tvlf9jv.png">
 	    					<div class="groupmember"><b>Sarah L.</b> <br> Pixar | Stanford 2016</div>
 	    				<br>
 	    					<img src="http://i.imgur.com/tvlf9jv.png">
@@ -43,7 +48,7 @@
 	    				<br>
 	    					<img src="http://i.imgur.com/eqG3JJV.png">
 	    					<div class="groupmember"><b>Rob M.</b> <br> Microsoft | MIT 2015</div>
-	    				<br>
+	    				<br> -->
 	    			</div>
 	    		</td>
 	    		<td id="posts">
@@ -69,12 +74,14 @@
 	{{#each replies}}
 		{{> reply}}
 	{{/each}}
+	{{#if currentUser}} <!-- if the user is not logged in, they shouldn't be able to reply -->
 	<div class="post reply">
 		<form>
 		<textarea rows="2" class="toggle reply-textfield" id = "reply-textfield-{{_id}}" name="reply-text" placeholder="Reply..." disabled></textarea>
 		<input type="hidden" name="parent_id" value="{{_id}}">
 		<div class="spacing"><button type="button" class="button reply-button">Reply</button></div></form>
 	</div>
+	{{/if}}
 	</template>
 
 	<template name="reply">
