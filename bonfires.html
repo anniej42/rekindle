@@ -3,6 +3,7 @@
 	<div id="bonfires" class="title">
     <h1 id="bonfire_head">Bonfires</h1>
     <div id="bonfires_helptext">Rekindle old friendships around a bonfire: a group people united by a common element from your past. Select an existing bonfire or create a new one. <a href="" id="gotit">Got it!</a></div>
+    {{#if currentUser}}
     <div class="subtitle"> 
     	<span class="rule_middle">Your Bonfires</span> 
     </div>
@@ -18,9 +19,19 @@
         </ul>
     </div>
 
+
     <div class="subtitle"> 
     	<span class="rule_middle">Join a Bonfire</span> 
     </div>
+    {{else}}
+
+    <div class="subtitle"> 
+        <span class="rule_middle">Bonfires</span> 
+    </div>
+
+    <div id="bonfires_helptext">Log in to Rekindle to join any of these bonfires! </div>
+
+    {{/if}}
 
     <div id="bonfire_list">
         <ul>
@@ -41,9 +52,11 @@
         <li><div class="bonfire_button" style=
             "background-image: url('stanfordlogo.gif');">
             <div class="bonfire_name">Stanford</div></div></li> -->
+            {{#if currentUser}}
         <li><a href="" class="addNewBonfire"><div class="bonfire_button" style=
             "border: 2px solid black;">
             <div class="bonfire_add_new">+</div></div></a></li>
+            {{/if}}
         </ul>
     </div>
     <div id="newBonfire">
