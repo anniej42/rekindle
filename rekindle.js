@@ -141,15 +141,15 @@ if (Meteor.isClient) {
 
 
   // the correct text for the join/leave button as detected from the data
-  Template.bonfireShow.status = function(){
+  Template.bonfireShow.member = function(){
     mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:this._id})
-          var textfields = $('.toggle');
+          //var textfields = $('.toggle');
     if(mem){// user is in this bonfire!
-      textfields.prop('disabled', false);
-      return "Leave"
+      //textfields.prop('disabled', false);
+      return true
     }else{
-      textfields.prop('disabled', true);
-      return "Join"
+      //textfields.prop('disabled', true);
+      return false
     }
   }
 
@@ -263,13 +263,26 @@ if (Meteor.isClient) {
   // Get the correct data to display in the message template
   Template.message.helpers({
     name: function(id){
-      return Meteor.users.findOne({_id:id}).profile.name},
+      user=Meteor.users.findOne({_id:id})
+      if(user && user.profile){
+        return user.profile.name
+      }
+      return "Anonymous User";
+    },
     timestamp: function(){
       return this.date
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
       return output
+    },
+    member: function(bonfire_id){
+      mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:bonfire_id})
+      if(mem){
+        return true
+      }else{
+        return false
+      }
     }
   });
 
