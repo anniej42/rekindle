@@ -334,7 +334,7 @@ if (Meteor.isClient) {
 
   Template.signup.events({
     // add the user's profile info when they click go
-    'click #GoButton': function(e){
+    'click .saveProfile': function(e){
       comps=[]
       // loop through all visible company input boxes
       company_names=$('[name="company"]')
