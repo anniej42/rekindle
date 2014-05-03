@@ -158,14 +158,13 @@ if (Meteor.isClient) {
     name: function(id){
       userProf=Meteor.users.findOne({_id:id}).profile
       if(userProf){
-        return userProf.name
+        return userProf.name=="" ? "Anonymous User" : userProf.name
       }else{
         return "Anonymous User"
       }
     },
     summary: function(id){
       userProf=Meteor.users.findOne({_id:id}).profile
-      console.log(userProf)
       if(userProf){
         var company
         if(userProf.companies[0]){
@@ -380,16 +379,38 @@ if (Meteor.isClient) {
     },
     'click #addJob': function(e){
       var profile=Meteor.user().profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+        }
+      }
+
       profile.companies.push({
         name:null,
         title:null,
         fromyear : null,
         toyear : null,
       })
+      
+
       Meteor.call("setProfile",Meteor.userId(),profile)
     },
     'click #addSchool': function(e){
       var profile=Meteor.user().profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+        }
+      }
+
       profile.schools.push({
         name:null,
         major:null,
