@@ -76,12 +76,24 @@ if (Meteor.isClient) {
     return output
   }
 
+  Template.bonfires.helpers({
+    // should we display the help text?
+    'userNeedsHelp':function(){
+      thisUser=Meteor.users.findOne({_id:Meteor.userId()})
+      if(thisUser && thisUser.profile && thisUser.profile.understandsBonfires){
+        return false
+      }else{
+        return true
+      }
+    },
+  })
+
   // events on the all bonfires page
   Template.bonfires.events({
 
-    // remove the help text div
+    // record that we don't need to display the help text div
     'click #gotit':function(){
-      $('#bonfires_helptext').css('display','none')
+      Meteor.call("userUnderstandsBonfires",Meteor.userId())
     },
 
     // display the popover window for adding a new bonfire
@@ -374,6 +386,7 @@ if (Meteor.isClient) {
         zip : $('[name="zip"]').val(),
         companies: comps,
         schools: schools,
+        understandsBonfires:false,
       }
       Meteor.call("setProfile",Meteor.userId(),profile)
     },
@@ -386,6 +399,7 @@ if (Meteor.isClient) {
           zip : $('[name="zip"]').val(),
           companies: [],
           schools: [],
+          understandsBonfires:false,
         }
       }
 
@@ -408,6 +422,7 @@ if (Meteor.isClient) {
           zip : $('[name="zip"]').val(),
           companies: [],
           schools: [],
+          understandsBonfires:false,
         }
       }
 
@@ -511,7 +526,26 @@ if (Meteor.isServer) {
     // server side code for setting the user's profile
     setProfile: function(userId,profileIn){
       Meteor.users.update({_id:userId},{$set:{profile:profileIn}})
+    },
+
+    userUnderstandsBonfires: function(userId){
+      var profile=Meteor.users.findOne({_id:userId}).profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+          understandsBonfires:false,
+        }
+      }
+      profile.understandsBonfires=true
+      Meteor.call("setProfile", userId, profile)
+      
     }
+
+
   });
 
 

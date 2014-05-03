@@ -2,7 +2,9 @@
     
 	<div id="bonfires" class="title">
     <h1 id="bonfire_head">Bonfires</h1>
+    {{#if userNeedsHelp}}
     <div id="bonfires_helptext">Rekindle old friendships around a bonfire: a group people united by a common element from your past. Select an existing bonfire or create a new one. <a href="" id="gotit">Got it!</a></div>
+    {{/if}}
     {{#if currentUser}}
     <div class="subtitle"> 
     	<span class="rule_middle">Your Bonfires</span> 
