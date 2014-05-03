@@ -156,9 +156,47 @@ if (Meteor.isClient) {
   // for accessing members' profile data to be displayed
   Template.bonfireShow.helpers({
     name: function(id){
-      return Meteor.users.findOne({_id:id}).profile.name},
+      userProf=Meteor.users.findOne({_id:id}).profile
+      if(userProf){
+        return userProf.name
+      }else{
+        return "Anonymous User"
+      }
+    },
+    summary: function(id){
+      userProf=Meteor.users.findOne({_id:id}).profile
+      console.log(userProf)
+      if(userProf){
+        var company
+        if(userProf.companies[0]){
+          company=userProf.companies[0].name
+        }else{
+          company=""
+        }
+        var school
+        var year;
+        if(userProf.schools[0]){
+          school=userProf.schools[0].name
+          year = userProf.schools[0].toyear
+        }else{
+          year=""
+          school=""
+        }
+
+        var output=company+" | "+ school + " " + year
+        if(company==""){
+          output=school+" "+year
+        }else if(school==""){
+          output=company
+        }
+        return output
+
+      }else{
+        return ""
+      }
+    },
+    // the following are deprecated and not safe
     company: function(id){
-      console.log(Meteor.users.findOne({_id:id}).profile.companies)
       return Meteor.users.findOne({_id:id}).profile.companies[0].name},
     school: function(id){
       return Meteor.users.findOne({_id:id}).profile.schools[0].name},
