@@ -60,6 +60,56 @@ if (Meteor.isClient) {
     return Bonfires.find({},{sort:{'submittedOn':-1}})
   }
 
+  Template.bonfires.predicted = function(){
+    thisUser=Meteor.users.findOne({_id:Meteor.userId()})
+    if(thisUser.profile){
+      // construct a regex for fuzzy matching a school name or company name
+      regex=""
+      for(var i=0;i<thisUser.profile.schools.length;i++){
+        thisname=thisUser.profile.schools[i].name
+        if(thisname != ""){
+          regex+=".*"+thisname+".*|"
+        }
+      }
+      for(var i=0;i<thisUser.profile.companies.length;i++){
+        thisname=thisUser.profile.companies[i].name
+        if(thisname != ""){
+          regex+=".*"+thisname+".*|"
+        }
+      }
+      regex = regex.slice(0,-1)
+      if(regex==""){ // nothing to search for? we should return no results
+        return []
+      }
+      var search = new RegExp(regex,'i')
+      console.log(regex)
+      // don't include bonfires the user is already in
+      thisUsersBonfires=Memberships.find(
+        {user_id:Meteor.userId()},
+        {fields:{user_id: 0}}).fetch()
+
+      thisUsersBonfireIds=[]
+      for(var i=0;i<thisUsersBonfires.length;i++){
+        thisUsersBonfireIds.push(thisUsersBonfires[i].bonfire_id)
+      }
+
+      // construct the query: bonfires the user is not in, which match the search term
+      output=Bonfires.find(
+          {$and: 
+            [
+              {_id:{$nin:thisUsersBonfireIds}},
+              {$or: [
+                {bonfireName: {$regex: search}},
+                {bonfireDescription:{$regex: search}}]}
+            ]
+          }
+        )
+      return output
+    }else{// without a profile we can't predict any bonfires
+      return []
+    }
+  }
+
   // yours is the list of all your bonfires
   Template.bonfires.yours = function(){
     allYourBonfires = Memberships.find(

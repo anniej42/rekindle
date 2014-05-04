@@ -23,12 +23,28 @@
 
 
     <div class="subtitle"> 
-    	<span class="rule_middle">Join a Bonfire</span> 
+    	<span class="rule_middle">Suggested Bonfires</span> 
     </div>
+
+    <div id="bonfires_predicted"> 
+        <ul>
+        {{#each predicted}}
+        <li><a href="{{pathFor 'bonfireShow'}}" class="goToBonfire">
+            <div class="bonfire_button" style=
+            "background-image: url('{{bonfireImage}}');">
+            <div class="bonfire_name">{{bonfireName}} </div></div></a></li>
+        {{/each}}
+        </ul>
+    </div>
+
+    <div class="subtitle"> 
+        <span class="rule_middle"> All Bonfires</span> 
+    </div>
+
     {{else}}
 
     <div class="subtitle"> 
-        <span class="rule_middle">Bonfires</span> 
+        <span class="rule_middle"> All Bonfires</span> 
     </div>
 
     <div id="bonfires_helptext">Log in to Rekindle to join any of these bonfires! </div>
