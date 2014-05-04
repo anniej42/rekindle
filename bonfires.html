@@ -56,7 +56,7 @@
         {{#each items}}
         <li><a href="{{pathFor 'bonfireShow'}}" class="goToBonfire">
             <div class="bonfire_button" style=
-            "background-image: url('{{bonfireImage}}');">
+            "background-image: url('{{bonfireImage}}'); border: 5px solid white">
             <div class="bonfire_name">{{bonfireName}} </div></div></a></li>
         {{/each}}
 <!--         <li><a href="{{pathFor 'stanford85'}}" class="goToBonfire"><div class="bonfire_button" id="bonfire_stanford85">
@@ -72,7 +72,7 @@
             <div class="bonfire_name">Stanford</div></div></li> -->
             {{#if currentUser}}
         <li><a href="" class="addNewBonfire"><div class="bonfire_button" style=
-            "border: 2px solid black;">
+            "border: 5px solid black; background-color: white">
             <div class="bonfire_add_new">+</div></div></a></li>
             {{/if}}
         </ul>

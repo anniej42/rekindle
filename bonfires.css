@@ -47,20 +47,30 @@
     border-radius: 100%;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
-    box-shadow: 5px 5px 2px #cccccc;
-        -moz-box-shadow: 5px 5px 2px #cccccc; /* Firefox 3.6 and earlier */
+    /*box-shadow: 5px 5px 2px #cccccc;
+        -moz-box-shadow: 5px 5px 2px #cccccc;  Firefox 3.6 and earlier 
         -webkit-box-shadow: 5px 5px 2px #cccccc; /* Safari and Chrome */
-
     background-size:cover;
     background-repeat:no-repeat;
     background-origin:border-box;
     background-position:center;
-    transition-delay: 0s;
-transition-duration: 0.2s;
-transition-property: -webkit-transform;
-transition-timing-function: ease-in-out;
+
+    -moz-transition: border-color 0.35s ease-in-out;
+    -webkit-transition: border-color 0.35s ease-in-out;
+    -o-transition: border-color 0.35s ease-in-out;
+    -ms-transition: border-color 0.35s ease-in-out;
+    transition: border-color 0.35s ease-in-out;
 
 }
+
+    .bonfire_button:hover{
+
+        border: 5px solid #ff7800 !important;
+        /*border-color:  #ff7800;*/
+        
+        
+
+    }
 
 #bonfire_list li{
     display:inline;
