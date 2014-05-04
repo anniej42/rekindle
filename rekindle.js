@@ -10,7 +10,11 @@ Router.map(function() {
   this.route('bonfireShow',{
     path:'/bonfires/:_id',
     data: function(){return Bonfires.findOne(this.params._id); }
-  })
+  });
+  this.route('bonfireMap',{
+    path:'/bonfires/:_id/map',
+    data: function(){return {_id: this.params._id}; }
+  });
 });
 
 /*****************
@@ -82,7 +86,6 @@ if (Meteor.isClient) {
         return []
       }
       var search = new RegExp(regex,'i')
-      console.log(regex)
       // don't include bonfires the user is already in
       thisUsersBonfires=Memberships.find(
         {user_id:Meteor.userId()},
@@ -285,6 +288,7 @@ if (Meteor.isClient) {
     // join or leave the bonfire
     'click #joinleave': function(e) {
       Meteor.call('toggleMember',Meteor.userId(),this._id)
+      //console.log(this._id)
     },
 
     // maek a new post
@@ -367,7 +371,12 @@ if (Meteor.isClient) {
   // get the correct data to display in the reply template
   Template.reply.helpers({
     name: function(id){
-      return Meteor.users.findOne({_id:id}).profile.name},
+      user=Meteor.users.findOne({_id:id})
+      if(user && user.profile){
+        return user.profile.name
+      }
+      return "Anonymous User";
+    },
     timestamp: function(){
       return this.date
     },
@@ -384,7 +393,66 @@ if (Meteor.isClient) {
       Meteor.call("deleteMessage",this._id,Meteor.userId())
     }
     // no more methods here -- you can't reply to a reply
+  });
+
+  /********************
+      Bonfire Map
+  ***********************/
+
+  Template.bonfireMap.helpers({
+    bonfireName: function (){
+      return Bonfires.findOne({_id: this._id}).bonfireName
+    },
   })
+
+  Template.bonfireMap.rendered=function(){
+    geocoder = new google.maps.Geocoder();
+    var mapOptions = {
+      center: new google.maps.LatLng(37.759, -122.442),
+      zoom: 12
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+    members = Memberships.find({bonfire_id:this.data._id}).fetch()
+
+    positions=[]
+    done=[]
+    for(var i=0;i<members.length;i++){
+      thisUser=Meteor.users.findOne({_id:members[i].user_id})
+      var lat = '';
+      var lng = '';
+      var address = thisUser.profile.zip;
+      console.log(address)
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        done.push("yes")
+        if (status == google.maps.GeocoderStatus.OK) {
+           lat = results[0].geometry.location.lat();
+           lng = results[0].geometry.location.lng();
+          console.log('Latitude: ' + lat + ' Logitude: ' + lng);
+          positions.push(new google.maps.LatLng(lat, lng))
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng),
+            icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          });
+          marker.setMap(map); 
+        } else {
+          console.log("Geocode was not successful for the following reason: " + status);
+        }
+        if(done.length==members.length){
+          console.log("done!")
+          console.log(positions)
+          var limits = new google.maps.LatLngBounds();
+          for(var i=0;i<positions.length;i++){
+            limits.extend(positions[i]);
+          }
+          console.log(limits)
+          map.fitBounds(limits);
+        }
+      });
+    }
+
+
+  }
 
 
 
@@ -533,14 +601,13 @@ if (Meteor.isServer) {
       membership = Memberships.findOne({user_id:userId,bonfire_id:bonfireId})
       if(membership){ // user is already a member
         Memberships.remove(membership)
-        console.log('removed a membership');
+
         return false;
       }else{
         Memberships.insert({
           user_id: userId,
           bonfire_id: bonfireId
         })
-        console.log('added a membership');
         return true;
       }
     },
