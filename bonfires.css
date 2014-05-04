@@ -106,18 +106,35 @@ transition-timing-function: ease-in-out;
     line-height:1.5em;
 }
 
-#bonfire_list a{
+#bonfire_list a, #bonfires_yours a {
     text-decoration:none;
 }
 .bonfire_name{
     text-align:center;
     vertical-align:middle;
-    line-height:290px;
+    /*line-height:290px;*/
     font-family:Arial;
-    color:#fff;
+    color:#FFFFFF;
     opacity:0.9;
     font-size:34pt;
 }
+
+.black_background {
+    line-height: 290px;
+    text-align: center;
+    display: inline-block;
+}
+
+.black_background > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.1em;
+    text-align: center;
+    background-color: rgba(0,0,0, 0.7);
+}
+
+
+
 .bonfire_add_new{
     text-align:center;
     vertical-align:middle;
