@@ -2,13 +2,19 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "iron-router": {}
+      "iron-router": {},
+      "filepicker": {}
     },
     "packages": {
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.7.1",
         "commit": "d1ffb3f06ea4c112132b030f2eb1a70b81675ecb"
+      },
+      "filepicker": {
+        "git": "https://github.com/Ink/meteor.git",
+        "tag": "v0.4.0",
+        "commit": "20d56aaaf48be3a5c0499547a495a6463b4fa3d9"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",
