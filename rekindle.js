@@ -387,7 +387,16 @@ if (Meteor.isClient) {
           m = "Dec. ";
           break;
       }
-      return m + this.date.getDate() + ", " + this.date.getFullYear() + " " + this.date.getHours() + ":" + this.date.getMinutes();
+      var min = this.date.getMinutes().toString();
+      var hr = this.date.getHours().toString();
+      if (min.length == 1) {
+        min = "0" + min;
+      }
+      if (hr.length == 1){
+        console.log("hour");
+        hr = "0" + hr;
+      }
+      return m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + hr + ":" + min;
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
@@ -567,7 +576,16 @@ if (Meteor.isClient) {
           m = "Dec. ";
           break;
       }
-      return d + m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + this.date.getHour() + ":" + this.date.getMinutes();
+      var min = this.date.getMinutes().toString();
+      var hr = this.date.getHours().toString();
+      if (min.length == 1) {
+        min = "0" + min;
+      }
+      if (hr.length == 1){
+        console.log("hour");
+        hr = "0" + hr;
+      }
+      return m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + hr + ":" + min;
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
