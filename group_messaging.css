@@ -143,11 +143,6 @@ td:first-child {
 			transition: all 0.5s ease-in-out;
 		}
 
-		form textarea
-		{
-			min-height: 100px;
-		}
-
 		form input.text:focus,
 		form select:focus,
 		form textarea:focus
