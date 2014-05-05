@@ -5,7 +5,7 @@
 .subtitle{
 	text-align:center;
 	position:relative;
-	font-size:30pt;
+	font-size:25pt;
 }
 
 .subtitle span{
@@ -22,9 +22,9 @@
 		-webkit-box-shadow: 0px 2px 0px #ff7800; /* Safari and Chrome */
 		box-shadow: 0px 2px 0px #ff7800;
     display: block;
-    height: 1px;
+    height: 2px;
     content: " ";
-    width: 40%;
+    width: 30%;
     position: absolute;
     left: 0;
     top: 0.5em;
