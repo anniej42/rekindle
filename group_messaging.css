@@ -48,8 +48,9 @@ td:first-child {
 	overflow: auto;
 	height: 50px;
 	width: 50px;
-	background-color: black;
+	background-color: #FFFFFF;
 	float: left;
+	border: 2px dashed black;
 }
 
 .post {
