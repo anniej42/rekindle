@@ -15,7 +15,7 @@
 	    			
 	    			{{#if member}}
 	    			Submit a new post:
-	    			<textarea rows="1" class="text toggle" id="newpost-textfield" name="newpost-text" onfocus="this.rows = 3" onblur="this.rows = 1"></textarea>
+	    			<textarea rows="1" class="text toggle" id="newpost-textfield" name="newpost-text" onfocus="this.rows = 3" onblur="if (this.val == '') this.rows = 1"></textarea>
 	    			<button type="button" class="button" id="newpost-button">Post</button>
 	    			{{else}}
 	    			Click join to post a message!
@@ -86,7 +86,7 @@
 	<div class="post reply">
 		{{#if member bonfire_id}}
 		<form>
-		<textarea rows="1" class="toggle reply-textfield" id = "reply-textfield-{{_id}}" name="reply-text" placeholder="Reply..." onfocus="this.rows = 3" onblur="this.rows = 1"></textarea>
+		<textarea rows="1" class="toggle reply-textfield" id = "reply-textfield-{{_id}}" name="reply-text" placeholder="Reply..." onfocus="this.rows = 3" onblur="if (this.val == '') this.rows = 1"></textarea>
 		<input type="hidden" name="parent_id" value="{{_id}}">
 		<div class="spacing"><button type="button" class="button reply-button">Reply</button></div></form>
 
