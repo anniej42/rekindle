@@ -48,9 +48,8 @@ td:first-child {
 	overflow: auto;
 	height: 50px;
 	width: 50px;
-	background-color: #FFFFFF;
+	background-color: black;
 	float: left;
-	border: 2px dashed black;
 }
 
 .post {
@@ -142,6 +141,11 @@ td:first-child {
 			-o-transition: all 0.5s ease-in-out;
 			-ms-transition: all 0.5s ease-in-out;
 			transition: all 0.5s ease-in-out;
+		}
+
+		form textarea
+		{
+			min-height: 100px;
 		}
 
 		form input.text:focus,
