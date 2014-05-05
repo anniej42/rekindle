@@ -655,12 +655,6 @@ if (Meteor.isClient) {
   Template.signup.events({
     // add the user's profile info when they click go
     'click .saveProfile': function(e){
-
-      // if($('[name="zip"]').val().length!=5 || !isNaN(parseFloat($('[name="zip"]').val()))){
-      //   alert("please enter valid zipcode.");
-        
-      // }
-
       comps=[]
       // loop through all visible company input boxes
       company_names=$('[name="company"]')
@@ -705,8 +699,6 @@ if (Meteor.isClient) {
         }
 
       }
-
-
 
       var profile={
         name : $('[name="name"]').val(),
@@ -762,8 +754,6 @@ if (Meteor.isClient) {
       })
       Meteor.call("setProfile",Meteor.userId(),profile)
     }
-  
-    
   });
 
 }
