@@ -34,43 +34,6 @@ Memberships = new Meteor.Collection('memberships');
 *********************************/
 
 if (Meteor.isClient) {
-  filepicker.setKey('AS1VjyIhYSlKQh4zthZLFz');
-
-  var cb = function(){
-
-        filepicker.makeDropPane($('#holder')[0], {
-        multiple: true,
-        dragEnter: function() {
-            $("#holder").html("Drop to upload").css({
-                'backgroundColor': "#E0E0E0",
-                'border': "1px solid #000"
-            });
-        },
-        dragLeave: function() {
-            $("#holder").html("Drop files here").css({
-                'backgroundColor': "#F6F6F6",
-                'border': "1px dashed #666"
-            });
-        },
-        onSuccess: function(InkBlobs) {
-            $("#holder").text("Done, see result below");
-            $("#localDropResult").text(JSON.stringify(InkBlobs));
-        },
-        onError: function(type, message) {
-            $("#holder").text('('+type+') '+ message);
-        },
-        onProgress: function(percentage) {
-            $("#holder").text("Uploading ("+percentage+"%)");
-        }
-    });
-
-
-
-  }
-
-
-
-
 
   /*****************
       Menu
@@ -687,12 +650,7 @@ if (Meteor.isClient) {
   ************************/ 
 
   Template.signup.helpers({
-    
-  });
-  Template.signup.created = function(){
-    console.log("hello")
-    loadPicker('AS1VjyIhYSlKQh4zthZLFz', cb);
-  };
+  })
 
   Template.signup.events({
     // add the user's profile info when they click go
