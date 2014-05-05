@@ -1,6 +1,6 @@
 #bonfires{
-	   font-family: Avenir;
-        src: url(avenir.ttc);
+	font-family: Avenir;
+    src: url(avenir.ttc);
 }
 
 .subtitle{
@@ -76,7 +76,7 @@
     }
 
 #bonfire_list li, #bonfires_yours li{
-    display:inline;
+    display:inline-block;
     float:left;    
 }
 
@@ -90,6 +90,7 @@
     text-align:center;
     margin-left:auto;
     margin-right:auto;
+    overflow: hidden;
 }
 
 @media (min-width: 580px) {
