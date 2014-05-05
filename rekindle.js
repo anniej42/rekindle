@@ -331,6 +331,9 @@ if (Meteor.isClient) {
       return "Anonymous User";
     },
     timestamp: function(){
+      if(!this.date){
+        return ""
+      }
       var day = this.date.getDay();
       switch(day) {
         case 0: 
@@ -456,6 +459,9 @@ if (Meteor.isClient) {
       return "Anonymous User";
     },
     timestamp: function(){
+      if(!this.date){
+        return ""
+      }
       var day = this.date.getDay();
       switch(day) {
         case 0: 
