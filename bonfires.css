@@ -75,7 +75,7 @@
 
     }
 
-#bonfire_list li, #bonfires_yours li{
+#bonfire_list li, #bonfires_yours li, #bonfires_predicted li{
     display:inline-block;
     float:left;    
 }
@@ -85,7 +85,7 @@
     clear:both;
 }
 
-#bonfire_list, #bonfires_yours{
+#bonfire_list, #bonfires_yours, #bonfires_predicted {
     display:block;
     text-align:center;
     margin-left:auto;
@@ -94,25 +94,25 @@
 }
 
 @media (min-width: 580px) {
-    #bonfire_list, #bonfires_yours {
+    #bonfire_list, #bonfires_yours, #bonfires_predicted {
         width: 460px;
     }
 }
 
 @media (min-width: 920px) {
-    #bonfire_list, #bonfires_yours {
+    #bonfire_list, #bonfires_yours, #bonfires_predicted {
         width: 820px;
     }
 }
 
 @media (min-width: 1280px) {
-    #bonfire_list, #bonfires_yours {
+    #bonfire_list, #bonfires_yours, #bonfires_predicted {
         width: 1180px;
     }
 }
 
 @media (min-width: 1640px) {
-    #bonfire_list, #bonfirse_yours {
+    #bonfire_list, #bonfires_yours, #bonfires_predicted {
         width: 1540px;
     }
 }
@@ -121,7 +121,7 @@
     line-height:1.5em;
 }
 
-#bonfire_list a, #bonfires_yours a {
+#bonfire_list a, #bonfires_yours a, #bonfires_predicted a {
     text-decoration:none;
 }
 
