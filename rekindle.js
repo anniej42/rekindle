@@ -361,7 +361,70 @@ if (Meteor.isClient) {
       return "Anonymous User";
     },
     timestamp: function(){
-      return this.date
+      var day = this.date.getDay();
+      switch(day) {
+        case 0: 
+          d = "Sunday ";
+          break;
+        case 1:
+          d = "Monday ";
+          break;
+        case 2:
+          d = "Tuesday ";
+          break;
+        case 3:
+          d = "Wednesday ";
+          break;
+        case 4:
+          d = "Thursday ";
+          break;
+        case 5:
+          d = "Friday ";
+          break;
+        case 6:
+          d = "Saturday ";
+          break;
+      }
+      var month = this.date.getMonth();
+      switch(month){
+        case 0:
+          m = "Jan. ";
+          break;
+        case 1:
+          m = "Feb. ";
+          break;
+        case 2:
+          m = "Mar. ";
+          break;
+        case 3:
+          m = "Apr. ";
+          break;
+        case 4:
+          m = "May "
+          break;
+        case 5:
+          m = "Jun. "
+          break;
+        case 6:
+          m = "Jul. ";
+          break;
+        case 7:
+          m = "Aug. "
+          break;
+        case 8: 
+          m = "Sept."
+          break;
+        case 9:
+          m = "Oct. ";
+          break;
+        case 10:
+          m = "Nov. ";
+          break;
+        case 11:
+          m = "Dec. ";
+          break;
+      }
+      return d + m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + this.date.getHour() + ":" + this.date.getMinutes();
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
