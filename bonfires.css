@@ -66,14 +66,14 @@
 
 }
 
-    .bonfire_button:hover{
+.bonfire_button:hover{
 
-        border: 5px solid #ff7800 !important;
-        /*border-color:  #ff7800;*/
-        
-        
+    border: 5px solid #ff7800 !important;
+    /*border-color:  #ff7800;*/
+    
+    
 
-    }
+}
 
 #bonfire_list li, #bonfires_yours li{
     display:inline-block;
@@ -93,8 +93,19 @@
     overflow: hidden;
 }
 
-@media (min-width: 580px) {
-    #bonfire_list, #bonfires_yours {
+#bonfires_yours li{
+    display:inline;
+}
+
+#bonfires_yours{
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#bonfire_list, #bonfires_yours {
         width: 460px;
     }
 }

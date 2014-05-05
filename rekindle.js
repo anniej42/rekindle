@@ -387,7 +387,16 @@ if (Meteor.isClient) {
           m = "Dec. ";
           break;
       }
-      return m + this.date.getDate() + ", " + this.date.getFullYear() + " " + this.date.getHours() + ":" + this.date.getMinutes();
+      var min = this.date.getMinutes().toString();
+      var hr = this.date.getHours().toString();
+      if (min.length == 1) {
+        min = "0" + min;
+      }
+      if (hr.length == 1){
+        console.log("hour");
+        hr = "0" + hr;
+      }
+      return m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + hr + ":" + min;
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
@@ -567,7 +576,15 @@ if (Meteor.isClient) {
           m = "Dec. ";
           break;
       }
-      return d + m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + this.date.getHour() + ":" + this.date.getMinutes();
+      var min = this.date.getMinutes().toString();
+      var hr = this.date.getHours().toString();
+      if (min.length == 1) {
+        min = "0" + min;
+      }
+      if (hr.length == 1){
+        hr = "0" + hr;
+      }
+      return m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + hr + ":" + min;
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
@@ -655,6 +672,12 @@ if (Meteor.isClient) {
   Template.signup.events({
     // add the user's profile info when they click go
     'click .saveProfile': function(e){
+
+      // if($('[name="zip"]').val().length!=5 || !isNaN(parseFloat($('[name="zip"]').val()))){
+      //   alert("please enter valid zipcode.");
+        
+      // }
+
       comps=[]
       // loop through all visible company input boxes
       company_names=$('[name="company"]')
@@ -699,6 +722,8 @@ if (Meteor.isClient) {
         }
 
       }
+
+
 
       var profile={
         name : $('[name="name"]').val(),
@@ -754,6 +779,8 @@ if (Meteor.isClient) {
       })
       Meteor.call("setProfile",Meteor.userId(),profile)
     }
+  
+    
   });
 
 }
