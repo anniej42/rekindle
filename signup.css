@@ -4,11 +4,6 @@
 /* BASIC                                                            */
 /********************************************************************/
 
-
-
-
-
-
 	h3
 	{
 		font-size: 0.8em;
@@ -23,11 +18,14 @@
 
 	}
 
-	#memBox
-	{
+	#memBox{
 		min-width: 500px;
 	}
 
+
+	#company, #school{
+		float: top;
+	}
 
 /********************************************************************/
 /* SECTIONS                                                         */
@@ -188,6 +186,11 @@
 		margin: 10px auto; 
 	}
 
+	.saveProfile{
+		padding-bottom: 20px;
+		float:right;
+		width: 200px;
+	}
 
 
 	/* make things look pretty */ 
