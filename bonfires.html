@@ -2,7 +2,9 @@
     
 	<div id="bonfires" class="title">
     <h1 id="bonfire_head">Bonfires</h1>
-    <div id="bonfires_helptext">Rekindle old friendships around a bonfire: a group people united by a common element from your past. Select an existing bonfire or create a new one. <a href="" id="gotit">Got it!</a></div>
+    {{#if userNeedsHelp}}
+    <div id="bonfires_helptext">Rekindle old friendships around a bonfire: a group people united by a common element from your past. <br> Select an existing bonfire or create a new one. <a href="" id="gotit">Got it!</a></div>
+    {{/if}}
     {{#if currentUser}}
     <div class="subtitle"> 
     	<span class="rule_middle">Your Bonfires</span> 
@@ -12,21 +14,35 @@
         <ul>
         {{#each yours}}
         <li><a href="{{pathFor 'bonfireShow'}}" class="goToBonfire">
-            <div class="bonfire_button" style=
-            "background-image: url('{{bonfireImage}}');">
-            <div class="bonfire_name">{{bonfireName}} </div></div></a></li>
+            <div class="bonfire_button" style="background-image: url('{{bonfireImage}}'); border: 5px solid white">
+            <div class="bonfire_name"><div class="black_background"><span>{{bonfireName}}</span></div></div></div></a></li>
         {{/each}}
         </ul>
     </div>
 
+    <div class="subtitle"> 
+    	<span class="rule_middle">Suggested Bonfires</span> 
+    </div>
+
+    <div id="bonfires_predicted"> 
+        <ul>
+        {{#each predicted}}
+        <li><a href="{{pathFor 'bonfireShow'}}" class="goToBonfire">
+            <div class="bonfire_button" style=
+            "background-image: url('{{bonfireImage}}');">
+            <div class="bonfire_name"><span class="black_background"><span>{{bonfireName}}</span></span></div></div></a></li>
+        {{/each}}
+        </ul>
+    </div>
 
     <div class="subtitle"> 
-    	<span class="rule_middle">Join a Bonfire</span> 
+        <span class="rule_middle"> All Bonfires</span> 
     </div>
+
     {{else}}
 
     <div class="subtitle"> 
-        <span class="rule_middle">Bonfires</span> 
+        <span class="rule_middle"> All Bonfires</span> 
     </div>
 
     <div id="bonfires_helptext">Log in to Rekindle to join any of these bonfires! </div>
@@ -37,9 +53,8 @@
         <ul>
         {{#each items}}
         <li><a href="{{pathFor 'bonfireShow'}}" class="goToBonfire">
-            <div class="bonfire_button" style=
-            "background-image: url('{{bonfireImage}}');">
-            <div class="bonfire_name">{{bonfireName}} </div></div></a></li>
+            <div class="bonfire_button" style="background-image: url('{{bonfireImage}}'); border: 5px solid white">
+            <div class="bonfire_name"><span class="black_background"><span>{{bonfireName}}</span></span></div></div></a></li>
         {{/each}}
 <!--         <li><a href="{{pathFor 'stanford85'}}" class="goToBonfire"><div class="bonfire_button" id="bonfire_stanford85">
             <div class="bonfire_name">Stanford 1985</div></div></a></li>
@@ -54,7 +69,7 @@
             <div class="bonfire_name">Stanford</div></div></li> -->
             {{#if currentUser}}
         <li><a href="" class="addNewBonfire"><div class="bonfire_button" style=
-            "border: 2px solid black;">
+            "border: 5px solid black; background-color: white">
             <div class="bonfire_add_new">+</div></div></a></li>
             {{/if}}
         </ul>

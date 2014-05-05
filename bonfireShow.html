@@ -9,12 +9,18 @@
 	    	<tr>
 	    		{{#if currentUser}}
 	    		<td id="join">
-	    			<button type="button" class="button" id="joinleave">{{status}}</button>
+	    			<button type="button" class="button" id="joinleave">{{#if member}}Leave{{else}}Join{{/if}}</button>
 	    		</td>
 	    		<td id="newpost">
+	    			
+	    			{{#if member}}
 	    			Submit a new post:
-	    			<textarea rows="2" class="text toggle" id="newpost-textfield" name="newpost-text" placeholder="Click join to post a message!" disabled></textarea>
+	    			<textarea rows="2" class="text toggle" id="newpost-textfield" name="newpost-text"></textarea>
 	    			<button type="button" class="button" id="newpost-button">Post</button>
+	    			{{else}}
+	    			Click join to post a message!
+	    			{{/if}}
+	    			
 	    		</td>
 	    		{{else}}
 	    		<td></td>
@@ -27,9 +33,10 @@
 	    			<div id="memberslist">
 	    				{{#each members}}
 	    					<img src="http://i.imgur.com/tvlf9jv.png">
-	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{company _id}} | {{school _id}} {{school_toyear _id}}</div>
+	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{summary _id}}</div>
 	    				<br>
 	    				{{/each}}
+	    				<a href="{{pathFor 'bonfireMap' _id=this._id}}"><div class="button" id="maplink">Where are they now?</div></a>
 <!-- 	    					<img src="http://i.imgur.com/tvlf9jv.png">
 	    					<div class="groupmember"><b>Sarah L.</b> <br> Pixar | Stanford 2016</div>
 	    				<br>
@@ -76,10 +83,13 @@
 	{{/each}}
 	{{#if currentUser}} <!-- if the user is not logged in, they shouldn't be able to reply -->
 	<div class="post reply">
+		{{#if member bonfire_id}}
 		<form>
 		<textarea rows="2" class="toggle reply-textfield" id = "reply-textfield-{{_id}}" name="reply-text" placeholder="Reply..." disabled></textarea>
 		<input type="hidden" name="parent_id" value="{{_id}}">
 		<div class="spacing"><button type="button" class="button reply-button">Reply</button></div></form>
+
+		{{/if}}
 	</div>
 	{{/if}}
 	</template>

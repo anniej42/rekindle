@@ -10,7 +10,11 @@ Router.map(function() {
   this.route('bonfireShow',{
     path:'/bonfires/:_id',
     data: function(){return Bonfires.findOne(this.params._id); }
-  })
+  });
+  this.route('bonfireMap',{
+    path:'/bonfires/:_id/map',
+    data: function(){return {_id: this.params._id}; }
+  });
 });
 
 /*****************
@@ -60,6 +64,55 @@ if (Meteor.isClient) {
     return Bonfires.find({},{sort:{'submittedOn':-1}})
   }
 
+  Template.bonfires.predicted = function(){
+    thisUser=Meteor.users.findOne({_id:Meteor.userId()})
+    if(thisUser.profile){
+      // construct a regex for fuzzy matching a school name or company name
+      regex=""
+      for(var i=0;i<thisUser.profile.schools.length;i++){
+        thisname=thisUser.profile.schools[i].name
+        if(thisname != ""){
+          regex+=".*"+thisname+".*|"
+        }
+      }
+      for(var i=0;i<thisUser.profile.companies.length;i++){
+        thisname=thisUser.profile.companies[i].name
+        if(thisname != ""){
+          regex+=".*"+thisname+".*|"
+        }
+      }
+      regex = regex.slice(0,-1)
+      if(regex==""){ // nothing to search for? we should return no results
+        return []
+      }
+      var search = new RegExp(regex,'i')
+      // don't include bonfires the user is already in
+      thisUsersBonfires=Memberships.find(
+        {user_id:Meteor.userId()},
+        {fields:{user_id: 0}}).fetch()
+
+      thisUsersBonfireIds=[]
+      for(var i=0;i<thisUsersBonfires.length;i++){
+        thisUsersBonfireIds.push(thisUsersBonfires[i].bonfire_id)
+      }
+
+      // construct the query: bonfires the user is not in, which match the search term
+      output=Bonfires.find(
+          {$and: 
+            [
+              {_id:{$nin:thisUsersBonfireIds}},
+              {$or: [
+                {bonfireName: {$regex: search}},
+                {bonfireDescription:{$regex: search}}]}
+            ]
+          }
+        )
+      return output
+    }else{// without a profile we can't predict any bonfires
+      return []
+    }
+  }
+
   // yours is the list of all your bonfires
   Template.bonfires.yours = function(){
     allYourBonfires = Memberships.find(
@@ -76,12 +129,24 @@ if (Meteor.isClient) {
     return output
   }
 
+  Template.bonfires.helpers({
+    // should we display the help text?
+    'userNeedsHelp':function(){
+      thisUser=Meteor.users.findOne({_id:Meteor.userId()})
+      if(thisUser && thisUser.profile && thisUser.profile.understandsBonfires){
+        return false
+      }else{
+        return true
+      }
+    },
+  })
+
   // events on the all bonfires page
   Template.bonfires.events({
 
-    // remove the help text div
+    // record that we don't need to display the help text div
     'click #gotit':function(){
-      $('#bonfires_helptext').css('display','none')
+      Meteor.call("userUnderstandsBonfires",Meteor.userId())
     },
 
     // display the popover window for adding a new bonfire
@@ -129,15 +194,15 @@ if (Meteor.isClient) {
 
 
   // the correct text for the join/leave button as detected from the data
-  Template.bonfireShow.status = function(){
+  Template.bonfireShow.member = function(){
     mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:this._id})
-          var textfields = $('.toggle');
+          //var textfields = $('.toggle');
     if(mem){// user is in this bonfire!
-      textfields.prop('disabled', false);
-      return "Leave"
+      //textfields.prop('disabled', false);
+      return true
     }else{
-      textfields.prop('disabled', true);
-      return "Join"
+      //textfields.prop('disabled', true);
+      return false
     }
   }
 
@@ -156,9 +221,46 @@ if (Meteor.isClient) {
   // for accessing members' profile data to be displayed
   Template.bonfireShow.helpers({
     name: function(id){
-      return Meteor.users.findOne({_id:id}).profile.name},
+      userProf=Meteor.users.findOne({_id:id}).profile
+      if(userProf){
+        return userProf.name=="" ? "Anonymous User" : userProf.name
+      }else{
+        return "Anonymous User"
+      }
+    },
+    summary: function(id){
+      userProf=Meteor.users.findOne({_id:id}).profile
+      if(userProf){
+        var company
+        if(userProf.companies[0]){
+          company=userProf.companies[0].name
+        }else{
+          company=""
+        }
+        var school
+        var year;
+        if(userProf.schools[0]){
+          school=userProf.schools[0].name
+          year = userProf.schools[0].toyear
+        }else{
+          year=""
+          school=""
+        }
+
+        var output=company+" | "+ school + " " + year
+        if(company==""){
+          output=school+" "+year
+        }else if(school==""){
+          output=company
+        }
+        return output
+
+      }else{
+        return ""
+      }
+    },
+    // the following are deprecated and not safe
     company: function(id){
-      console.log(Meteor.users.findOne({_id:id}).profile.companies)
       return Meteor.users.findOne({_id:id}).profile.companies[0].name},
     school: function(id){
       return Meteor.users.findOne({_id:id}).profile.schools[0].name},
@@ -186,6 +288,7 @@ if (Meteor.isClient) {
     // join or leave the bonfire
     'click #joinleave': function(e) {
       Meteor.call('toggleMember',Meteor.userId(),this._id)
+      //console.log(this._id)
     },
 
     // maek a new post
@@ -214,13 +317,89 @@ if (Meteor.isClient) {
   // Get the correct data to display in the message template
   Template.message.helpers({
     name: function(id){
-      return Meteor.users.findOne({_id:id}).profile.name},
+      user=Meteor.users.findOne({_id:id})
+      if(user && user.profile){
+        return user.profile.name
+      }
+      return "Anonymous User";
+    },
     timestamp: function(){
-      return this.date
+      var day = this.date.getDay();
+      switch(day) {
+        case 0: 
+          d = "Sunday ";
+          break;
+        case 1:
+          d = "Monday ";
+          break;
+        case 2:
+          d = "Tuesday ";
+          break;
+        case 3:
+          d = "Wednesday ";
+          break;
+        case 4:
+          d = "Thursday ";
+          break;
+        case 5:
+          d = "Friday ";
+          break;
+        case 6:
+          d = "Saturday ";
+          break;
+      }
+      var month = this.date.getMonth();
+      switch(month){
+        case 0:
+          m = "Jan. ";
+          break;
+        case 1:
+          m = "Feb. ";
+          break;
+        case 2:
+          m = "Mar. ";
+          break;
+        case 3:
+          m = "Apr. ";
+          break;
+        case 4:
+          m = "May "
+          break;
+        case 5:
+          m = "Jun. "
+          break;
+        case 6:
+          m = "Jul. ";
+          break;
+        case 7:
+          m = "Aug. "
+          break;
+        case 8: 
+          m = "Sept."
+          break;
+        case 9:
+          m = "Oct. ";
+          break;
+        case 10:
+          m = "Nov. ";
+          break;
+        case 11:
+          m = "Dec. ";
+          break;
+      }
+      return m + this.date.getDate() + ", " + this.date.getFullYear() + " " + this.date.getHours() + ":" + this.date.getMinutes();
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
       return output
+    },
+    member: function(bonfire_id){
+      mem = Memberships.findOne({user_id:Meteor.userId(),bonfire_id:bonfire_id})
+      if(mem){
+        return true
+      }else{
+        return false
+      }
     }
   });
 
@@ -255,9 +434,140 @@ if (Meteor.isClient) {
   // get the correct data to display in the reply template
   Template.reply.helpers({
     name: function(id){
-      return Meteor.users.findOne({_id:id}).profile.name},
+      user=Meteor.users.findOne({_id:id})
+      if(user && user.profile){
+        return user.profile.name
+      }
+      return "Anonymous User";
+    },
     timestamp: function(){
-      return this.date
+      var day = this.date.getDay();
+      switch(day) {
+        case 0: 
+          d = "Sunday ";
+          break;
+        case 1:
+          d = "Monday ";
+          break;
+        case 2:
+          d = "Tuesday ";
+          break;
+        case 3:
+          d = "Wednesday ";
+          break;
+        case 4:
+          d = "Thursday ";
+          break;
+        case 5:
+          d = "Friday ";
+          break;
+        case 6:
+          d = "Saturday ";
+          break;
+      }
+      var month = this.date.getMonth();
+      switch(month){
+        case 0:
+          m = "Jan. ";
+          break;
+        case 1:
+          m = "Feb. ";
+          break;
+        case 2:
+          m = "Mar. ";
+          break;
+        case 3:
+          m = "Apr. ";
+          break;
+        case 4:
+          m = "May "
+          break;
+        case 5:
+          m = "Jun. "
+          break;
+        case 6:
+          m = "Jul. ";
+          break;
+        case 7:
+          m = "Aug. "
+          break;
+        case 8: 
+          m = "Sept."
+          break;
+        case 9:
+          m = "Oct. ";
+          break;
+        case 10:
+          m = "Nov. ";
+          break;
+        case 11:
+          m = "Dec. ";
+          break;
+      }
+      var day = this.date.getDay();
+      switch(day) {
+        case 0: 
+          d = "Sunday ";
+          break;
+        case 1:
+          d = "Monday ";
+          break;
+        case 2:
+          d = "Tuesday ";
+          break;
+        case 3:
+          d = "Wednesday ";
+          break;
+        case 4:
+          d = "Thursday ";
+          break;
+        case 5:
+          d = "Friday ";
+          break;
+        case 6:
+          d = "Saturday ";
+          break;
+      }
+      var month = this.date.getMonth();
+      switch(month){
+        case 0:
+          m = "Jan. ";
+          break;
+        case 1:
+          m = "Feb. ";
+          break;
+        case 2:
+          m = "Mar. ";
+          break;
+        case 3:
+          m = "Apr. ";
+          break;
+        case 4:
+          m = "May "
+          break;
+        case 5:
+          m = "Jun. "
+          break;
+        case 6:
+          m = "Jul. ";
+          break;
+        case 7:
+          m = "Aug. "
+          break;
+        case 8: 
+          m = "Sept."
+          break;
+        case 9:
+          m = "Oct. ";
+          break;
+        case 10:
+          m = "Nov. ";
+          break;
+        case 11:
+          m = "Dec. ";
+          break;
+      }
+      return d + m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + this.date.getHour() + ":" + this.date.getMinutes();
     },
     is_mine: function(message_id){
       output=Meteor.userId()==Messages.findOne({_id:message_id}).user_id
@@ -272,7 +582,66 @@ if (Meteor.isClient) {
       Meteor.call("deleteMessage",this._id,Meteor.userId())
     }
     // no more methods here -- you can't reply to a reply
+  });
+
+  /********************
+      Bonfire Map
+  ***********************/
+
+  Template.bonfireMap.helpers({
+    bonfireName: function (){
+      return Bonfires.findOne({_id: this._id}).bonfireName
+    },
   })
+
+  Template.bonfireMap.rendered=function(){
+    geocoder = new google.maps.Geocoder();
+    var mapOptions = {
+      center: new google.maps.LatLng(37.759, -122.442),
+      zoom: 12
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),
+        mapOptions);
+    members = Memberships.find({bonfire_id:this.data._id}).fetch()
+
+    positions=[]
+    done=[]
+    for(var i=0;i<members.length;i++){
+      thisUser=Meteor.users.findOne({_id:members[i].user_id})
+      var lat = '';
+      var lng = '';
+      var address = thisUser.profile.zip;
+      console.log(address)
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        done.push("yes")
+        if (status == google.maps.GeocoderStatus.OK) {
+           lat = results[0].geometry.location.lat();
+           lng = results[0].geometry.location.lng();
+          console.log('Latitude: ' + lat + ' Logitude: ' + lng);
+          positions.push(new google.maps.LatLng(lat, lng))
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng),
+            icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          });
+          marker.setMap(map); 
+        } else {
+          console.log("Geocode was not successful for the following reason: " + status);
+        }
+        if(done.length==members.length){
+          console.log("done!")
+          console.log(positions)
+          var limits = new google.maps.LatLngBounds();
+          for(var i=0;i<positions.length;i++){
+            limits.extend(positions[i]);
+          }
+          console.log(limits)
+          map.fitBounds(limits);
+        }
+      });
+    }
+
+
+  }
 
 
 
@@ -285,7 +654,7 @@ if (Meteor.isClient) {
 
   Template.signup.events({
     // add the user's profile info when they click go
-    'click #GoButton': function(e){
+    'click .saveProfile': function(e){
       comps=[]
       // loop through all visible company input boxes
       company_names=$('[name="company"]')
@@ -337,21 +706,46 @@ if (Meteor.isClient) {
         zip : $('[name="zip"]').val(),
         companies: comps,
         schools: schools,
+        understandsBonfires:false,
       }
       Meteor.call("setProfile",Meteor.userId(),profile)
     },
     'click #addJob': function(e){
       var profile=Meteor.user().profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+          understandsBonfires:false,
+        }
+      }
+
       profile.companies.push({
         name:null,
         title:null,
         fromyear : null,
         toyear : null,
       })
+      
+
       Meteor.call("setProfile",Meteor.userId(),profile)
     },
     'click #addSchool': function(e){
       var profile=Meteor.user().profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+          understandsBonfires:false,
+        }
+      }
+
       profile.schools.push({
         name:null,
         major:null,
@@ -396,14 +790,13 @@ if (Meteor.isServer) {
       membership = Memberships.findOne({user_id:userId,bonfire_id:bonfireId})
       if(membership){ // user is already a member
         Memberships.remove(membership)
-        console.log('removed a membership');
+
         return false;
       }else{
         Memberships.insert({
           user_id: userId,
           bonfire_id: bonfireId
         })
-        console.log('added a membership');
         return true;
       }
     },
@@ -452,7 +845,26 @@ if (Meteor.isServer) {
     // server side code for setting the user's profile
     setProfile: function(userId,profileIn){
       Meteor.users.update({_id:userId},{$set:{profile:profileIn}})
+    },
+
+    userUnderstandsBonfires: function(userId){
+      var profile=Meteor.users.findOne({_id:userId}).profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+          understandsBonfires:false,
+        }
+      }
+      profile.understandsBonfires=true
+      Meteor.call("setProfile", userId, profile)
+      
     }
+
+
   });
 
 
