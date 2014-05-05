@@ -93,9 +93,6 @@
     overflow: hidden;
 }
 
-<<<<<<< HEAD
-
-
 #bonfires_yours li{
     display:inline;
 }
@@ -108,11 +105,7 @@
 }
 
 
-
-=======
->>>>>>> e760ddfdd06bf3ff0b2e2ce3a9bcb493ea9c1f31
-@media (min-width: 580px) {
-    #bonfire_list, #bonfires_yours {
+#bonfire_list, #bonfires_yours {
         width: 460px;
     }
 }
