@@ -99,7 +99,7 @@
 					
 	}
 
-	/*.navButtons
+	.navButtons
 	{
 		text-align: center;
 		margin-top: 120px;
@@ -109,6 +109,7 @@
 	.navMenu{
 		float:right;
 	}
+	/*
 .navHeading{
 	display:block;
 	margin: 0 0 0 0;
