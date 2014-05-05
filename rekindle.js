@@ -192,6 +192,13 @@ if (Meteor.isClient) {
       Single bonfire page
   ************************/ 
 
+  Template.bonfireShow.rendered = function() {
+    var h = this.$("#posts").height();
+    this.$("#memberslist").height(h);
+    console.log("merp");
+    console.log(h);
+  }
+
 
   // the correct text for the join/leave button as detected from the data
   Template.bonfireShow.member = function(){
@@ -393,7 +400,6 @@ if (Meteor.isClient) {
         min = "0" + min;
       }
       if (hr.length == 1){
-        console.log("hour");
         hr = "0" + hr;
       }
       return m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + hr + ":" + min;
@@ -582,7 +588,6 @@ if (Meteor.isClient) {
         min = "0" + min;
       }
       if (hr.length == 1){
-        console.log("hour");
         hr = "0" + hr;
       }
       return m + this.date.getDate() + ", " + this.date.getFullYear() + ", " + hr + ":" + min;
