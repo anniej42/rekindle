@@ -65,7 +65,6 @@ transition-timing-function: ease-in-out;
 #bonfire_list li{
     display:inline;
     float:left;
-    
 }
 #bonfire_list_bottom{
     display:block;
@@ -77,6 +76,20 @@ transition-timing-function: ease-in-out;
     margin-left:auto;
     margin-right:auto;
 }
+
+
+
+#bonfires_yours li{
+    display:inline;
+}
+
+#bonfires_yours{
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 
 @media (min-width: 580px) {
