@@ -195,8 +195,6 @@ if (Meteor.isClient) {
   Template.bonfireShow.rendered = function() {
     var h = this.$("#posts").height();
     this.$("#memberslist").height(h);
-    console.log("merp");
-    console.log(h);
   }
 
 
@@ -294,8 +292,13 @@ if (Meteor.isClient) {
 
     // join or leave the bonfire
     'click #joinleave': function(e) {
-      Meteor.call('toggleMember',Meteor.userId(),this._id)
-      //console.log(this._id)
+      var bool = true;
+      if ($("#joinleave").html() == 'Leave') {
+        bool = confirm("Are you sure you want to leave " + this.bonfireName + "?");
+      }
+      if (bool) {
+        Meteor.call('toggleMember',Meteor.userId(),this._id);
+      }
     },
 
     // maek a new post
