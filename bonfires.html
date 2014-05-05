@@ -14,9 +14,8 @@
         <ul>
         {{#each yours}}
         <li><a href="{{pathFor 'bonfireShow'}}" class="goToBonfire">
-            <div class="bonfire_button" style=
-            "background-image: url('{{bonfireImage}}');">
-            <div class="bonfire_name"><span class="black_background"><span>{{bonfireName}}</span></span></div></div></a></li>
+            <div class="bonfire_button" style="background-image: url('{{bonfireImage}}'); border: 5px solid white">
+            <div class="bonfire_name"><div class="black_background"><span>{{bonfireName}}</span></div></div></div></a></li>
         {{/each}}
         </ul>
     </div>

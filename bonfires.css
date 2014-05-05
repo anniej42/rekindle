@@ -2,6 +2,7 @@
 	   font-family: Avenir;
         src: url(avenir.ttc);
 }
+
 .subtitle{
 	text-align:center;
 	position:relative;
@@ -11,9 +12,11 @@
 .subtitle span{
     font-size:30pt;
 }
+
 .rule_middle{
 	display:inline-block;
 }
+
 .rule_middle:before,
 .rule_middle:after {
 	border-style: none none solid none;
@@ -29,6 +32,7 @@
     left: 0;
     top: 0.5em;
 }
+
 .rule_middle:after {
    right: 0;  
    left: auto; 
@@ -37,7 +41,6 @@
 
 .bonfire_button{
     display: block;
-    padding: 10px;
     /*border: 1px solid red;*/
     margin-right: 25px;
     margin-left:25px;
@@ -72,54 +75,56 @@
 
     }
 
-#bonfire_list li{
+#bonfire_list li, #bonfires_yours li{
     display:inline;
-    float:left;
-    
+    float:left;    
 }
+
 #bonfire_list_bottom{
     display:block;
     clear:both;
 }
-#bonfire_list{
+
+#bonfire_list, #bonfires_yours{
     display:block;
     text-align:center;
     margin-left:auto;
     margin-right:auto;
 }
 
-
 @media (min-width: 580px) {
-    #bonfire_list{
+    #bonfire_list, #bonfires_yours {
         width: 460px;
     }
 }
 
 @media (min-width: 920px) {
-    #bonfire_list{
+    #bonfire_list, #bonfires_yours {
         width: 820px;
     }
 }
 
 @media (min-width: 1280px) {
-    #bonfire_list{
+    #bonfire_list, #bonfires_yours {
         width: 1180px;
     }
 }
 
 @media (min-width: 1640px) {
-    #bonfire_list{
+    #bonfire_list, #bonfirse_yours {
         width: 1540px;
     }
 }
-#bonfire_head{
+
+#bonfire_head {
     line-height:1.5em;
 }
 
 #bonfire_list a, #bonfires_yours a {
     text-decoration:none;
 }
-.bonfire_name{
+
+.bonfire_name {
     text-align:center;
     vertical-align:middle;
     /*line-height:290px;*/
@@ -127,12 +132,17 @@
     color:#FFFFFF;
     opacity:0.9;
     font-size:34pt;
+    background-color: rgba(0,0,0, 0.7);
+    border-radius: 100%;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    height: 290px;
+    width: 290px;
 }
 
 .black_background {
     line-height: 290px;
     text-align: center;
-    display: inline-block;
 }
 
 .black_background > span {
@@ -140,12 +150,9 @@
     vertical-align: middle;
     line-height: 1.1em;
     text-align: center;
-    background-color: rgba(0,0,0, 0.7);
 }
 
-
-
-.bonfire_add_new{
+.bonfire_add_new {
     text-align:center;
     vertical-align:middle;
     line-height:290px;
@@ -154,18 +161,19 @@
     font-size:54pt;
 }
 
-#bonfires_yours{
+#bonfires_yours {
     margin-top:25px;
     margin-bottom:25px;
     font-size:14pt;
 }
-#bonfires_helptext{
+
+#bonfires_helptext {
     margin-top:0px;
     margin-bottom:15px;
     font-size:14pt;
 }
 
-#bonfire_stanford85{
+#bonfire_stanford85 {
     background-image: url('stanford85.png');
 
 }
@@ -189,16 +197,15 @@
     text-align:center;
 }
 
-
 #exitNewBonfire {
-float: right;
-margin-top: -57px;
-margin-right: 0px;
-cursor: pointer;
-color: #eee;
-font-size: 31px;
-display: inline-block;
-line-height: 0px;
+    float: right;
+    margin-top: -57px;
+    margin-right: 0px;
+    cursor: pointer;
+    color: #eee;
+    font-size: 31px;
+    display: inline-block;
+    line-height: 0px;
 }
 
 
