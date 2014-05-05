@@ -70,7 +70,8 @@
 
 <template name="message">
 	<div class="post">
-	<div class="icon"></div>
+		{{#if is_mine _id}}<a href="{{pathFor 'signup'}}"><div class="icon"></div></a>
+		{{else}}<div class="icon"></div>{{/if}}
 	<div class="post-text">
 		{{#if is_mine _id}}<div class="deleteMessage">x</div>{{/if}}
 		<b>{{name user_id}} - {{timestamp _id}}</b>
@@ -96,7 +97,8 @@
 
 	<template name="reply">
 		<div class="post reply">
-		<div class="icon"></div>
+		{{#if is_mine _id}}<a href="{{pathFor 'signup'}}"><div class="icon"></div></a>
+		{{else}}<div class="icon"></div>{{/if}}
 		<div class="post-text">
 			{{#if is_mine _id}}<div class="deleteMessage">x</div>{{/if}}
 			<b>{{name user_id}} - {{timestamp _id}}</b>
