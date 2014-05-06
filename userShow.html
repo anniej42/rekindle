@@ -1,0 +1,27 @@
+<template name="userShow">
+	<div id="userShow">
+		<p>Name: {{profile.name}}</p>
+		<p>Zip: {{profile.zip}}</p>
+		{{#with profile.zip}}
+			{{> userMap}}
+		{{/with}}
+
+		<h2>Schools:</h2> 
+		{{#each profile.schools}}
+			<p>Name: {{name}} </p>
+			<p>Major: {{major}} </p>
+			<p>Years: {{fromyear}} - {{toyear}}</p>
+		{{/each}}
+
+		<h2>Jobs:</h2> 
+		{{#each profile.companies}}
+			<p>Name: {{name}} </p>
+			<p>Title: {{title}} </p>
+			<p>Years: {{fromyear}} - {{toyear}}</p>
+		{{/each}}
+	</div>
+</template>
+
+<template name="userMap">
+	<div id="user_map_canvas"></div>
+</template> 

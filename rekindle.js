@@ -11,6 +11,10 @@ Router.map(function() {
     path:'/bonfires/:_id',
     data: function(){return Bonfires.findOne(this.params._id); }
   });
+  this.route('userShow',{
+    path:'/users/:_id',
+    data: function(){return Meteor.users.findOne(this.params._id); }
+  });
   this.route('bonfireMap',{
     path:'/bonfires/:_id/map',
     data: function(){return {_id: this.params._id}; }
@@ -785,7 +789,41 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.userMap.rendered=function(){
+    geocoder = new google.maps.Geocoder();
+    var lat = '';
+    var lng = '';
+    var address = this.data
+    console.log(address)
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+         lat = results[0].geometry.location.lat();
+         lng = results[0].geometry.location.lng();
+        console.log('Latitude: ' + lat + ' Logitude: ' + lng);
+        var mylocation = new google.maps.LatLng(lat, lng)
+        var marker = new google.maps.Marker({
+          position: mylocation,
+          icon:'http://www.makeupandbeautyblog.com/wp-content/uploads/2010/02/small-fire-icon.gif'
+        });
+        var mapOptions = {
+          center: mylocation,
+          zoom: 6
+        };
+        var map = new google.maps.Map(document.getElementById("user_map_canvas"),
+            mapOptions);
+        marker.setMap(map); 
+      } else {
+        console.log("Geocode was not successful for the following reason: " + status);
+      }
+    });
+    
+
+
+  }
+
 }
+
+
 
 
 

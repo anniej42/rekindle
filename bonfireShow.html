@@ -32,8 +32,10 @@
 	    			Members
 	    			<div id="memberslist">
 	    				{{#each members}}
+							<a href="{{pathFor 'userShow' _id=this._id}}"><div>
 	    					<img src="http://i.imgur.com/tvlf9jv.png">
-	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{summary _id}}</div>
+
+	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{summary _id}}</div></div></a>
 	    				<br>
 	    				{{/each}}
 	    				<a href="{{pathFor 'bonfireMap' _id=this._id}}"><div class="button" id="maplink">Where are they now?</div></a>
