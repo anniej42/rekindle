@@ -153,10 +153,8 @@
 	{
 		font-family: avenir;
 		font-size: 0.7em;
-		position: absolute;
-		right: 13px;
-		bottom: 13px;
-		margin-right: 0px !important;
+		margin-top: 10px;
+		
 	}
 
 	.add
