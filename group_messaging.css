@@ -56,7 +56,12 @@ td.bonfireShow:first-child {
 	width: 50px;
 	background-color: #FFFFFF;
 	float: left;
-	border: 2px dashed black;
+/*	border: 2px dashed black;*/
+}
+
+.icon > img{
+	max-width:100%;
+	max-height:100%;
 }
 
 .post {
