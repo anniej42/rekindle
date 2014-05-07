@@ -140,13 +140,14 @@
     border-radius: 100%;
     -moz-border-radius: 100%;
     -webkit-border-radius: 100%;
-    height: 290px;
-    width: 290px;
+    height: 280px;
+    width: 280px;
 }
 
 .black_background {
-    line-height: 290px;
+    line-height: 280px;
     text-align: center;
+
 }
 
 .black_background > span {

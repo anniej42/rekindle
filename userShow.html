@@ -1,24 +1,35 @@
 <template name="userShow">
 	<div id="userShow">
-		<p>Name: {{profile.name}}</p>
-		<p>Zip: {{profile.zip}}</p>
-		{{#with profile.zip}}
-			{{> userMap}}
-		{{/with}}
+		<h1 id="userHeading">{{profile.name}}</h1>
+		<hr>
+		<table><tr>
+			<td id="user_dummy_td"></td>
 
-		<h2>Schools:</h2> 
-		{{#each profile.schools}}
-			<p>Name: {{name}} </p>
-			<p>Major: {{major}} </p>
-			<p>Years: {{fromyear}} - {{toyear}}</p>
-		{{/each}}
+			<td>
+				<div class="user_info_box">
+				<h2>Work</h2> 
+				{{#each profile.companies}}
+					<p class="user_info_main" s><span class="user_info_name">{{name}}</span> <span class="user_info_years"> {{fromyear}} - {{toyear}} </span></p>
+					<p class="user_info_sub"><span >Title: {{title}} </span></p>
+				{{/each}}
+				</div>
+			</td>
+			<td>
+				<div class="user_info_box">
+				<h2>Education</h2> 
+				{{#each profile.schools}}
+					<p class="user_info_main"><span class="user_info_name">{{name}}</span> <span class="user_info_years"> {{fromyear}} - {{toyear}} </span></p>
+					<p class="user_info_sub"><span >Major: {{major}} </span></p>
+				{{/each}}
+				</div>
+			</td>
+			<td>
+				{{#with profile.zip}}
+					{{> userMap}}
+				{{/with}}
+			</td>
 
-		<h2>Jobs:</h2> 
-		{{#each profile.companies}}
-			<p>Name: {{name}} </p>
-			<p>Title: {{title}} </p>
-			<p>Years: {{fromyear}} - {{toyear}}</p>
-		{{/each}}
+		</tr></table>
 	</div>
 </template>
 

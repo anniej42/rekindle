@@ -302,9 +302,9 @@ if (Meteor.isClient) {
   Template.bonfireShow.events({
 
     // join or leave the bonfire
-    'click #joinleave': function(e) {
+    'click .joinleave': function(e) {
       var bool = true;
-      if ($("#joinleave").html() == 'Leave') {
+      if ($(".joinleave").html() == 'Leave') {
         bool = confirm("Are you sure you want to leave " + this.bonfireName + "?");
       }
       if (bool) {
@@ -664,7 +664,7 @@ if (Meteor.isClient) {
           positions.push(new google.maps.LatLng(lat, lng))
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
-            icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            icon:'http://i.imgur.com/a9EUtE6.png'
           });
           marker.setMap(map); 
         } else {
@@ -813,11 +813,12 @@ if (Meteor.isClient) {
         var mylocation = new google.maps.LatLng(lat, lng)
         var marker = new google.maps.Marker({
           position: mylocation,
-          icon:'http://www.makeupandbeautyblog.com/wp-content/uploads/2010/02/small-fire-icon.gif'
+          icon:'http://i.imgur.com/a9EUtE6.png'
         });
         var mapOptions = {
           center: mylocation,
-          zoom: 6
+          zoom: 6,
+          scrollwheel:false,
         };
         var map = new google.maps.Map(document.getElementById("user_map_canvas"),
             mapOptions);
