@@ -244,7 +244,7 @@ navbar-default .navbar-nav > .active > a,
 
 #login-dropdown-list {
 	position: absolute;
-	top: 8px;
+	top: 20px;
 	left: -90px;
 }
 
@@ -331,4 +331,8 @@ navbar-default .navbar-nav > .active > a,
 
 #signup-link:hover {
 	color: gray;
+}
+
+#login-name-link {
+	line-height: 2.1;
 }
