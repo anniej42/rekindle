@@ -231,13 +231,13 @@ navbar-default .navbar-nav > .active > a,
 
 #login-dropdown-list {
 	position: absolute;
-	top: -1px;
-	left: -100px;
+	top: 8px;
+	left: -90px;
 }
 
 #login-buttons-logout {
 	background-color: gray !important;
-	border: 8px !important;
+	border: none !important;
 	-moz-transition: background-color 0.35s ease-in-out;
 	-webkit-transition: background-color 0.35s ease-in-out;
 	-o-transition: background-color 0.35s ease-in-out;
@@ -251,5 +251,23 @@ navbar-default .navbar-nav > .active > a,
 
 #login-button-logout:active
 {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-open-change-password {
+	background-color: gray !important;
+	border: none !important;
+	-moz-transition: background-color 0.35s ease-in-out;
+	-webkit-transition: background-color 0.35s ease-in-out;
+	-o-transition: background-color 0.35s ease-in-out;
+	-ms-transition: background-color 0.35s ease-in-out;
+	transition: background-color 0.35s ease-in-out;
+}
+
+#login-buttons-open-change-password {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-open-change-password {
 	background-color: #ff7800 !important;
 }
