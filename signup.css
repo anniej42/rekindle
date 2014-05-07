@@ -160,9 +160,9 @@
 	.holder
 	{
 		/*position: relative;*/
-		border: 10px dashed #2B2B2B;
+/*		border: 10px dashed #2B2B2B;*/
 		width: 100%; 
-		min-height: 300px; 
+		min-height: 500px; 
 		margin-left : auto;
 		margin-right : auto;
 	}
@@ -170,9 +170,9 @@
 	.small
 	{
 		position: relative;
-		border: 10px dashed #2B2B2B;
+/*		border: 10px dashed #2B2B2B;*/
 		width: 100%; 
-		min-height: 250px; 
+		min-height: 400px; 
 		margin-left : auto;
 		margin-right : auto;
 		text-align: center;
