@@ -789,7 +789,72 @@ if (Meteor.isClient) {
         toyear : null,
       })
       Meteor.call("setProfile",Meteor.userId(),profile)
-    }
+    },
+    'click #picUploadButton': function(e){
+      $('#profUpload').click();
+    },
+
+    'change #profUpload':function(e){
+      file = e.target.files[0];
+      console.log(file);
+
+      // IMGUR API V. 3
+      // if (!file || !file.type.match(/image.*/)) return;
+      
+      // // if it's an image, proceed
+
+      // $.ajax({
+      //   url: 'https://api.imgur.com/3/image',
+      //   method: 'POST',
+      //   headers: {
+      //     Authorization: 'Client-ID '+ "b9644f77763b4c9",
+      //     Accept: 'application/json'
+      //   },
+      //   data: {
+      //     image: file,
+      //     type: 'base64'
+      //   },
+      //   success: function(result) {
+      //     // add in image preview in box
+      // }
+      // });
+
+
+      // IMGUR API V. 2
+      // var fd = new FormData(); 
+      // fd.append("image", file);
+
+      // // my imgur account
+      // fd.append("key", "cee09327eace9f79ce95210f2ca8287a38963b0a");
+      // var xhr = new XMLHttpRequest();
+      // console.log(fd)
+      // xhr.open("https://api.imgur.com/3/gallery.json?callback=POST");
+      // xhr.onload = function() {
+
+      //   // GET THE LINK
+      //       var link = JSON.parse(xhr.responseText).upload.links.imgur_page;
+      // }
+      // xhr.send(fd);
+    },
+
+    'dragover window': function(e) {
+      e.preventDefault()
+      return false
+    },
+    'drop window': function(e) {
+      e.preventDefault()
+      return false
+    },
+
+    'drop #holderProfile': function(e) {
+      e.preventDefault(); 
+      //upload(e.dataTransfer.files[0]); 
+      console.log(e);
+    },
+    
+
+
+
   });
 
   Template.userMap.rendered=function(){
