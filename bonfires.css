@@ -38,6 +38,26 @@
    left: auto; 
 }
 
+a {
+    text-decoration:none;
+    -moz-transition: color 0.25s ease-in-out;
+    -webkit-transition: color 0.25s ease-in-out;
+    -o-transition: color 0.25s ease-in-out;
+    -ms-transition: color 0.25s ease-in-out;
+    transition: color 0.25s ease-in-out;
+}
+
+a:hover{
+    text-decoration:none;
+    color:white;
+}
+    #memberslist > a:link {color:black;}    /* unvisited link */
+    #memberslist > a:visited {color:black;} /* visited link */
+    #memberslist a:hover {
+        color:#ff7800;
+        text-decoration:none;}   /* mouse over link */
+    #memberslist > a:active {color:black;}  /* selected link */
+
 
 .bonfire_button{
     display: block;
