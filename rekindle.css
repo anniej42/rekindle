@@ -179,29 +179,33 @@
     color: black;
 }
 .navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
     color: #FFF2E6;
-    background: -webkit-linear-gradient(black, #191919); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(black, #191919); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(black, #191919); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(black, #191919); /* Standard syntax */
+    background: -webkit-linear-gradient(black, #333333); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(black, #333333); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(black, #333333); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(black, #333333); /* Standard syntax */
+}
+/*
+navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:focus, {
+    color: #FFF2E6;
+    background: -webkit-linear-gradient(black, #191919); 
+	background: -o-linear-gradient(black, #191919); 
+	background: -moz-linear-gradient(black, #191919); 
+	background: linear-gradient(black, #191919); 
 }
 
-.navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #FFF2E6;
-    background: -webkit-linear-gradient(black, #191919); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(black, #191919); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(black, #191919); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(black, #191919); /* Standard syntax */
-}
 .navbar-default .navbar-nav > .active > a:hover{
 	color: #FFF2E6;
-	background: -webkit-linear-gradient(black, #191919); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(black, #191919); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(black, #191919); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(black, #191919); /* Standard syntax */
-}
+	background: -webkit-linear-gradient(black, #191919);
+	background: -o-linear-gradient(black, #191919);
+	background: -moz-linear-gradient(black, #191919);
+	background: linear-gradient(black, #191919);
+} */
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
