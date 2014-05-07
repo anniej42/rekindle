@@ -810,7 +810,8 @@ if (Meteor.isClient) {
         });
         var mapOptions = {
           center: mylocation,
-          zoom: 6
+          zoom: 6,
+          scrollwheel:false,
         };
         var map = new google.maps.Map(document.getElementById("user_map_canvas"),
             mapOptions);
