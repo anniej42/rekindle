@@ -31,7 +31,7 @@ Bonfires = new Meteor.Collection('bonfires');
 Messages = new Meteor.Collection('messages');
 Memberships = new Meteor.Collection('memberships');
 var Images = new FS.Collection("images", {
-  stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
+  stores: [new FS.Store.FileSystem("images", {path: "./uploads"})]
 });
 // also accessible: Meteor.users
 
