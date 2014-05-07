@@ -1210,7 +1210,6 @@ if (Meteor.isServer) {
     },
 
     populateSchools: function(){
-      console.log("fuck");
       return JSON.parse(Assets.getText('uscolleges.json'));
     }
 
