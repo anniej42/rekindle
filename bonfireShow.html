@@ -43,16 +43,17 @@
 
 	    			<div id="memberslist">
 	    				{{#each members}}
-							<a href="{{pathFor 'userShow' _id=this._id}}"><div>
+	    					<div id="member_image">
+							<div>
 							{{#if prof_pic_image this._id}}
 			                    {{#with prof_pic_image this._id}}
 			                        <img src="{{this.url}}">
 			                    {{/with}}
 			                {{else}}
 			                    <img src="http://i.imgur.com/nKu9LkJ.png">
-			                {{/if}}
-
-	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{summary _id}}</div></div></a>
+			                {{/if}}</div>
+							<a href="{{pathFor 'userShow' _id=this._id}}">
+	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{summary _id}}</div></a></div>
 	    				<br>
 	    				{{/each}}
 	    				<a href="{{pathFor 'bonfireMap' _id=this._id}}"><div class="smallbutton" id="maplink">Where are they now?</div></a>
@@ -71,7 +72,7 @@
 
 <template name="message">
 	<div class="post">
-	{{#if is_mine _id}}<a href="{{pathFor 'signup'}}"><div class="icon">
+<a href="{{pathFor 'userShow' _id=this.user_id}}"><div class="icon">
 
 							{{#if prof_pic_image user_id}}
 			                    {{#with prof_pic_image user_id}}
@@ -81,16 +82,7 @@
 			                    <img src="http://i.imgur.com/nKu9LkJ.png">
 			                {{/if}}
 </div></a>
-		{{else}}<div class="icon">
 
-							{{#if prof_pic_image user_id}}
-			                    {{#with prof_pic_image user_id}}
-			                        <img src="{{this.url}}">
-			                    {{/with}}
-			                {{else}}
-			                    <img src="http://i.imgur.com/nKu9LkJ.png">
-			                {{/if}}
-	</div>{{/if}}
 	<div class="post-text">
 		{{#if is_mine _id}}<div class="deleteMessage">x</div>{{/if}}
 		<b>{{name user_id}} - {{timestamp _id}}</b>
@@ -116,25 +108,15 @@
 
 	<template name="reply">
 		<div class="post reply">
-		{{#if is_mine _id}}<a href="{{pathFor 'signup'}}"><div class="icon">
+<a href="{{pathFor 'userShow' _id=this.user_id}}"><div class="icon">
 							{{#if prof_pic_image user_id}}
 			                    {{#with prof_pic_image user_id}}
 			                        <img src="{{this.url}}">
 			                    {{/with}}
 			                {{else}}
-			                    <img src="http://i.imgur.com/nKu9LkJ.png">
+			                    <img src="http://i.imgur.com/nKu9LkJ.png" alt="Add a profile pic!">
 			                {{/if}}
 	</div></a>
-		{{else}}<div class="icon">
-
-							{{#if prof_pic_image user_id}}
-			                    {{#with prof_pic_image user_id}}
-			                        <img src="{{this.url}}">
-			                    {{/with}}
-			                {{else}}
-			                    <img src="http://i.imgur.com/nKu9LkJ.png">
-			                {{/if}}
-	</div>{{/if}}
 		<div class="post-text">
 			{{#if is_mine _id}}<div class="deleteMessage">x</div>{{/if}}
 			<b>{{name user_id}} - {{timestamp _id}}</b>

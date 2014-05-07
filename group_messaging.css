@@ -61,7 +61,9 @@ td.bonfireShow:first-child {
 
 .icon > img{
 	max-width:100%;
+	width:auto;
 	max-height:100%;
+	height:auto;
 }
 
 .post {
@@ -132,9 +134,16 @@ td.bonfireShow:first-child {
 	margin-left: 120px;
 }
 
+#member_image{
+	width:100px;
+	height:100px;
+}
+
 #memberslist img {
-	height: 100px;
-	width: 100px;
+	height: auto;
+	max-width:100%;
+	width: auto;
+	max-height:100%;
 	float: left;
 }
 
