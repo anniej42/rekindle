@@ -1,4 +1,31 @@
 /iron-router
 /blaze-layout
 /bootstrap-3
+<<<<<<< HEAD
 /autocompletion
+=======
+/collectionFS
+/cfs-base-package
+/cfs-file
+/cfs-collection
+/cfs-collection-filters
+/cfs-access-point
+/cfs-worker
+/cfs-upload-http
+/cfs-filesaver
+/cfs-storage-adapter
+/http-methods
+/numeral
+/data-man
+/cfs-upload-ddp
+/http-publish
+/cfs-gridfs
+/cfs-tempstore
+/power-queue
+/reactive-list
+/cfs-graphicsmagick
+/cfs-ejson-file
+/cfs-filesystem
+/reactive-property
+/micro-queue
+>>>>>>> 0fc944e59e1c40fd6ead13110cd64c037a212d67

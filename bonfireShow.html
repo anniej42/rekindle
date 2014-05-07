@@ -9,10 +9,10 @@
 	<form>
 		<table>
 			<tr>
-				<td id="members">
+				<td class="bonfireShow memberstitle">
 	    			{{#if member}}
 	    			Members
-	    			<button type="button" class="joinleave" id="leavebutton">Leave</button>
+	    			<button type="button" class="joinleave smallbutton" id="leavebutton">Remove Me</button>
 	    			{{else}}
 	    			Members
 	    			{{/if}}
@@ -21,21 +21,25 @@
 
 	    		{{#if member}}
 
-	    		<td id="newpost">
-	    			Submit a new post:
+	    		<td class="bonfireShow" id="newpost">
+	    			Submit a new post: <br>
 	    			<textarea rows="1" class="text toggle" id="newpost-textfield" name="newpost-text" onfocus="this.rows = 3" onblur="if (this.val == '') this.rows = 1"></textarea>
-	    			<button type="button" class="button" id="newpost-button">Post</button>
+	    			<button type="button" class="smallbutton" id="newpost-button">Post</button>
 	    			
 	    		</td>
 	    		{{else}}
 	    		<td id="join">
-	    			<button type="button" class="joinleave" id="joinleave">Join</button>
+	    			<button type="button" class="joinleave button" id="joinleave">Join</button>
 	    		</td>
 	    		{{/if}}
 
 	    	</tr>
 	    	<tr>
-	    		<td id="members">
+	    		<td style="height:10px" colspan="2">
+	    		</td>
+	    	</tr>
+	    	<tr>
+	    		<td class="bonfireShow" id="members">
 
 	    			<div id="memberslist">
 	    				{{#each members}}
@@ -49,7 +53,7 @@
 	    			</div>
 	    		</td>
 
-	    		<td id="posts">
+	    		<td class="bonfireShow" id="posts">
 	    			{{#each messages}}
 	    				{{> message}}
 					{{/each}}</td>
@@ -79,7 +83,7 @@
 		<form>
 		<textarea rows="1" class="toggle reply-textfield" id = "reply-textfield-{{_id}}" name="reply-text" placeholder="Reply..." onfocus="this.rows = 3" onblur="if (this.val == '') this.rows = 1"></textarea>
 		<input type="hidden" name="parent_id" value="{{_id}}">
-		<div class="spacing"><button type="button" class="button reply-button">Reply</button></div></form>
+		<button type="button" class="smallbutton reply-button">Reply</button></form>
 
 		{{/if}}
 	</div>

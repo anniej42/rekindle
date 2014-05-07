@@ -1,5 +1,5 @@
 
-<template name="bonfireShow">
+<template name="bonfireShowOld">
     <div id="stanford85" class="title">
     <h1>{{bonfireName}}</h1>
     </div>
@@ -70,7 +70,7 @@
 	</form>
 </template>
 
-<template name="message">
+<template name="messageOld">
 	<div class="post">
 	{{#if is_mine _id}}<a href="{{pathFor 'signup'}}"><div class="icon"></div></a>
 		{{else}}<div class="icon"></div>{{/if}}
@@ -97,7 +97,7 @@
 	{{/if}}
 	</template>
 
-	<template name="reply">
+	<template name="replyOld">
 		<div class="post reply">
 		{{#if is_mine _id}}<a href="{{pathFor 'signup'}}"><div class="icon"></div></a>
 		{{else}}<div class="icon"></div>{{/if}}

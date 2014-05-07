@@ -30,6 +30,9 @@ Where the data is stored
 Bonfires = new Meteor.Collection('bonfires');
 Messages = new Meteor.Collection('messages');
 Memberships = new Meteor.Collection('memberships');
+var Images = new FS.Collection("images", {
+  stores: [new FS.Store.FileSystem("images", {path: "./uploads"})]
+});
 // also accessible: Meteor.users
 
 
@@ -38,10 +41,54 @@ Memberships = new Meteor.Collection('memberships');
 *********************************/
 
 if (Meteor.isClient) {
-
   /*****************
-      Menu
+      Navigation
   *****************/  
+
+  var getPageURL = function() {
+    var current_url = window.location.href + "";
+    var url_array = current_url.split("/");
+    var url_page = url_array.pop();
+    return url_page;
+  }
+
+  var resetActiveLinks = function() {
+    document.getElementById("bonfires").className = "";
+    document.getElementById("signup").className = "";
+    document.getElementById("about").className = "";
+  }
+
+  Template.menu.events({
+    'click .nav': function(e) {
+      var link = e.target.id;
+      resetActiveLinks();
+
+      if (link == "bonfirespage") {
+        document.getElementById("bonfires").className = "active";
+      }
+      else if (link == "signuppage") {
+        document.getElementById("signup").className = "active";
+      }
+      else if (link == "aboutpage") {
+        document.getElementById("about").className = "active";
+      }
+      else if (link == "welcomepage") {
+        console.log("here");
+        resetActiveLinks();
+      }
+    }
+  })
+
+  // Reset scroll to top of the page when navigating to new page
+  Deps.autorun(function () {
+    var current = Router.current();
+
+    Deps.afterFlush(function () {
+      $('.content-inner').scrollTop(0);
+      $(window).scrollTop(0);
+    });
+  });
+
   var menuactivated=false
   Template.menu.events({
     'click .navHeading': function(e){
@@ -680,12 +727,47 @@ if (Meteor.isClient) {
   }
 
 
+  Template.userShow.helpers({
+    prof_pic_image:function(){
+      user=Meteor.users.findOne({_id: this._id})
+      console.log(user)
+      if(user){
+        profile=user.profile
+        console.log(profile)
+        if(profile){
+
+          var image_id = profile.profile_pic_id
+          console.log(image_id)
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
+    },
+  })
+
 
   /***********************
         Signup
   ************************/ 
 
   Template.signup.helpers({
+    prof_pic_image:function(){
+      user=Meteor.user()
+      if(user){
+        profile=user.profile
+        if(profile){
+          var image_id = profile.profile_pic_id
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
+    },
   })
 
   // Template.signup.rendered = function () {
@@ -740,14 +822,22 @@ if (Meteor.isClient) {
 
       }
 
-      var profile={
-        name : $('[name="name"]').val(),
-        email : $('[name="email"]').val(),
-        zip : $('[name="zip"]').val(),
-        companies: comps,
-        schools: schools,
-        understandsBonfires:false,
+      var profile=Meteor.user().profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+          understandsBonfires:false,
+        }
       }
+      profile.name=$('[name="name"]').val()
+      profile.zip=$('[name="zip"]').val()
+      profile.companies=comps
+      profile.schools=schools
+      
       Meteor.call("setProfile",Meteor.userId(),profile)
     },
     'click #addJob': function(e){
@@ -820,8 +910,32 @@ if (Meteor.isClient) {
     },
 
     'change #profUpload':function(e){
-      file = e.target.files[0];
-      console.log(file);
+      var user_id=Meteor.userId()
+      console.log(user_id)
+      files = e.target.files;
+      console.log(files);
+      for (var i = 0, ln = files.length; i < ln; i++) {
+      Images.insert(files[i], function (err, fileObj) {
+        console.log(fileObj._id)
+        // get this user's profile
+        var prof = Meteor.user().profile
+        if(!prof){// user doesn't have a profile yet so let's make them one with empty info
+          prof={
+            name : $('[name="name"]').val(),
+            email : $('[name="email"]').val(),
+            zip : $('[name="zip"]').val(),
+            companies: [],
+            schools: [],
+            understandsBonfires:false,
+          }
+        }
+        prof.profile_pic_id=fileObj._id
+        Meteor.call("setProfile",Meteor.userId(),prof)
+        console.log(Meteor.user().profile)
+
+        //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      });
+    }
 
       // IMGUR API V. 3
       // if (!file || !file.type.match(/image.*/)) return;

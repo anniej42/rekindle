@@ -42,15 +42,15 @@
 
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="{{pathFor 'welcome'}}">Rekindle</a></li>
+            <li id = "welcome"><a id="welcomepage" href="{{pathFor 'welcome'}}">Rekindle</a></li>
         </ul>
     </div>
 
     <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{pathFor 'bonfires'}}">Bonfires</a></li>
-            <li><a href="{{pathFor 'signup'}}">Your Profile</a></li>
-            <li><a href="{{pathFor 'about'}}">Contact Us</a></li>
+            <li id = "bonfires"><a id="bonfirespage" href="{{pathFor 'bonfires'}}">Bonfires</a></li>
+            <li id = "signup"><a id="signuppage" href="{{pathFor 'signup'}}">Your Profile</a></li>
+            <li id = "about"><a id="aboutpage" href="{{pathFor 'about'}}">Contact Us</a></li>
             <li>{{> loginButtons align=right}}</li>
         </ul>
     </div>

@@ -10,14 +10,6 @@
 		font-weight: 200;
 	}
 
-
-	td:first-child
-	{
-		width:50%;
-		max-width: 450px;
-
-	}
-
 	#memBox{
 		min-width: 400px;
 		padding-bottom: 200px;
@@ -161,9 +153,9 @@
 	.holder
 	{
 		/*position: relative;*/
-		border: 10px dashed #2B2B2B;
+/*		border: 10px dashed #2B2B2B;*/
 		width: 100%; 
-		min-height: 300px; 
+		min-height: 500px; 
 		margin-left : auto;
 		margin-right : auto;
 	}
@@ -171,9 +163,9 @@
 	.small
 	{
 		position: relative;
-		border: 10px dashed #2B2B2B;
+/*		border: 10px dashed #2B2B2B;*/
 		width: 100%; 
-		min-height: 250px; 
+		height: 300px; 
 		margin-left : auto;
 		margin-right : auto;
 		text-align: center;
@@ -182,11 +174,15 @@
 		
 	}
 
-	#holderProfile, #holderMemory img 
+	#holderProfile >img, #holderMemory >img 
 	{ 
 		display: block; 
 		margin: 10px auto; 
+		max-width: 100%;
+		max-height:100%;
 	}
+
+
 
 	.saveProfile{
 		padding-bottom: 20px;
