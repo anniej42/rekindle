@@ -200,7 +200,7 @@
 }
 
 /* caret */
-.navbar-default .navbar-nav > .dropdown > a .caret {
+/*.navbar-default .navbar-nav > .dropdown > a .caret {
     border-top-color: #777;
     border-bottom-color: #777;
 }
@@ -214,10 +214,23 @@
 .navbar-default .navbar-nav > .open > a:focus .caret {
     border-top-color: #555;
     border-bottom-color: #555;
-}
+}*/
 
 #login-dropdown-list {
-position: absolute;
-top: -1px;
-left: -100px;
+	position: absolute;
+	top: -1px;
+	left: -100px;
+}
+
+.login-button {
+	background-color: gray;
+}
+
+.login-button:hover {
+	background-color: #ff7800;
+}
+
+.login-button:active
+{
+	background-color: #ff7800;
 }
