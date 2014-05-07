@@ -739,6 +739,7 @@ if (Meteor.isClient) {
     geocoder = new google.maps.Geocoder();
     var mapOptions = {
       center: new google.maps.LatLng(37.759, -122.442),
+      scrollwheel:false,
       zoom: 12
     };
     var map = new google.maps.Map(document.getElementById("map-canvas"),
@@ -751,34 +752,40 @@ if (Meteor.isClient) {
       thisUser=Meteor.users.findOne({_id:members[i].user_id})
       var lat = '';
       var lng = '';
-      var address = thisUser.profile.zip;
-      console.log(address)
-      geocoder.geocode( { 'address': address}, function(results, status) {
-        done.push("yes")
-        if (status == google.maps.GeocoderStatus.OK) {
-           lat = results[0].geometry.location.lat();
-           lng = results[0].geometry.location.lng();
-          console.log('Latitude: ' + lat + ' Logitude: ' + lng);
-          positions.push(new google.maps.LatLng(lat, lng))
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(lat, lng),
-            icon:'http://i.imgur.com/a9EUtE6.png'
-          });
-          marker.setMap(map); 
-        } else {
-          console.log("Geocode was not successful for the following reason: " + status);
-        }
-        if(done.length==members.length){
-          console.log("done!")
-          console.log(positions)
-          var limits = new google.maps.LatLngBounds();
-          for(var i=0;i<positions.length;i++){
-            limits.extend(positions[i]);
+      if(thisUser && thisUser.profile && thisUser.profile.zip){
+        var address = thisUser.profile.zip;
+        console.log(address)
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          done.push("yes")
+          if (status == google.maps.GeocoderStatus.OK) {
+             lat = results[0].geometry.location.lat();
+             lng = results[0].geometry.location.lng();
+            console.log('Latitude: ' + lat + ' Logitude: ' + lng);
+            positions.push(new google.maps.LatLng(lat, lng))
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(lat, lng),
+              icon:'http://i.imgur.com/a9EUtE6.png'
+            });
+            marker.setMap(map); 
+          } else {
+            console.log("Geocode was not successful for the following reason: " + status);
           }
-          console.log(limits)
-          map.fitBounds(limits);
-        }
-      });
+          if(done.length==members.length){
+            console.log("done!")
+            console.log(positions)
+            var limits = new google.maps.LatLngBounds();
+            for(var i=0;i<positions.length;i++){
+              limits.extend(positions[i]);
+            }
+            console.log("limits coming up!")
+            console.log(limits)
+            map.fitBounds(limits);
+          }
+        });
+      }else{
+        done.push("yes")
+      }
+
     }
 
 
