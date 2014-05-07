@@ -213,3 +213,9 @@
     border-top-color: #555;
     border-bottom-color: #555;
 }
+
+#login-dropdown-list {
+position: absolute;
+top: -1px;
+left: -100px;
+}
