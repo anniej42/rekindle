@@ -829,6 +829,8 @@ if (Meteor.isClient) {
           understandsBonfires:false,
         }
       }
+      profile.name=$('[name="name"]').val()
+      profile.zip=$('[name="zip"]').val()
       profile.companies=comps
       profile.schools=schools
       
