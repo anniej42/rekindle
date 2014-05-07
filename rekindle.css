@@ -341,4 +341,15 @@ navbar-default .navbar-nav > .active > a,
 
 #login-name-link {
 	line-height: 2;
+	padding-left: 10px;
+}
+
+#login-sign-in-link
+{
+	line-height: 2;
+	padding-left: 10px;
+}
+
+.navbar-spacing {
+	width: 20px;
 }
