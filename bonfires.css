@@ -97,8 +97,14 @@ a:hover{
 
 #bonfire_list li, #bonfires_yours li, #bonfires_predicted li{
     display:inline-block;
-    float:left;    
+/*    float:left;  */  
 }
+
+#bonfire_list ul, #bonfires_yours ul, #bonfires_predicted ul{
+/*    text-align:center; */   
+    padding:0px;
+}
+
 
 #bonfire_list_bottom{
     display:block;
