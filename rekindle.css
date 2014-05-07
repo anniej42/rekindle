@@ -178,11 +178,11 @@
 .navbar-default .navbar-nav > li > a {
     color: black;
 }
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus,
-.navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:focus,
-.navbar-default .navbar-nav > .active > a:hover {
+.navbar-default .navbar-right > li > a:hover,
+.navbar-default .navbar-right > li > a:focus,
+.navbar-default .navbar-right > .active > a, 
+.navbar-default .navbar-right > .active > a:focus,
+.navbar-default .navbar-right > .active > a:hover {
     color: #FFF2E6;
     background: -webkit-linear-gradient(black, #4D4D4D); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(black, #4D4D4D); /* For Opera 11.1 to 12.0 */
@@ -210,6 +210,19 @@ navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
     color: #FFF2E6;
+}
+
+#welcome {
+	background-color: #D5D5D5;
+}
+
+#welcomepage {
+	color: #555;
+}
+
+#welcomepage:hover {
+	color: black;
+	background-color: #D5D5D5;
 }
 
 /* caret */
@@ -264,10 +277,58 @@ navbar-default .navbar-nav > .active > a,
 	transition: background-color 0.35s ease-in-out;
 }
 
-#login-buttons-open-change-password {
+#login-buttons-open-change-password:hover {
 	background-color: #ff7800 !important;
 }
 
-#login-buttons-open-change-password {
+#login-buttons-open-change-password:active {
 	background-color: #ff7800 !important;
+}
+
+#login-buttons-password {
+	background-color: gray !important;
+	border: none !important;
+	-moz-transition: background-color 0.35s ease-in-out;
+	-webkit-transition: background-color 0.35s ease-in-out;
+	-o-transition: background-color 0.35s ease-in-out;
+	-ms-transition: background-color 0.35s ease-in-out;
+	transition: background-color 0.35s ease-in-out;
+}
+
+#login-buttons-password:hover {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-password:active {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-do-change-password {
+	background-color: gray !important;
+	border: none !important;
+	-moz-transition: background-color 0.35s ease-in-out;
+	-webkit-transition: background-color 0.35s ease-in-out;
+	-o-transition: background-color 0.35s ease-in-out;
+	-ms-transition: background-color 0.35s ease-in-out;
+	transition: background-color 0.35s ease-in-out;
+}
+
+#login-buttons-do-change-password:hover {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-do-change-password:active {
+	background-color: #ff7800 !important;
+}
+
+.login-close-text:hover {
+	color: gray;
+}
+
+#forgot-password-link:hover {
+	color: gray;
+}
+
+#signup-link:hover {
+	color: gray;
 }
