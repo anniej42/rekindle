@@ -1,10 +1,7 @@
 /iron-router
-/blaze-layout
 /bootstrap-3
-<<<<<<< HEAD
-/autocompletion
-=======
 /collectionFS
+/blaze-layout
 /cfs-base-package
 /cfs-file
 /cfs-collection
@@ -28,4 +25,3 @@
 /cfs-filesystem
 /reactive-property
 /micro-queue
->>>>>>> 0fc944e59e1c40fd6ead13110cd64c037a212d67

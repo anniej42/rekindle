@@ -10,14 +10,16 @@
 		font-weight: 200;
 	}
 
-	#memBox{
-		min-width: 400px;
-		padding-bottom: 200px;
-	}
-
 
 	#company, #school{
 		vertical-align: top;
+	}
+
+	.signup > tr > td {
+		width: 50%;
+		border: 1px solid 
+		text-align: center;
+		vertical-align: top !important;
 	}
 
 /********************************************************************/
@@ -32,36 +34,9 @@
 	.signup
 	{
 		width: 800px;
-		text-align: left;
 		margin-left: auto ;
   		margin-right: auto ;
   		padding: 1em 0 1em 0;
-	}
-
-	.signupForm
-	{
-		
-		
-		
-  		
-	}
-	
-	#signupForm > section
-	{
-		top:0;
-		height: 100%;
-		margin-bottom: 1.5em;
-		/*padding-left: 20px;*/
-		line-height: 2em;
-		width: 50%;
-		margin-left: 30px;
-	}
-
-	#signupForm > section.top
-	{
-		width: 100%;
-		padding-left: 0;
-		margin-left: 0;
 	}
 
 	#container1
@@ -71,26 +46,6 @@
 		
 	}
 
-	#container1 > section
-	{
-
-	}
-
-	/*#container1 > section.name
-	{
-		margin-left: 30px;
-		float:left;
-		width: 50%;
-
-	}*/
-
-	/*#container1 > section.picUpload
-	{
-		margin-left: 30px;
-		float:left;
-		width: 50%;
-
-	}*/
 
 	#name .name
 	{
@@ -152,10 +107,7 @@
 
 	.holder
 	{
-		/*position: relative;*/
-/*		border: 10px dashed #2B2B2B;*/
-		width: 100%; 
-		min-height: 500px; 
+		width: 100%;  
 		margin-left : auto;
 		margin-right : auto;
 	}
@@ -163,15 +115,11 @@
 	.small
 	{
 		position: relative;
-/*		border: 10px dashed #2B2B2B;*/
 		width: 100%; 
-		height: 300px; 
+		height: 353px; 
 		margin-left : auto;
 		margin-right : auto;
 		text-align: center;
-		margin-bottom: 30px;
-		/*vertical-align: center;*/
-		
 	}
 
 	#holderProfile >img, #holderMemory >img 
@@ -185,9 +133,7 @@
 
 
 	.saveProfile{
-		padding-bottom: 20px;
-		float:right;
-		width: 200px;
+
 	}
 
 
@@ -196,14 +142,17 @@
 	.picUpload
 	{
 		text-align: center;
+		padding: 20px;
 	}
 
 	#picUploadButton
 	{
 		font-family: avenir;
 		font-size: 0.7em;
-		position: relative;
-		bottom: 0;
+		position: absolute;
+		right: 13px;
+		bottom: 13px;
+		margin-right: 0px !important;
 	}
 
 	.add

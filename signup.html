@@ -2,7 +2,7 @@
 <template name="signup" id="signup">
     <div id="signup" class="title">
         <!-- <section id="top" class="top"> -->
-            <h1>Sign Up.</h1>
+            <h1>Sign Up</h1>
             <hr>
         <!-- </section> -->
     <form>
@@ -33,9 +33,9 @@
                 {{else}}
                     <img src="http://i.imgur.com/nKu9LkJ.png">
                 {{/if}}
-                </div>
                 <button type="button" value="Show Dialog" class="upload button" id = "picUploadButton">Upload picture</button>
-                <input id = "profUpload" style="visibility: collapse; width: 0px;" type="file"> 
+                <input id = "profUpload" style="visibility: collapse; width: 0px; position: absolute; right: 0px; bottom: 0px; z-index: 2;" type="file"> 
+                </div>
             </td>
         </tr>
 
@@ -60,20 +60,9 @@
         </tr>
         
         <tr>
-        <td class="memBox">
-        <div id = "memBox" class = "memBox">
-            <h2>Memory Box:</h2> 
-                <h3>Share photos from back in the day.</h3>
-                <div id="holderMemory" class="holder">
-                </div>
-        </div>
-        </td>
-
-        <td>
-            <div class="saveProfile">
+        <td colspan="2">
+            <div class="saveProfile navButtons">
             <a href="{{pathFor 'signup'}}" class="button scroll">Save</a>
-            </div>
-            <div class="saveProfile">
             <a href="{{pathFor 'bonfires'}}" class="button scroll">Go!</a>
             </div>
         </td>
