@@ -1,0 +1,37 @@
+
+<template name="bonfireShowRevised">
+	<div class="title"> <!-- id="stanford85"? -->
+	<h1>{{bonfireName}}</h1>
+	</div>
+	<hr>
+	<form>
+		<table>
+			<tr>
+				<td id="members" colspan="2">
+	    			Members
+	    			<div id="memberslist">
+	    				{{#each members}}
+							<a href="{{pathFor 'userShow' _id=this._id}}"><div>
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+
+	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{summary _id}}</div></div></a>
+	    				<br>
+	    				{{/each}}
+	    				<a href="{{pathFor 'bonfireMap' _id=this._id}}"><div class="button" id="maplink">Where are they now?</div></a>
+	    			</div>
+	    		</td>
+	    		<td id="newpost">
+	    			
+	    			{{#if member}}
+	    			Submit a new post:
+	    			<textarea rows="1" class="text toggle" id="newpost-textfield" name="newpost-text" onfocus="this.rows = 3" onblur="if (this.val == '') this.rows = 1"></textarea>
+	    			<button type="button" class="button" id="newpost-button">Post</button>
+	    			{{else}}
+	    			Click join to post a message!
+	    			{{/if}}
+	    			
+	    		</td>
+	    	</tr>
+	    </table>
+	</form>
+</template>

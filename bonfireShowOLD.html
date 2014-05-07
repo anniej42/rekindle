@@ -1,42 +1,35 @@
-<!-- bonfireShow 2.0! See bonfireShowOLD for the original. -->
-
 
 <template name="bonfireShow">
-	<div class="title"> <!-- id="stanford85"? -->
-	<h1>{{bonfireName}}</h1>
-	</div>
-	<hr>
-	<form>
-		<table>
-			<tr>
-				<td id="members">
-	    			{{#if member}}
-	    			Members
-	    			<button type="button" class="button" id="leavebutton">Leave</button>
-	    			{{else}}
-	    			Members
-	    			{{/if}}
+    <div id="stanford85" class="title">
+    <h1>{{bonfireName}}</h1>
+    </div>
+    <hr>
+    <form>
+	    <table>
+	    	<tr>
+	    		{{#if currentUser}}
+	    		<td id="join">
+	    			<button type="button" class="button" id="joinleave">{{#if member}}Leave{{else}}Join{{/if}}</button>
 	    		</td>
-
-
-	    		{{#if member}}
-
 	    		<td id="newpost">
+	    			
+	    			{{#if member}}
 	    			Submit a new post:
 	    			<textarea rows="1" class="text toggle" id="newpost-textfield" name="newpost-text" onfocus="this.rows = 3" onblur="if (this.val == '') this.rows = 1"></textarea>
 	    			<button type="button" class="button" id="newpost-button">Post</button>
+	    			{{else}}
+	    			Click join to post a message!
+	    			{{/if}}
 	    			
 	    		</td>
 	    		{{else}}
-	    		<td id="join">
-	    			<button type="button" class="button" id="joinleave">Join</button>
-	    		</td>
+	    		<td></td>
+	    		<td>Log in to Rekindle to join this bonfire and start posting</td>
 	    		{{/if}}
-
 	    	</tr>
 	    	<tr>
 	    		<td id="members">
-
+	    			Members
 	    			<div id="memberslist">
 	    				{{#each members}}
 							<a href="{{pathFor 'userShow' _id=this._id}}"><div>
@@ -46,18 +39,36 @@
 	    				<br>
 	    				{{/each}}
 	    				<a href="{{pathFor 'bonfireMap' _id=this._id}}"><div class="button" id="maplink">Where are they now?</div></a>
+<!-- 	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Sarah L.</b> <br> Pixar | Stanford 2016</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Kate R.</b> <br> Dropbox | Stanford 2014</div>
+	    				<br>
+
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Annie J.</b> <br> Adobe | Stanford 2016</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/tvlf9jv.png">
+	    					<div class="groupmember"><b>Cathleen G.</b> <br> Valve | Stanford 2016</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/kF95TPv.png">
+	    					<div class="groupmember"><b>Daniel J.</b> <br> eBay | MIT 2015</div>
+	    				<br>
+	    					<img src="http://i.imgur.com/eqG3JJV.png">
+	    					<div class="groupmember"><b>Rob M.</b> <br> Microsoft | MIT 2015</div>
+	    				<br> -->
 	    			</div>
 	    		</td>
-
 	    		<td id="posts">
-	    			{{#each messages}}
-	    				{{> message}}
-					{{/each}}</td>
+	    				{{#each messages}}
+	    					{{> message}}
+						{{/each}}
+	    		</td>
 	    	</tr>
 	    </table>
 	</form>
 </template>
-
 
 <template name="message">
 	<div class="post">
