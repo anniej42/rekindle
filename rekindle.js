@@ -30,6 +30,9 @@ Where the data is stored
 Bonfires = new Meteor.Collection('bonfires');
 Messages = new Meteor.Collection('messages');
 Memberships = new Meteor.Collection('memberships');
+var Images = new FS.Collection("images", {
+  stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
+});
 // also accessible: Meteor.users
 
 
@@ -686,6 +689,20 @@ if (Meteor.isClient) {
   ************************/ 
 
   Template.signup.helpers({
+    prof_pic_image:function(){
+      user=Meteor.user()
+      if(user){
+        profile=user.profile
+        if(profile){
+          var image_id = profile.profile_pic_id
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
+    },
   })
 
   Template.signup.events({
@@ -795,8 +812,32 @@ if (Meteor.isClient) {
     },
 
     'change #profUpload':function(e){
-      file = e.target.files[0];
-      console.log(file);
+      var user_id=Meteor.userId()
+      console.log(user_id)
+      files = e.target.files;
+      console.log(files);
+      for (var i = 0, ln = files.length; i < ln; i++) {
+      Images.insert(files[i], function (err, fileObj) {
+        console.log(fileObj._id)
+        // get this user's profile
+        var prof = Meteor.user().profile
+        if(!prof){// user doesn't have a profile yet so let's make them one with empty info
+          prof={
+            name : $('[name="name"]').val(),
+            email : $('[name="email"]').val(),
+            zip : $('[name="zip"]').val(),
+            companies: [],
+            schools: [],
+            understandsBonfires:false,
+          }
+        }
+        prof.profile_pic_id=fileObj._id
+        Meteor.call("setProfile",Meteor.userId(),prof)
+        console.log(Meteor.user().profile)
+
+        //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      });
+    }
 
       // IMGUR API V. 3
       // if (!file || !file.type.match(/image.*/)) return;
