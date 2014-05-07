@@ -141,7 +141,7 @@ a:hover{
 }
 
 #bonfire_head {
-    line-height:1.5em;
+    /*line-height:1.5em;*/
 }
 
 #bonfire_list a, #bonfires_yours a, #bonfires_predicted a {
