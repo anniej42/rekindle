@@ -161,6 +161,7 @@
 	  	width: 500px; }*/
 
 /* navbar */
+
 .navbar-default {
     background-color: #ff7800;
     border: none;
@@ -178,11 +179,11 @@
 .navbar-default .navbar-nav > li > a {
     color: black;
 }
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus,
-.navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:focus,
-.navbar-default .navbar-nav > .active > a:hover {
+.navbar-default .navbar-right > li > a:hover,
+.navbar-default .navbar-right > li > a:focus,
+.navbar-default .navbar-right > .active > a, 
+.navbar-default .navbar-right > .active > a:focus,
+.navbar-default .navbar-right > .active > a:hover {
     color: #FFF2E6;
     background: -webkit-linear-gradient(black, #4D4D4D); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(black, #4D4D4D); /* For Opera 11.1 to 12.0 */
@@ -212,6 +213,19 @@ navbar-default .navbar-nav > .active > a,
     color: #FFF2E6;
 }
 
+#welcome {
+	background-color: #D5D5D5;
+}
+
+#welcomepage {
+	color: #555;
+}
+
+#welcomepage:hover {
+	color: black;
+	background-color: #D5D5D5;
+}
+
 /* caret */
 /*.navbar-default .navbar-nav > .dropdown > a .caret {
     border-top-color: #777;
@@ -231,12 +245,14 @@ navbar-default .navbar-nav > .active > a,
 
 #login-dropdown-list {
 	position: absolute;
-	top: 8px;
-	left: -90px;
+	top: 70px;
+	left: -80px;
+	border-radius: 0;
 }
 
 #login-buttons-logout {
-	background-color: gray !important;
+	color: black !important;
+	background-color: #b2b2b2 !important;
 	border: none !important;
 	-moz-transition: background-color 0.35s ease-in-out;
 	-webkit-transition: background-color 0.35s ease-in-out;
@@ -255,7 +271,8 @@ navbar-default .navbar-nav > .active > a,
 }
 
 #login-buttons-open-change-password {
-	background-color: gray !important;
+	color: black !important;
+	background-color: #b2b2b2 !important;
 	border: none !important;
 	-moz-transition: background-color 0.35s ease-in-out;
 	-webkit-transition: background-color 0.35s ease-in-out;
@@ -264,10 +281,75 @@ navbar-default .navbar-nav > .active > a,
 	transition: background-color 0.35s ease-in-out;
 }
 
-#login-buttons-open-change-password {
+#login-buttons-open-change-password:hover {
 	background-color: #ff7800 !important;
 }
 
-#login-buttons-open-change-password {
+#login-buttons-open-change-password:active {
 	background-color: #ff7800 !important;
+}
+
+#login-buttons-password {
+	color: black !important;
+	background-color: #b2b2b2 !important;
+	border: none !important;
+	-moz-transition: background-color 0.35s ease-in-out;
+	-webkit-transition: background-color 0.35s ease-in-out;
+	-o-transition: background-color 0.35s ease-in-out;
+	-ms-transition: background-color 0.35s ease-in-out;
+	transition: background-color 0.35s ease-in-out;
+}
+
+#login-buttons-password:hover {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-password:active {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-do-change-password {
+	color: black !important;
+	background-color: #b2b2b2 !important;
+	border: none !important;
+	-moz-transition: background-color 0.35s ease-in-out;
+	-webkit-transition: background-color 0.35s ease-in-out;
+	-o-transition: background-color 0.35s ease-in-out;
+	-ms-transition: background-color 0.35s ease-in-out;
+	transition: background-color 0.35s ease-in-out;
+}
+
+#login-buttons-do-change-password:hover {
+	background-color: #ff7800 !important;
+}
+
+#login-buttons-do-change-password:active {
+	background-color: #ff7800 !important;
+}
+
+.login-close-text:hover {
+	color: gray;
+}
+
+#forgot-password-link:hover {
+	color: gray;
+}
+
+#signup-link:hover {
+	color: gray;
+}
+
+#login-name-link {
+	line-height: 2;
+	padding-left: 10px;
+}
+
+#login-sign-in-link
+{
+	line-height: 2;
+	padding-left: 10px;
+}
+
+.navbar-spacing {
+	width: 20px;
 }

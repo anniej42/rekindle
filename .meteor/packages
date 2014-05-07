@@ -10,3 +10,5 @@ iron-router
 accounts-password
 accounts-ui
 bootstrap-3
+collectionFS
+cfs-filesystem
