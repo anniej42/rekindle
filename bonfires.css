@@ -46,12 +46,17 @@ a {
     -ms-transition: color 0.25s ease-in-out;
     transition: color 0.25s ease-in-out;
 }
-    a:link {color:black;}    /* unvisited link */
-    a:visited {color:black;} /* visited link */
-    a:hover {
+
+a:hover{
+    text-decoration:none;
+    color:white;
+}
+    #memberslist > a:link {color:black;}    /* unvisited link */
+    #memberslist > a:visited {color:black;} /* visited link */
+    #memberslist a:hover {
         color:#ff7800;
         text-decoration:none;}   /* mouse over link */
-    a:active {color:#black;}  /* selected link */
+    #memberslist > a:active {color:black;}  /* selected link */
 
 
 .bonfire_button{
