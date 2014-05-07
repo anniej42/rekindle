@@ -688,6 +688,10 @@ if (Meteor.isClient) {
   Template.signup.helpers({
   })
 
+  // Template.signup.rendered = function () {
+  //   AutoCompletion.init("input#schoolName");
+  // }
+
   Template.signup.events({
     // add the user's profile info when they click go
     'click .saveProfile': function(e){
@@ -789,6 +793,27 @@ if (Meteor.isClient) {
         toyear : null,
       })
       Meteor.call("setProfile",Meteor.userId(),profile)
+    },
+
+    // autocomplete school names
+    'keyup #schoolName':function(e){
+
+
+      // AutoCompletion.autocomplete({
+      // element: 'input#schoolName',       // DOM identifier for the element
+      // collection: uscolleges,              // MeteorJS collection object
+      // limit: 0,                         // Max number of elements to show
+      // sort: { name: 1 }});              // Sort object to filter results with
+      // //filter: { 'gender': 'female' }}); // Additional filtering
+    
+      console.log("inside listener");
+      // var colleges = JSON.parse(Assets.getText('uscolleges.json'));
+      colleges = Meteor.call("populateSchools");
+
+      $('#schoolName').autocomplete({
+        source: colleges, 
+        minLength: 3,
+        });
     },
     'click #picUploadButton': function(e){
       $('#profUpload').click();
@@ -899,13 +924,18 @@ if (Meteor.isClient) {
 /********************************
       Server Code
 *********************************/
-
+schools = new Meteor.Collection("schools");
 if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code ran on server startup
     // nothing here yet!
-  });
+    // if(schools.find().count() === 0){
+    //   for (i in uscolleges){
+    //     schools.insert(i);
+    //   }
+    // }
+}),
 
   Meteor.methods({
     // adds a bonfire
@@ -998,6 +1028,11 @@ if (Meteor.isServer) {
       profile.understandsBonfires=true
       Meteor.call("setProfile", userId, profile)
       
+    },
+
+    populateSchools: function(){
+      console.log("fuck");
+      return JSON.parse(Assets.getText('uscolleges.json'));
     }
 
 

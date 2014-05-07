@@ -19,7 +19,8 @@
 	}
 
 	#memBox{
-		min-width: 500px;
+		min-width: 400px;
+		padding-bottom: 200px;
 	}
 
 
@@ -214,8 +215,6 @@
 		font-family: avenir;
 		font-size: 0.7em;
 	}
-
-	
 
 	.button
 		{

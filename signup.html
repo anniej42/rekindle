@@ -85,7 +85,7 @@
 
 <template name="school" id = "school">
 
-    <input type="text" class="text" name="school" placeholder="University" value="{{#if this.name}}{{this.name}}{{/if}}"/><br>
+    <input type="text" class="text" name="school" id="schoolName" placeholder="University" value="{{#if this.name}}{{this.name}}{{/if}}"/><br>
     <input type="text" class="text" name="major" placeholder="Major" value="{{#if this.major}}{{this.major}}{{/if}}"/><br>
 
     <h3><label for="">From:</label> <input type="text" class="text" name="fromYearSchool" placeholder="1983" style="width: 100px" value="{{#if this.fromyear}}{{this.fromyear}}{{/if}}"><label for="toYear"> To:</label> <input type="text" class="text" name="toYearSchool" placeholder="2012" style="width: 100px" value="{{#if this.toyear}}{{this.toyear}}{{/if}}"></h3>
