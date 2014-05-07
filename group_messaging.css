@@ -37,7 +37,7 @@ td.bonfireShow:first-child {
 }
 
 #newpost-textfield {
-	width: 70%;
+	width: 50%;
 	font-size: 12pt;
 }
 
@@ -75,7 +75,7 @@ td.bonfireShow:first-child {
 }
 
 .reply-textfield {
-	width: 100%;
+	width: 70%;
 	font-size: 12pt;
 	line-height: 16pt;
 }
