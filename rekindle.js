@@ -39,16 +39,47 @@ Memberships = new Meteor.Collection('memberships');
 
 if (Meteor.isClient) {
   /*****************
-      Navigation
-  *****************/
-
-  var current_url = window.location.protocol + "";
-  var url_array = current_url.split("/");
-  var url_page = url_array[-1];
-
-  /*****************
       Menu
   *****************/  
+
+  var getPageURL = function() {
+    var current_url = window.location.href + "";
+    var url_array = current_url.split("/");
+    var url_page = url_array.pop();
+    return url_page;
+  }
+
+  var resetActiveLinks = function() {
+    document.getElementById("bonfires").className = "";
+    document.getElementById("signup").className = "";
+    document.getElementById("about").className = "";
+  }
+
+  Template.menu.events({
+    'click .nav': function(e) {
+      var link = e.target.id;
+      resetActiveLinks();
+
+      if (link == "bonfirespage") {
+        document.getElementById("bonfires").className = "active";
+      }
+      else if (link == "signuppage") {
+        document.getElementById("signup").className = "active";
+      }
+      else if (link == "aboutpage") {
+        document.getElementById("about").className = "active";
+      }
+      else if (link == "welcomepage") {
+        console.log("here");
+        resetActiveLinks();
+      }
+    }
+  })
+
+
+
+
+
   var menuactivated=false
   Template.menu.events({
     'click .navHeading': function(e){
