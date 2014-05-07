@@ -182,6 +182,10 @@
 		max-height:100%;
 	}
 
+	.save {
+		float:right;
+		padding-top: 50px;
+	}
 
 
 	.saveProfile{
@@ -211,6 +215,12 @@
 		font-family: avenir;
 		font-size: 0.7em;
 	}
+
+	#login-sign-in-link
+	{
+		padding-left: 10px;
+	}
+
 
 	.button
 		{
