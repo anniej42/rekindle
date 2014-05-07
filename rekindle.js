@@ -295,9 +295,9 @@ if (Meteor.isClient) {
   Template.bonfireShow.events({
 
     // join or leave the bonfire
-    'click #joinleave': function(e) {
+    'click .joinleave': function(e) {
       var bool = true;
-      if ($("#joinleave").html() == 'Leave') {
+      if ($(".joinleave").html() == 'Leave') {
         bool = confirm("Are you sure you want to leave " + this.bonfireName + "?");
       }
       if (bool) {

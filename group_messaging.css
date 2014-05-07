@@ -174,7 +174,7 @@ td {
 	}
 
 
-	#joinleave
+	.joinleave
 	{
 		
 		padding-left: 50px;
@@ -207,12 +207,12 @@ td {
 
 	}
 
-			#joinleave:hover
+			.joinleave:hover
 			{
 				background-color:  #ff7800;
 			}
 			
-			#joinleave:active
+			.joinleave:active
 			{
 				background-color:  #ff7800;
 			}
