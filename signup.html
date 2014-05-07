@@ -23,7 +23,7 @@
             <!-- </div> -->
             </td>
 
-            <td id="picUpload" class="picUpload">
+            <td id="picUpload" class="picUpload" style = "text-align: center">
 
                 <div id="holderProfile" class="holder small">
                 {{#if prof_pic_image}}
@@ -33,9 +33,11 @@
                 {{else}}
                     <img src="http://i.imgur.com/nKu9LkJ.png">
                 {{/if}}
+                </div>
                 <button type="button" value="Show Dialog" class="upload button" id = "picUploadButton">Upload picture</button>
                 <input id = "profUpload" style="visibility: collapse; width: 0px; position: absolute; right: 0px; bottom: 0px; z-index: 2;" type="file"> 
-                </div>
+
+                
             </td>
         </tr>
 
