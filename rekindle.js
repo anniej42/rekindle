@@ -42,7 +42,7 @@ var Images = new FS.Collection("images", {
 
 if (Meteor.isClient) {
   /*****************
-      Menu
+      Navigation
   *****************/  
 
   var getPageURL = function() {
@@ -79,9 +79,15 @@ if (Meteor.isClient) {
     }
   })
 
+  // Reset scroll to top of the page when navigating to new page
+  Deps.autorun(function () {
+    var current = Router.current();
 
-
-
+    Deps.afterFlush(function () {
+      $('.content-inner').scrollTop(0);
+      $(window).scrollTop(0);
+    });
+  });
 
   var menuactivated=false
   Template.menu.events({
