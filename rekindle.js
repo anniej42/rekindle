@@ -38,6 +38,13 @@ Memberships = new Meteor.Collection('memberships');
 *********************************/
 
 if (Meteor.isClient) {
+  /*****************
+      Navigation
+  *****************/
+
+  var current_url = window.location.protocol + "";
+  var url_array = current_url.split("/");
+  var url_page = url_array[-1];
 
   /*****************
       Menu
