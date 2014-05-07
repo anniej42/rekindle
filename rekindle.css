@@ -161,6 +161,7 @@
 	  	width: 500px; }*/
 
 /* navbar */
+
 .navbar-default {
     background-color: #ff7800;
     border: none;
@@ -244,12 +245,14 @@ navbar-default .navbar-nav > .active > a,
 
 #login-dropdown-list {
 	position: absolute;
-	top: 20px;
-	left: -90px;
+	top: 70px;
+	left: -80px;
+	border-radius: 0;
 }
 
 #login-buttons-logout {
-	background-color: gray !important;
+	color: black !important;
+	background-color: #b2b2b2 !important;
 	border: none !important;
 	-moz-transition: background-color 0.35s ease-in-out;
 	-webkit-transition: background-color 0.35s ease-in-out;
@@ -268,7 +271,8 @@ navbar-default .navbar-nav > .active > a,
 }
 
 #login-buttons-open-change-password {
-	background-color: gray !important;
+	color: black !important;
+	background-color: #b2b2b2 !important;
 	border: none !important;
 	-moz-transition: background-color 0.35s ease-in-out;
 	-webkit-transition: background-color 0.35s ease-in-out;
@@ -286,7 +290,8 @@ navbar-default .navbar-nav > .active > a,
 }
 
 #login-buttons-password {
-	background-color: gray !important;
+	color: black !important;
+	background-color: #b2b2b2 !important;
 	border: none !important;
 	-moz-transition: background-color 0.35s ease-in-out;
 	-webkit-transition: background-color 0.35s ease-in-out;
@@ -304,7 +309,8 @@ navbar-default .navbar-nav > .active > a,
 }
 
 #login-buttons-do-change-password {
-	background-color: gray !important;
+	color: black !important;
+	background-color: #b2b2b2 !important;
 	border: none !important;
 	-moz-transition: background-color 0.35s ease-in-out;
 	-webkit-transition: background-color 0.35s ease-in-out;
@@ -334,5 +340,5 @@ navbar-default .navbar-nav > .active > a,
 }
 
 #login-name-link {
-	line-height: 2.1;
+	line-height: 2;
 }
