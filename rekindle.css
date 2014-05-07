@@ -231,15 +231,21 @@
 	left: -100px;
 }
 
-.login-button {
-	background-color: gray;
+#login-buttons-logout {
+	background-color: gray !important;
+	border: 8px !important;
+	-moz-transition: background-color 0.35s ease-in-out;
+	-webkit-transition: background-color 0.35s ease-in-out;
+	-o-transition: background-color 0.35s ease-in-out;
+	-ms-transition: background-color 0.35s ease-in-out;
+	transition: background-color 0.35s ease-in-out;
 }
 
-.login-button:hover {
-	background-color: #ff7800;
+#login-buttons-logout:hover {
+	background-color: #ff7800 !important;
 }
 
-.login-button:active
+#login-button-logout:active
 {
-	background-color: #ff7800;
+	background-color: #ff7800 !important;
 }
