@@ -43,17 +43,23 @@
 
 	    			<div id="memberslist">
 	    				{{#each members}}
-	    					<div id="member_image">
-							<div>
-							{{#if prof_pic_image this._id}}
-			                    {{#with prof_pic_image this._id}}
-			                        <img src="{{this.url}}">
-			                    {{/with}}
-			                {{else}}
-			                    <img src="http://i.imgur.com/nKu9LkJ.png">
-			                {{/if}}</div>
-							<a href="{{pathFor 'userShow' _id=this._id}}">
-	    					<div class="groupmember"><b>{{name _id}}</b> <br> {{summary _id}}</div></a></div>
+	    					<a href="{{pathFor 'userShow' _id=this._id}}">
+		    					<div id="member_image">
+									<div>
+										{{#if prof_pic_image this._id}}
+						                    {{#with prof_pic_image this._id}}
+						                        <img src="{{this.url}}">
+						                    {{/with}}
+						                {{else}}
+						                    <img src="http://i.imgur.com/nKu9LkJ.png">
+						                {{/if}}
+					            	</div>
+					            	<div class="groupmember">
+		    							<b>{{name _id}}</b> <br> {{summary _id}}
+		    						</div>
+					            </div>
+
+	    					</a>
 	    				<br>
 	    				{{/each}}
 	    				<a href="{{pathFor 'bonfireMap' _id=this._id}}"><div class="smallbutton" id="maplink">Where are they now?</div></a>
