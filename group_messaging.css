@@ -8,14 +8,15 @@ table {
 }
 
 td.bonfireShow {
-	max-width: 800px;
-    padding: 0% 8%;
+    padding: 0% 8% 5% 8%;
     vertical-align: top;
 }
 
-td.bonfireShow:first-child {
-	width: 30%;
-}
+/*td:first-child {
+	background: red;
+	vertical-align: top;
+	text-align: left;
+}*/
 
 #join {
 	text-align: center;
@@ -74,7 +75,7 @@ td.bonfireShow:first-child {
 }
 
 .reply-textfield {
-	width: 70%;
+	width: 100%;
 	font-size: 12pt;
 	line-height: 16pt;
 }
@@ -89,7 +90,7 @@ td.bonfireShow:first-child {
 }
 
 #newpost-textfield {
-	width: 70%;
+	width: 100%;
 }
 
 #newpost-button {
@@ -103,12 +104,10 @@ td.bonfireShow:first-child {
 
 #members
 {
-
-	line-height: 18px !important;
+	width:20%;
 	padding: 0% 0% 0% 2%;
-	vertical-align: middle;
+	vertical-align: top;
 	text-align: left;
-	height: 150px;
 }
 
 #memberslist {
@@ -176,9 +175,9 @@ td.bonfireShow:first-child {
 
 	.smallbutton
 		{
-			line-height: 18px;
 			float: right;
-			font-size: 12pt;
+			margin-right: 10%;
+			font-size: 0.8em;
 			padding: 3px 15px;
 			position: relative;
 			display: inline-block;
