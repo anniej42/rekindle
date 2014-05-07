@@ -657,7 +657,7 @@ if (Meteor.isClient) {
           positions.push(new google.maps.LatLng(lat, lng))
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat, lng),
-            icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+            icon:'http://i.imgur.com/a9EUtE6.png'
           });
           marker.setMap(map); 
         } else {
@@ -806,7 +806,7 @@ if (Meteor.isClient) {
         var mylocation = new google.maps.LatLng(lat, lng)
         var marker = new google.maps.Marker({
           position: mylocation,
-          icon:'http://www.makeupandbeautyblog.com/wp-content/uploads/2010/02/small-fire-icon.gif'
+          icon:'http://i.imgur.com/a9EUtE6.png'
         });
         var mapOptions = {
           center: mylocation,
