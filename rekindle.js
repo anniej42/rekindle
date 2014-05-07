@@ -30,6 +30,9 @@ Where the data is stored
 Bonfires = new Meteor.Collection('bonfires');
 Messages = new Meteor.Collection('messages');
 Memberships = new Meteor.Collection('memberships');
+var Images = new FS.Collection("images", {
+  stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
+});
 // also accessible: Meteor.users
 
 
@@ -718,12 +721,47 @@ if (Meteor.isClient) {
   }
 
 
+  Template.userShow.helpers({
+    prof_pic_image:function(){
+      user=Meteor.users.findOne({_id: this._id})
+      console.log(user)
+      if(user){
+        profile=user.profile
+        console.log(profile)
+        if(profile){
+
+          var image_id = profile.profile_pic_id
+          console.log(image_id)
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
+    },
+  })
+
 
   /***********************
         Signup
   ************************/ 
 
   Template.signup.helpers({
+    prof_pic_image:function(){
+      user=Meteor.user()
+      if(user){
+        profile=user.profile
+        if(profile){
+          var image_id = profile.profile_pic_id
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
+    },
   })
 
   Template.signup.events({
@@ -774,14 +812,20 @@ if (Meteor.isClient) {
 
       }
 
-      var profile={
-        name : $('[name="name"]').val(),
-        email : $('[name="email"]').val(),
-        zip : $('[name="zip"]').val(),
-        companies: comps,
-        schools: schools,
-        understandsBonfires:false,
+      var profile=Meteor.user().profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+          understandsBonfires:false,
+        }
       }
+      profile.companies=comps
+      profile.schools=schools
+      
       Meteor.call("setProfile",Meteor.userId(),profile)
     },
     'click #addJob': function(e){
@@ -827,7 +871,96 @@ if (Meteor.isClient) {
         toyear : null,
       })
       Meteor.call("setProfile",Meteor.userId(),profile)
+    },
+    'click #picUploadButton': function(e){
+      $('#profUpload').click();
+    },
+
+    'change #profUpload':function(e){
+      var user_id=Meteor.userId()
+      console.log(user_id)
+      files = e.target.files;
+      console.log(files);
+      for (var i = 0, ln = files.length; i < ln; i++) {
+      Images.insert(files[i], function (err, fileObj) {
+        console.log(fileObj._id)
+        // get this user's profile
+        var prof = Meteor.user().profile
+        if(!prof){// user doesn't have a profile yet so let's make them one with empty info
+          prof={
+            name : $('[name="name"]').val(),
+            email : $('[name="email"]').val(),
+            zip : $('[name="zip"]').val(),
+            companies: [],
+            schools: [],
+            understandsBonfires:false,
+          }
+        }
+        prof.profile_pic_id=fileObj._id
+        Meteor.call("setProfile",Meteor.userId(),prof)
+        console.log(Meteor.user().profile)
+
+        //Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      });
     }
+
+      // IMGUR API V. 3
+      // if (!file || !file.type.match(/image.*/)) return;
+      
+      // // if it's an image, proceed
+
+      // $.ajax({
+      //   url: 'https://api.imgur.com/3/image',
+      //   method: 'POST',
+      //   headers: {
+      //     Authorization: 'Client-ID '+ "b9644f77763b4c9",
+      //     Accept: 'application/json'
+      //   },
+      //   data: {
+      //     image: file,
+      //     type: 'base64'
+      //   },
+      //   success: function(result) {
+      //     // add in image preview in box
+      // }
+      // });
+
+
+      // IMGUR API V. 2
+      // var fd = new FormData(); 
+      // fd.append("image", file);
+
+      // // my imgur account
+      // fd.append("key", "cee09327eace9f79ce95210f2ca8287a38963b0a");
+      // var xhr = new XMLHttpRequest();
+      // console.log(fd)
+      // xhr.open("https://api.imgur.com/3/gallery.json?callback=POST");
+      // xhr.onload = function() {
+
+      //   // GET THE LINK
+      //       var link = JSON.parse(xhr.responseText).upload.links.imgur_page;
+      // }
+      // xhr.send(fd);
+    },
+
+    'dragover window': function(e) {
+      e.preventDefault()
+      return false
+    },
+    'drop window': function(e) {
+      e.preventDefault()
+      return false
+    },
+
+    'drop #holderProfile': function(e) {
+      e.preventDefault(); 
+      //upload(e.dataTransfer.files[0]); 
+      console.log(e);
+    },
+    
+
+
+
   });
 
   Template.userMap.rendered=function(){
