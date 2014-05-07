@@ -24,11 +24,10 @@
             </td>
 
             <td id="picUpload" class="picUpload">
-                <div id="holder" class="holder small">
-                    
-                    <h3 class="center">Upload picture</h3>
+                <div id="holderProfile" class="holder small">
                     
                 </div>
+                <button type="button" class="upload button" id = "picUploadButton">Upload picture</button>
             </td>
         </tr>
 
@@ -39,7 +38,7 @@
                     {{> company}}
                 {{/each}}
                 
-                    <button type="button" class="button" id = "addJob">Add Another Job</button>
+                    <button type="button" class="add button" id = "addJob">Add Another Job</button>
             </td>
 
             <td id="school" class = "school">
@@ -48,7 +47,7 @@
                     {{> school}}
                 {{/each}}
 
-                    <button type="button" class="button" id="addSchool">Add Another School</button>
+                    <button type="button" class="add button" id="addSchool">Add Another School</button>
             </td>
         </tr>
         
@@ -57,7 +56,7 @@
         <div id = "memBox" class = "memBox">
             <h2>Memory Box:</h2> 
                 <h3>Share photos from back in the day.</h3>
-                <div id="holder" class="holder">
+                <div id="holderMemory" class="holder">
                 </div>
         </div>
         </td>
@@ -77,13 +76,13 @@
         
 </template>
 
-<template name="company">
+<template name="company" id = "company">
     <input type="text" class="text" name="company" placeholder="Company" value="{{#if this.name}}{{this.name}}{{/if}}"/><br>
     <input type="text" class="text" name="title" placeholder="Job Title" value="{{#if this.title}}{{this.title}}{{/if}}"/>
     <h3><label for="fromYear">From:</label> <input type="text" class="text" name="fromYearWork" placeholder="1983" style="width: 100px" value="{{#if this.fromyear}}{{this.fromyear}}{{/if}}"><label for="toYear"> To:</label> <input type="text" class="text" name="toYearWork" placeholder="2012" style="width: 100px" value="{{#if this.toyear}}{{this.toyear}}{{/if}}"></h3>
 </template>
 
-<template name="school">
+<template name="school" id = "school">
 
     <input type="text" class="text" name="school" placeholder="University" value="{{#if this.name}}{{this.name}}{{/if}}"/><br>
     <input type="text" class="text" name="major" placeholder="Major" value="{{#if this.major}}{{this.major}}{{/if}}"/><br>
