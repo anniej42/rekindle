@@ -181,22 +181,24 @@
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     color: #FFF2E6;
+    background-color: black;
 }
 
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:focus {
-    color: #555;
-    background-color: #E7E7E7;
+    color: #FFF2E6;
+    background-color: black;
 }
 .navbar-default .navbar-nav > .active > a:hover{
-	color:black;
+	color: #FFF2E6;
+	background-color: black;
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background-color: #D5D5D5;
+    color: #FFF2E6;
 }
+
 /* caret */
 .navbar-default .navbar-nav > .dropdown > a .caret {
     border-top-color: #777;
