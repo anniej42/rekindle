@@ -26,15 +26,12 @@
             <td id="picUpload" class="picUpload">
 
                 <div id="holderProfile" class="holder small">
-                    {{#if prof_pic_image}}
-                {{#with prof_pic_image}}
-                    URL: {{this.URL}}
-                    <img src="{{this.url}}">
-
-
-                {{/with}}
+                {{#if prof_pic_image}}
+                    {{#with prof_pic_image}}
+                        <img src="{{this.url}}">
+                    {{/with}}
                 {{else}}
-                                    <img src="http://i.imgur.com/nKu9LkJ.png">
+                    <img src="http://i.imgur.com/nKu9LkJ.png">
                 {{/if}}
                 </div>
                 <button type="button" value="Show Dialog" class="upload button" id = "picUploadButton">Upload picture</button>
