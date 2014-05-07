@@ -683,6 +683,27 @@ if (Meteor.isClient) {
   }
 
 
+  Template.userShow.helpers({
+    prof_pic_image:function(){
+      user=Meteor.users.findOne({_id: this._id})
+      console.log(user)
+      if(user){
+        profile=user.profile
+        console.log(profile)
+        if(profile){
+
+          var image_id = profile.profile_pic_id
+          console.log(image_id)
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
+    },
+  })
+
 
   /***********************
         Signup
@@ -753,14 +774,20 @@ if (Meteor.isClient) {
 
       }
 
-      var profile={
-        name : $('[name="name"]').val(),
-        email : $('[name="email"]').val(),
-        zip : $('[name="zip"]').val(),
-        companies: comps,
-        schools: schools,
-        understandsBonfires:false,
+      var profile=Meteor.user().profile
+      if(!profile){// user doesn't have a profile yet so let's make them one with empty info
+        var profile={
+          name : $('[name="name"]').val(),
+          email : $('[name="email"]').val(),
+          zip : $('[name="zip"]').val(),
+          companies: [],
+          schools: [],
+          understandsBonfires:false,
+        }
       }
+      profile.companies=comps
+      profile.schools=schools
+      
       Meteor.call("setProfile",Meteor.userId(),profile)
     },
     'click #addJob': function(e){
