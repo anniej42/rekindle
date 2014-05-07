@@ -315,6 +315,26 @@ if (Meteor.isClient) {
         return ""
       }
     },
+
+    prof_pic_image:function(id){
+      console.log(id)
+      user=Meteor.users.findOne({_id: id})
+      console.log(user)
+      if(user){
+        profile=user.profile
+        console.log(profile)
+        if(profile){
+
+          var image_id = profile.profile_pic_id
+          console.log(image_id)
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
+    },
     // the following are deprecated and not safe
     company: function(id){
       return Meteor.users.findOne({_id:id}).profile.companies[0].name},
@@ -383,6 +403,25 @@ if (Meteor.isClient) {
         return user.profile.name
       }
       return "Anonymous User";
+    },
+    prof_pic_image:function(id){
+      console.log("profpicimage in message called",id)
+      user=Meteor.users.findOne({_id: id})
+      console.log(user)
+      if(user){
+        profile=user.profile
+        console.log(profile)
+        if(profile){
+
+          var image_id = profile.profile_pic_id
+          console.log(image_id)
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
     },
     timestamp: function(){
       if(!this.date){
@@ -511,6 +550,25 @@ if (Meteor.isClient) {
         return user.profile.name
       }
       return "Anonymous User";
+    },
+    prof_pic_image:function(id){
+      console.log(id)
+      user=Meteor.users.findOne({_id: id})
+      console.log(user)
+      if(user){
+        profile=user.profile
+        console.log(profile)
+        if(profile){
+
+          var image_id = profile.profile_pic_id
+          console.log(image_id)
+          if(image_id){
+            console.log(Images.findOne({_id:image_id}))
+            return Images.findOne({_id:image_id})
+          }
+        }
+      }
+      return undefined
     },
     timestamp: function(){
       if(!this.date){
