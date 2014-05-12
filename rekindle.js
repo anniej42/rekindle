@@ -364,7 +364,7 @@ if (Meteor.isClient) {
     // join or leave the bonfire
     'click .joinleave': function(e) {
       var bool = true;
-      if ($(".joinleave").html() == 'Leave') {
+      if ($(".joinleave").html() == 'Remove Me') {
         bool = confirm("Are you sure you want to leave " + this.bonfireName + "?");
       }
       if (bool) {
@@ -904,6 +904,7 @@ if (Meteor.isClient) {
       profile.schools=schools
       
       Meteor.call("setProfile",Meteor.userId(),profile)
+
     },
     'click #addJob': function(e){
       var profile=Meteor.user().profile
